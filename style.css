@@ -3,21 +3,123 @@ body {
     padding: 0px 7.5vw;
     margin: 8px 0px;
 
-    background: url("assets/SpaceSeaBKGD.png") repeat;
-    background-size: 700px;
+    background: url("assets/Background.png") repeat;
+    background-size: 200vw;
+    background-position-x: 20%;
 
     font-family: math;
     color: white;
 }
 
 button {
-    background-color: black;
+    background-color: rgba(0,0,0,0);
     color: white;
     border-radius: 6px;
     border: 2px solid cornflowerblue;
     font-size: 17.5px;
     padding: 5px 15px;
     cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: rgba(255,255,255,1);
+    color: black;
+}
+
+.selected {
+    border: 2px solid orange;
+    animation: none !important;
+}
+
+@keyframes buttonDrift1 {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+        transform: translate(-6px, 8px) rotate(-1deg);
+    }
+    50% {
+        transform: translate(-2px, 4px) rotate(-3deg);
+    }
+    75% {
+        transform: translate(8px, -5px) rotate(4deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+@keyframes buttonDrift2 {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+        transform: translate(8px, 3px) rotate(-1deg);
+    }
+    50% {
+        transform: translate(-5px, -8px) rotate(4deg);
+    }
+    75% {
+        transform: translate(5px, -6px) rotate(-2deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+@keyframes buttonDrift3 {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+        transform: translate(-6px, -2px) rotate(4deg);
+    }
+    50% {
+        transform: translate(-1px, 8px) rotate(-4deg);
+    }
+    75% {
+        transform: translate(3px, -6px) rotate(-3deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+@keyframes buttonDrift4 {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+        transform: translate(3px, -6px) rotate(-3deg);
+    }
+    50% {
+        transform: translate(-8px, -1px) rotate(4deg);
+    }
+    75% {
+        transform: translate(-2px, 4px) rotate(-3deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+@keyframes buttonDrift5 {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+        transform: translate(-5px, 8px) rotate(-1deg);
+    }
+    50% {
+        transform: translate(-2px, 5px) rotate(-3deg);
+    }
+    75% {
+        transform: translate(3px, -7px) rotate(-3deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
 }
 
 a {
@@ -32,7 +134,7 @@ a {
 #banner {
     height: 12.5vw;
 
-    background-image: url("assets/SmallBanner.png");
+    background-image: url("assets/TitleBanner.png");
     background-position: top;
     background-size: 56vw;
     background-repeat: no-repeat;
