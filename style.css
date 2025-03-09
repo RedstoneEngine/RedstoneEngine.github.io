@@ -1,141 +1,228 @@
 body {
-    width: 85vw;
+    width: 85vnw;
     padding: 0px 7.5vw;
     margin: 8px 0px;
 
-    background: url("assets/Background.png") repeat;
+    background: url("assets/Background_Tiled.png") repeat fixed;
+    background-color: rgb(15, 21, 28);
     background-size: 200vw;
     background-position-x: 20%;
 
-    font-family: math;
+    font-family: Arial;
     color: white;
 }
 
-button {
-    background-color: rgba(0,0,0,0);
-    color: white;
+/* Colored Buttons with Border */
+
+div:has(> button) {
+    background-color: rgba(100, 148, 237, 0.1);
+
+    border: 3px solid rgba(0, 0, 0, .5);
     border-radius: 6px;
-    border: 2px solid cornflowerblue;
-    font-size: 17.5px;
+
+    transition-duration: 0.4s;
+}
+
+button {
+    position: relative;
+    top: -2px;
+    left: -2px;
     padding: 5px 15px;
+    margin: -2px;
+
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+
+    border: 2px solid cornflowerblue;
+    border-radius: 6px;
+
+    font-size: 17.5px;
     cursor: pointer;
     transition-duration: 0.4s;
 }
 
+div:has(> button:hover) {
+    background-color: cornflowerblue;
+}
+
 button:hover {
-    background-color: rgba(255,255,255,1);
     color: black;
+}
+
+div:has(> .selected) {
+    background-color: rgba(255, 166, 0, 0.25);
+    animation: none !important;
 }
 
 .selected {
     border: 2px solid orange;
-    animation: none !important;
 }
 
-@keyframes buttonDrift1 {
-    0% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-    25% {
-        transform: translate(-6px, 8px) rotate(-1deg);
-    }
-    50% {
-        transform: translate(-2px, 4px) rotate(-3deg);
-    }
-    75% {
-        transform: translate(8px, -5px) rotate(4deg);
-    }
-    100% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
+div:has(> .selected:hover) {
+    background-color: orange;
 }
 
-@keyframes buttonDrift2 {
-    0% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-    25% {
-        transform: translate(8px, 3px) rotate(-1deg);
-    }
-    50% {
-        transform: translate(-5px, -8px) rotate(4deg);
-    }
-    75% {
-        transform: translate(5px, -6px) rotate(-2deg);
-    }
-    100% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
+.buttonContext {
+    position: absolute;
+    width: 18.5px;
+    height: 29.5px;
+    margin-left: .25vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    color: white;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition-duration: .1s;
 }
 
-@keyframes buttonDrift3 {
-    0% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-    25% {
-        transform: translate(-6px, -2px) rotate(4deg);
-    }
-    50% {
-        transform: translate(-1px, 8px) rotate(-4deg);
-    }
-    75% {
-        transform: translate(3px, -6px) rotate(-3deg);
-    }
-    100% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
+button:hover > div {
+    height: 32.5px;
+    opacity: 1;
 }
 
-@keyframes buttonDrift4 {
-    0% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-    25% {
-        transform: translate(3px, -6px) rotate(-3deg);
-    }
-    50% {
-        transform: translate(-8px, -1px) rotate(4deg);
-    }
-    75% {
-        transform: translate(-2px, 4px) rotate(-3deg);
-    }
-    100% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
+.buttonContext > div {
+    padding: 1px 5px;
+
+    background-color: rgb(36, 36, 36);
+    color: white;
+    border: 2px rgb(98, 211, 111) solid;
+    border-radius: 3px;
+
+    font-size: 17px;
+    white-space: nowrap;
+    text-wrap: nowrap;
 }
 
-@keyframes buttonDrift5 {
-    0% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-    25% {
-        transform: translate(-5px, 8px) rotate(-1deg);
-    }
-    50% {
-        transform: translate(-2px, 5px) rotate(-3deg);
-    }
-    75% {
-        transform: translate(3px, -7px) rotate(-3deg);
-    }
-    100% {
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-}
+/* Links */
 
 a {
     color: #0484d1;
 }
 
-.spacing {
+/* Pages, Articles, Sections, and Subsections */
+
+.page {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article {
+    width: fit-content;
+    padding: 0px 16px 0px 0px;
+    margin-bottom: 40px;
+    display: flex;
+
+    background-image: url("assets/PageBackground.png");
+    background-image: url("assets/PageBackground_Gradient.png"),
+        linear-gradient(150deg, rgba(48,73,40,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgba(61,34,64,1) 100%);
+
+    border: 2px solid rgb(98, 211, 111);
+    border-radius: 10px;
+}
+
+.subarticle {
+    border: 2px solid rgb(211, 63, 63);
+    background-image: url("assets/PageBackground_Gradient.png"),
+        linear-gradient(150deg, rgba(94,45,45,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgba(61,34,64,1) 100%);
+}
+
+.section {
+    margin: 16px 0px 16px 16px;
+    padding: 12px 12px;
+
+    background-color: rgba(51, 51, 51, .666);
+    border-radius: 10px;
+    line-height: 135%;
+}
+
+.subsection {
+    background-color: rgba(36, 36, 36, .75);
+    border-radius: 10px;
+}
+
+.subsection > img {
+    height: 300px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: rgb(255, 216.8, 255);
+    text-shadow: 2px 2px 2px black;
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+}
+
+/* General Attributes */
+
+#socials {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(98, 211, 111, .25);
+}
+
+#socials > button {
+    padding: 5px 6px;
+    border: 2px solid rgb(98, 211, 111);;
+}
+
+#socials > button > svg {
+    margin-top: 3px;
+    margin-bottom: -2px;
+    width: 22px;
+    fill: white;
+    transition-duration: 0.4s;
+}
+
+#socials:hover {
+    background-color: rgb(98, 211, 111);
+}
+
+#socials:hover > button > svg {
+    fill: black;
 }
 
 #banner {
-    height: 12.5vw;
+    height: 11.5vw;
 
     background-image: url("assets/TitleBanner.png");
     background-position: top;
     background-size: 56vw;
     background-repeat: no-repeat;
+}
+
+#banner > div {
+    position: absolute;
+    width: 85vw;
+    height: 12.5vw;
+
+    background-position-y: top;
+    background-size: 60vw;
+    background-repeat: no-repeat;
+}
+
+#navBar {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#nametag {
+    position: relative;
+    top: -15px;
+    left: 110px;
+    rotate: -2.5deg;
+    width: fit-content;
+    padding: 2px 7px;
+
+    background-color: rgb(255, 191, 255);
+    color: black;
+    font-weight: bold;
+    border: outset orange;
+    border-radius: 7px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5);
 }

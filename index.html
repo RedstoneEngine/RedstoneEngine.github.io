@@ -3,28 +3,68 @@
     <head>
         <title>RedEng Developer</title>
 
-        <link rel="icon" sizes="288x288" href="/assets/WebsiteIcon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon" href="/assets/WebsiteIcon.ico" type="image/x-icon">
+        <link rel="icon" sizes="288x288" href="./assets/WebsiteIcon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="./assets/WebsiteIcon.ico" type="image/x-icon">
 
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="animations.css">
     </head>
     <body>
-        <div id="banner"></div>
+        <div id="socials"><button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+            <div class="buttonContext">
+                <div style="margin-right: 17.5px;">Socials</div>
+            </div>
+        </button></div>
 
-        <div class="spacing">
-            <button style="animation: buttonDrift1 28s forwards infinite linear;" class="selected">Who Am I?</button>
-            <button style="animation: buttonDrift2 30s forwards infinite linear;">Video Production</button>
-            <button style="animation: buttonDrift3 32s forwards infinite linear;">Main Projects</button>
-            <button style="animation: buttonDrift4 34s forwards infinite linear;">Demos & Concepts</button>
-            <button style="animation: buttonDrift5 36s forwards infinite linear;">Don't Press!</button>
+        <div id="banner">
+            <div style="background-position-x: left; background-image: url('assets/TitleBanner_Left.png');"></div>
+            <div style="background-position-x: right; background-image: url('assets/TitleBanner_Right.png');"></div>
         </div>
-        <div>
 
+        <div id="navBar" style="justify-content: space-around;">
+            <div style="animation: buttonDrift1 28s forwards infinite linear;"><button class="selected">Who Am I?</button></div>
+            <div style="animation: buttonDrift2 30s forwards infinite linear;"><button>Video Production</button></div>
+            <div style="animation: buttonDrift3 32s forwards infinite linear;"><button>Main Projects</button></div>
+            <div style="animation: buttonDrift4 34s forwards infinite linear;"><button>Demos & Concepts</button></div>
+            <div style="animation: buttonDrift5 36s forwards infinite linear;"><button>Don't Press!</button></div>
         </div>
 
-        <div>This website is still Work in Progress!</div>
-        <div>Go Check out <a href="https://www.youtube.com/@RedEngDeveloper" target="_blank">My YouTube Channel</a>
-             or <a href="https://discord.com/invite/XAjYeEmwZE" target="_blank">Discord Server</a>!</div>
-        <div>Or... Check out <a href="https://redengdeveloper.itch.io/" target="_blank">My Games on Itch.io</a>!</div>
+        <div id="Who Am I?" class="page">
+            <div class="article">
+                <div class="section">
+                    <h1>Who am I?</h1>
+                    <div class="subsection">
+                        <img style="margin-bottom: -35px;" src="./assets/MainPhoto_Transparent.png">
+                        <div id="nametag">Gavin Hughes</div>
+                    </div>
+                </div>
+                <div class="section" style="width: 35vw;">
+                    <h1>About Me</h1>
+                    &nbsp;&nbsp;&nbsp;&nbsp;My name is Gavin Hughes and I am a passionate Creative Engineer!
+                    I love creating games, being hands on, and developing unique solutions to strange problems!
+                    I also deeply enjoy spending time with friends, watching YouTube videos, and a bit of acting!
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;I grew up in the Texas Coastal Bend Area and will graduate from the University of Texas at Austin
+                    as a Mechanical Engineering Major with an Elements of Computing Certificate and a minor in Entrepreneurship!
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;As I'm sure you will see looking around, I create many projects in different interests
+                    which I try and collect together to show on my
+                    <a href="https://www.youtube.com/@RedEngDeveloper" target="_blank">YouTube Channel</a>
+                    and now on this website as well!
+                    I'm also very curious by nature and would love to hear about other people's projects,
+                    so join my
+                    <a href="https://discord.com/invite/XAjYeEmwZE" target="_blank">Discord</a>
+                    or shoot me an
+                    <a href="mailto:redengdeveloper+portfolio@gmail.com" target="_blank">Email</a>
+                    about what you've been working on recently! 👀
+                </div>
+            </div>
+            <div class="article subarticle">
+                <div class="section">
+                    Website is still Work in Progress 🔧
+                </div>
+            </div>
+        </div>
     </body>
 </html>
