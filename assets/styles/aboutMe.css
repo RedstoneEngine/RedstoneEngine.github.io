@@ -1,0 +1,17 @@
+/* First Article */
+
+#nametag {
+    position: relative;
+    top: -15px;
+    left: 110px;
+    rotate: -2.5deg;
+    width: fit-content;
+    padding: 2px 7px;
+
+    background-color: rgb(255, 191, 255);
+    color: black;
+    font-weight: bold;
+    border: outset orange;
+    border-radius: 7px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5);
+}

@@ -1,3 +1,5 @@
+/* Nav Buttons Drifting in Space */
+
 @keyframes buttonDrift1 {
     0% {
         transform: translate(0px, 0px) rotate(0deg);
@@ -85,5 +87,29 @@
     }
     100% {
         transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+/* Page Sliding */
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        left: -250px;
+    }
+    100% {
+        opacity: 1;
+        left: 0px;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        right: -250px;
+    }
+    100% {
+        opacity: 1;
+        right: 0px;
     }
 }
