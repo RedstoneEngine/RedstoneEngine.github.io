@@ -1,7 +1,20 @@
 /* First Article */
 
+#aboutMeSection {
+    width: 800px;
+    max-width: 75vw;
+}
+
+#profilePhoto {
+    height: 300px;
+    max-height: 40vw;
+    margin-bottom: -35px;
+    border-radius: 10px;
+}
+
 #nametag {
     position: relative;
+    display: var(--hide-on-hughes);
     top: -15px;
     left: 110px;
     rotate: -2.5deg;
@@ -14,4 +27,13 @@
     border: outset orange;
     border-radius: 7px;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, .5);
+}
+
+@media screen and (max-width: 750px) {
+    #profilePhoto {
+        margin-bottom: -5px;
+    }
+    #nametag {
+        display: none;
+    }
 }

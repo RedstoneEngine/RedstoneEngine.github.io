@@ -1,7 +1,11 @@
+
+:root {
+    --banner-image: url("../sprites/TitleBanner.png");
+}
+
 /* Base Styles */
 
 body {
-    width: 85vw;
     padding: 0px 7.5vw;
     margin: 8px 0px;
 
@@ -17,12 +21,19 @@ body {
 
 /* Top of Website Display */
 
-#socials {
+#socialsBKGD {
     position: fixed;
     top: 10px;
     right: 10px;
-    background-color: rgb(98, 211, 111, .25);
     z-index: 2;
+
+    background: url("../sprites/Background_Tiled.png") repeat fixed;
+    background-size: 200vw;
+    background-position-x: 20%;
+}
+
+#socials {
+    background-color: rgb(98, 211, 111, .25);
 }
 
 #socials > button {
@@ -30,20 +41,8 @@ body {
     border: 2px solid rgb(98, 211, 111);;
 }
 
-#socials > button > svg {
-    margin-top: 3px;
-    margin-bottom: -2px;
-    width: 22px;
-    fill: white;
-    transition-duration: 0.4s;
-}
-
-#socials:hover {
+#socials:active {
     background-color: rgb(98, 211, 111);
-}
-
-#socials:hover > button > svg {
-    fill: black;
 }
 
 #socialsList {
@@ -57,7 +56,7 @@ body {
     max-height: 25vw;
     margin-bottom: 25px;
 
-    background-image: url("../sprites/TitleBanner.png");
+    background-image: var(--banner-image);
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
@@ -94,19 +93,16 @@ body {
 }
 
 #shortNavBar {
-    margin-left: 2.5vw;
+    padding-left: 3vw;
     display: none;
 }
 
-#navBarCurrent {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+#shortNavBar.navBarLock {
+    padding-left: 10.5vw;
 }
 
-#navBarSelector {
-    padding: 5px 10px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+#navBarCurrent {
+    padding: 4px 10px 4px 15px;
 }
 
 #navBarSpacer {
@@ -123,6 +119,10 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
+}
+
+.pageFullHeight {
+    height: auto !important;
 }
 
 .showPage {
@@ -160,12 +160,10 @@ body {
 }
 
 .subsection {
+    width: fit-content;
+    margin: 0px 20px 15px 0px;
+    float: left;
     background-color: rgba(36, 36, 36, .75);
-    border-radius: 10px;
-}
-
-.subsection > img {
-    height: 300px;
     border-radius: 10px;
 }
 
@@ -176,15 +174,29 @@ h1 {
     margin: 0px 0px 10px 0px;
 }
 
+/* Hover Color Features */
+
+@media (hover: hover) {
+    #socials:hover {
+        background-color: rgb(98, 211, 111);
+    }
+}
+
 /* Resizing Changes */
 
 @media screen and (max-width: 1200px) {
+    #banner > div {
+        display: var(--show-on-hughes);
+    }
+}
+
+@media screen and (max-width: 1050px) {
     #banner > div {
         display: none;
     }
 }
 
-@media screen and (max-width: 925px) {
+@media screen and (max-width: 875px) {
     #navBar {
         display: none;
     }
