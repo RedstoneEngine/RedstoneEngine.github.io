@@ -1,0 +1,103 @@
+
+/* Engineering Projects */
+
+/*#Engineering_ > .subarticle {
+    min-height: 412px;
+}*/
+
+#Engineering_ > .subarticle > .section:has(> h1) {
+    min-height: 235px;
+}
+
+div:has(> .thnl) {
+    margin: 0px 15px 10px 0px;
+    float: left;
+}
+
+.thnl {
+    height: 200px;
+}
+
+#galleryImage {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 11;
+    opacity: 0;
+    transition-duration: .2s;
+}
+
+#galleryImage.show {
+    opacity: 1;
+}
+
+#galleryImage > img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 20px;
+}
+
+#galleryImage > iframe {
+    min-width: 50%;
+    height: 80%;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 20px;
+}
+
+#galleryImage.show > iframe {
+    pointer-events: all;
+}
+
+.gallery {
+    width: 100vw;
+    min-width: 150px;
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.gallery > div {
+    cursor: pointer;
+    height: 32%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery > div > svg {
+    fill: black;
+    height: 30%;
+    transition-duration: .2s;
+}
+
+.gallery > div:hover > svg {
+    fill: rgb(255, 85, 85);
+}
+
+@media screen and (max-width: 725px) {
+    .gallery {
+        height: 150px;
+        width: auto;
+        min-width: inherit;
+        max-width: inherit;
+        flex-direction: inherit;
+    }
+
+    .gallery > div {
+        width: 32%;
+        height: inherit;
+    }
+}

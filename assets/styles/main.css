@@ -30,6 +30,7 @@ body {
     background: url("../sprites/Background_Tiled.png") repeat fixed;
     background-size: 200vw;
     background-position-x: 20%;
+    border-radius: 6px;
 }
 
 #socials {
@@ -105,6 +106,17 @@ body {
     padding: 4px 10px 4px 15px;
 }
 
+#navList {
+    position: fixed;
+    display: none;
+    transition-duration: 0s;
+}
+
+#navList > div {
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+}
+
 #navBarSpacer {
     display: none;
     height: 59.8px;
@@ -130,8 +142,8 @@ body {
 }
 
 .article {
+    width: 850px;
     max-width: 85vw;
-    width: fit-content;
     padding: 0px 16px 0px 0px;
     margin-bottom: 40px;
     display: flex;
@@ -145,6 +157,7 @@ body {
 }
 
 .subarticle {
+    width: 950px;
     border: 2px solid rgb(211, 63, 63);
     background-image: url("../sprites/PageBackground_Gradient.png"),
         linear-gradient(150deg, rgba(94,45,45,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgba(61,34,64,1) 100%);
@@ -154,6 +167,7 @@ body {
     margin: 16px 0px 16px 16px;
     padding: 12px 12px;
 
+    text-align: justify;
     background-color: rgba(51, 51, 51, .666);
     border-radius: 10px;
     line-height: 135%;
@@ -161,17 +175,25 @@ body {
 
 .subsection {
     width: fit-content;
-    margin: 0px 20px 15px 0px;
-    float: left;
+    margin: 0px 0px 15px 15px;
+    float: right;
     background-color: rgba(36, 36, 36, .75);
     border-radius: 10px;
 }
 
 h1 {
+    display: flex;
+    justify-content: space-between;
     color: rgb(255, 216.8, 255);
     text-shadow: 2px 2px 2px black;
     font-size: 20px;
     margin: 0px 0px 10px 0px;
+}
+
+h1 > div {
+    color: rgb(171, 171, 171);
+    font-size: 15px;
+    text-shadow: none;
 }
 
 /* Hover Color Features */
@@ -208,5 +230,11 @@ h1 {
 @media screen and (max-width: 725px) {
     .article {
         display: block;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .section {
+        text-align: inherit;
     }
 }
