@@ -1,8 +1,4 @@
 
-:root {
-    --banner-image: url("../sprites/TitleBanner.png");
-}
-
 /* Base Styles */
 
 body {
@@ -57,10 +53,14 @@ body {
     max-height: 25vw;
     margin-bottom: 25px;
 
-    background-image: var(--banner-image);
-    background-position: top;
-    background-size: contain;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+
+#banner > img {
+    position: absolute;
+    height: inherit;
+    max-height: inherit;
 }
 
 #banner > div {

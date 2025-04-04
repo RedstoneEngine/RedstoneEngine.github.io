@@ -75,6 +75,13 @@ div:has(> .thnl) {
     display: flex;
     justify-content: center;
     align-items: center;
+    mask-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.gallery > div > img {
+    position: absolute;
+    max-height: 132.5px;
+    max-width: 146.5px;
 }
 
 .gallery > div > svg {

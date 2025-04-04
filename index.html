@@ -10,15 +10,19 @@
         <link class="icon" rel="apple-touch-icon" href="./assets/sprites/WebsiteIcon.ico" type="image/x-icon">
 
         <link rel="stylesheet" href="./assets/styles/defaults.css?v=3_14_25">
-        <link rel="stylesheet" href="./assets/styles/main.css?v=3_14_25">
+        <link rel="stylesheet" href="./assets/styles/main.css?v=4_3_25">
         <link rel="stylesheet" href="./assets/styles/aboutMe.css?v=3_14_25">
-        <link rel="stylesheet" href="./assets/styles/engineering.css?v=3_14_25">
+        <link rel="stylesheet" href="./assets/styles/engineering.css?v=4_3_25">
         <link rel="stylesheet" href="./assets/styles/animations.css?v=3_14_25">
+        <link rel="stylesheet" href="./assets/styles/particles.css?v=4_3_25">
 
-        <script src="./assets/scripts/main.js?v=3_14_25"></script>
+        <script src="./assets/scripts/main.js?v=4_3_25"></script>
+        <script src="./assets/scripts/particles.js?v=4_3_25"></script>
+        <script src="./assets/scripts/print.js?v=4_3_25"></script>
+        <script src="./assets/scripts/dontPress.js?v=4_3_25"></script>
 
         <!-- Switch to Hughes Website --><!--
-        <link rel="stylesheet" href="./assets/styles/hughesWebsite.css?v=3_14_25">
+        <link rel="stylesheet" href="./assets/styles/hughesWebsite.css?v=4_3_25">
         <script src="./assets/scripts/hughesWebsite.js?v=3_14_25"></script><!---->
     </head>
     <body>
@@ -31,7 +35,7 @@
 
         <!-- SOCIALS SECTION -->
 
-        <div id="socialsBKGD">
+        <div id="socialsBKGD" class="hideOnPrint">
             <div id="socials"><button onclick="showOverlay('socialsList')">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
                 <div class="buttonContext">
@@ -70,6 +74,8 @@
         <!-- TOP WEBSITE SECTION -->
 
         <div id="banner">
+            <img class="hideOnHughes" src="./assets/sprites/TitleBanner.png">
+            <img class="showOnHughes" src="./assets/sprites/TitleBanner_Hughes.png">
             <div style="background-position-x: left; background-image: url('assets/sprites/TitleBanner_Left.png');"></div>
             <div style="background-position-x: right; background-image: url('assets/sprites/TitleBanner_Right.png');"></div>
         </div>
@@ -88,7 +94,7 @@
                 <button onclick="showPage(3);">Other Projects</button>
             </div>
             <div class="hideOnHughes" style="animation: buttonDrift5 36s forwards infinite linear;">
-                <button onclick="showPage(4);">Don't Press!</button>
+                <button onclick="showPage(4); randomPressed();">Don't Press!</button>
             </div>
         </div>
         <div id="shortNavBar" class="navBar">
@@ -112,7 +118,7 @@
             <div class="dropdownButton" onclick="dropdownShowPage(3)">
                 Other Projects
             </div>
-            <div class="dropdownButton hideOnHughes" onclick="dropdownShowPage(4)">
+            <div class="dropdownButton hideOnHughes" onclick="dropdownShowPage(4); randomPressed();">
                 Don't Press!
             </div>
         </div>
@@ -155,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            <div class="article subarticle">
+            <div class="article subarticle hideOnPrint">
                 <div class="section">
                     <h1 class="sectionTitle1">Topic</h1>
                     <h1 class="sectionTitle2">My Hobbies!</h1>
@@ -295,6 +301,7 @@
                     to learn and hone my skills! Below is a collection of my many engineering projects!
                 </div>
             </div>
+            <div class="showOnPrint" style="height: 125px; display: none;"></div>
             <div class="article subarticle">
                 <div class="section">
                     <h1>(WIP) Sprinkler System for Fire Hydrants<div>Spring 2025</div></h1>
@@ -369,16 +376,16 @@
                         <img class="thnl" src="./assets/sprites/engineering/BattleBot_Main.png">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;I signed up for a Battle Bots competition! You heard that right!
-                    Withing a couple months, we had to design, build, and battle our own bots in a
+                    Within a couple months, we had to design, build, and battle our own bots in a
                     double-elimination bracket.
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;I was the main one on CAD and designed the body of the bot.
                     A couple design factors I thought crucial for the body is: 1. Being able to be flipped
                     over which is why the body isn't that tall so the wheels could stick out on either side
-                    and 2. Having a secondary offense mechanism.
+                    and 2. Having a secondary offense mechanism of a ramp.
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;One of the most difficult parts was getting the weapon machined
-                    because MechE's Machine Shop was incredibly unhelpful but someone from Texas Inventionworks helped
+                    as MechE's Machine Shop Staff was incredibly unhelpful however someone from Texas Inventionworks helped
                     us out. Unfortunately, our motor ended up being flipped for the weapon which caused it to self-destruct.
                     HOWEVER, my ramp design worked, and we won a battle while we fixed our main weapon.
                     We ended up winning 5th overall! My next semester we ended up building the same robot for our
@@ -453,7 +460,7 @@
                     </div>
                 </div>
             </div>
-            <div class="article subarticle">
+            <div class="article subarticle lastArticle">
                 <div class="section">
                     <h1>Supernova Fidget Spinner<div>Fall 2021</div></h1>
                     <div class="subsection">
@@ -480,7 +487,7 @@
                     <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_3.jpg')"></div>
                 </div>
             </div>
-            <div style="width: 10px; padding-bottom: 15vh"></div>
+            <div class="hideOnPrint" style="width: 10px; padding-bottom: 15vh"></div>
         </div>
 
         <!-- PROGRAMMING SECTION -->
@@ -534,7 +541,7 @@
             <div class="article" style="width: 1000px; display: block;">
                 <div class="section">
                     <h1>You shouldn't have pressed it...</h1>
-                    <iframe style="width: 100%; height: 66.6vh;" src="https://www.youtube.com/embed/fC7oUOUEEi4"
+                    <iframe id="dontPressFrame" style="width: 100%; height: 66.6vh;"
                     title="Get Stick Bugged lol" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -542,5 +549,8 @@
             </div>
             <div style="width: 10px; padding-bottom: 15vh"></div>
         </div>
+
+        <div id="starCollection"></div>
+        <div id="asteroidCollection"></div>
     </body>
 </html>

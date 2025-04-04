@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("navBar").children[currIndex].classList.add("selected");
             document.getElementById("navBarCurrent").firstChild.textContent = pageTitles[currIndex] + " ";
             prevIndex = currIndex;
+
+            if (hashLocation == "Don'tPress!")
+                randomPressed();
         }
         // Incorrect Load
         else {
