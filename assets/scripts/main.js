@@ -174,17 +174,47 @@ function switchPanel(self) {
 // Engineering Code
 function showGallery(self) {
     // Show Image
-    console.log(self.style.backgroundImage)
     if (!self.style.backgroundImage.includes("_Thnl")) {
         document.getElementById("galleryImage").children[0].src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 2);
         document.getElementById("galleryImage").children[0].style.display = "inherit";
         document.getElementById("galleryImage").children[1].style.display = "none";
     }
     else {
-        document.getElementById("galleryImage").children[1].src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 11) + ".mp4";
+        var src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 11) + ".mp4";
+        if (self.hasAttribute("youtube"))
+            src = self.getAttribute("youtube");
+        document.getElementById("galleryImage").children[1].src = src;
         document.getElementById("galleryImage").children[0].style.display = "none";
         document.getElementById("galleryImage").children[1].style.display = "inherit";
     }
     showOverlay("galleryImage");
     document.body.style.overflowY = "hidden";
+}
+
+function switchOrganization(self) {
+    var parent = self.parentNode;
+    var index = -1;
+    for (var i = 0; i < parent.children.length; i++) {
+        if (parent.children[i] == self) {
+            index = i;
+            parent.children[i].classList.add("selected");
+        }
+        else {
+            parent.children[i].classList.remove("selected");
+        }
+    }
+
+    parent = parent.parentNode;
+    for (var i = 0; i < parent.children.length; i++)
+        if (parent.children[i].classList.contains("subarticle")) {
+            if ((index == 0 && !parent.children[i].classList.contains("demoProject")) ||
+                (index == 1 && parent.children[i].classList.contains("demoProject"))) {
+                    parent.children[i].classList.remove("hide");
+                    parent.children[i].classList.add("showSubarticle");
+                }
+            else {
+                parent.children[i].classList.add("hide");
+                parent.children[i].classList.remove("showSubarticle");
+            }
+        }
 }

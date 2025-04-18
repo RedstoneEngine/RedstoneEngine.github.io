@@ -23,7 +23,8 @@ window.addEventListener('beforeprint', (event) => {
 
     var elements = document.getElementsByClassName('subarticle');
     for (var i = 0; i < elements.length; i++) {
-        elements[i].style.height = "475px";
+        elements[i].style.height = "472.5px";
+        elements[i].children[0].style.marginTop = "5px";
     }
 
     elements = document.getElementsByTagName('h1');
@@ -52,6 +53,14 @@ window.addEventListener('beforeprint', (event) => {
         }
     }
 
+    // Show All Programming Projects
+    var parent = document.getElementById('Programming_');
+    for (var i = 3; i < parent.children.length; i++) {
+        parent.children[i].classList.remove("hide");
+        parent.children[i].classList.add("showFlex");
+    }
+
+    // Particles
     document.getElementById('starCollection').style.display = "none";
     document.getElementById('asteroidCollection').style.display = "none";
 });

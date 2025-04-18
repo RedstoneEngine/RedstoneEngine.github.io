@@ -5,8 +5,44 @@
     min-height: 412px;
 }*/
 
+.showSubarticle {
+    display: flex !important;
+}
+
+.organizationBar {
+    width: 900px;
+    max-width: 85vw;
+    display: flex;
+    margin-bottom: 15px;
+}
+
 #Engineering_ > .subarticle > .section:has(> h1) {
     min-height: 235px;
+}
+
+h1 > a {
+    color: rgb(255, 216.8, 255);
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+
+h1 > a:hover {
+    color: #0484d1;
+}
+
+h1 > a > svg {
+    height: 15px;
+    margin-left: 5px;
+    fill: rgb(255, 216.8, 255);
+    transition-duration: 0.2s;
+}
+
+h1 > a:hover > svg {
+    fill: #0484d1;
+}
+
+.demoProject {
+    display: none;
 }
 
 div:has(> .thnl) {
@@ -16,6 +52,7 @@ div:has(> .thnl) {
 
 .thnl {
     height: 200px;
+    margin-bottom: -5px;
 }
 
 #galleryImage {
@@ -95,6 +132,10 @@ div:has(> .thnl) {
 }
 
 @media screen and (max-width: 725px) {
+    .showSubarticle {
+        display: block !important;
+    }
+
     .gallery {
         height: 150px;
         width: auto;
