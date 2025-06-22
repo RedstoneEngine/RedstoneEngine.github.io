@@ -10,15 +10,16 @@
         <link class="icon" rel="apple-touch-icon" href="./assets/sprites/WebsiteIcon.ico" type="image/x-icon">
 
         <link rel="stylesheet" href="./assets/styles/defaults.css?v=3_14_25">
-        <link rel="stylesheet" href="./assets/styles/main.css?v=4_3_25">
-        <link rel="stylesheet" href="./assets/styles/aboutMe.css?v=3_14_25">
-        <link rel="stylesheet" href="./assets/styles/engineering.css?v=4_17_25">
+        <link rel="stylesheet" href="./assets/styles/main.css?v=6_21_25">
+        <link rel="stylesheet" href="./assets/styles/aboutMe.css?v=6_21_25">
+        <link rel="stylesheet" href="./assets/styles/projects.css?v=6_21_25">
+        <link rel="stylesheet" href="./assets/styles/otherProjects.css?v=6_21_25">
         <link rel="stylesheet" href="./assets/styles/animations.css?v=3_14_25">
-        <link rel="stylesheet" href="./assets/styles/particles.css?v=4_3_25">
+        <link rel="stylesheet" href="./assets/styles/particles.css?v=6_21_25">
+        <link rel="stylesheet" href="./assets/styles/print.css?v=6_21_25" media="print">
 
-        <script src="./assets/scripts/main.js?v=4_17_25"></script>
+        <script src="./assets/scripts/main.js?v=6_21_25"></script>
         <script src="./assets/scripts/particles.js?v=4_3_25"></script>
-        <script src="./assets/scripts/print.js?v=4_17_25"></script>
         <script src="./assets/scripts/dontPress.js?v=4_3_25"></script>
 
         <!-- Switch to Hughes Website --><!--
@@ -29,7 +30,7 @@
         <!-- Overlay -->
         <div id="overlay"></div>
         <div id="galleryImage">
-            <img src="">
+            <img onerror="reloadGalleryImage(this)">
             <iframe frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
@@ -74,15 +75,15 @@
         <!-- TOP WEBSITE SECTION -->
 
         <div id="banner">
-            <img class="hideOnHughes" src="./assets/sprites/TitleBanner.png">
-            <img class="showOnHughes" src="./assets/sprites/TitleBanner_Hughes.png">
-            <div style="background-position-x: left; background-image: url('assets/sprites/TitleBanner_Left.png?v=4_17_25');"></div>
-            <div style="background-position-x: right; background-image: url('assets/sprites/TitleBanner_Right.png');"></div>
+            <img class="hideOnHughes" src="./assets/sprites/TitleBanner.webp">
+            <img class="showOnHughes" src="./assets/sprites/TitleBanner_Hughes.webp">
+            <div style="background-position-x: left; background-image: url('assets/sprites/TitleBanner_Left.webp?v=4_17_25');"></div>
+            <div style="background-position-x: right; background-image: url('assets/sprites/TitleBanner_Right.webp');"></div>
         </div>
 
         <div id="navBar" class="navBar" style="justify-content: space-around;">
             <div style="animation: buttonDrift1 28s forwards infinite linear;" class="selected">
-                <button onclick="showPage(0);">Who Am I?</button>
+                <button onclick="showPage(0); aboutMePressed();">Who Am I?</button>
             </div>
             <div style="animation: buttonDrift2 30s forwards infinite linear;">
                 <button onclick="showPage(1);">Engineering</button>
@@ -106,7 +107,7 @@
             </div>
         </div>
         <div id="navList" class="dropdownContainer">
-            <div class="dropdownButton" onclick="dropdownShowPage(0)">
+            <div class="dropdownButton" onclick="dropdownShowPage(0); aboutMePressed();">
                 Who Am I?
             </div>
             <div class="dropdownButton" onclick="dropdownShowPage(1)">
@@ -133,7 +134,7 @@
                 <div id="aboutMeSection" class="section">
                     <h1>About Me</h1>
                     <div class="subsection">
-                        <img id="profilePhoto"src="./assets/sprites/aboutMe/MainPhoto_Transparent.png">
+                        <img id="profilePhoto"src="./assets/sprites/aboutMe/MainPhoto_Transparent.webp">
                         <div id="nametag">Gavin Hughes</div>
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;My name is Gavin Hughes and I am a passionate Creative Engineer!
@@ -159,6 +160,15 @@
                         I continuously strive to break boundaries with big, innovative ideas and projects
                         in whatever opportunity I land next! ⚙️🧪
                     </div>
+                </div>
+            </div>
+            <div class="article subarticle hideOnPrint" style="display: block;">
+                <div class="section">
+                    <h1>What have I been up to...?</h1>
+                    <iframe id="aboutMeFrame" style="width: 100%; height: 66.6vh;"
+                    title="How I Created my First Robot!" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="article subarticle hideOnPrint">
@@ -188,7 +198,7 @@
                     <div id="myInterests">
                         <div>
                             <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.webp">
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;Hanging out with my friends is a great way I spend my time
                             whether it be on Discord playing Lethal Company or Minecraft or hanging out in person
@@ -203,12 +213,12 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;I may not at all times have a large amount of friends, but that's the way I like it with
                             a chosen few close to me as I go through life! I would not be where I am without them and their support!
                             <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.webp">
                             </div>
                         </div>
                         <div class="hide">
                             <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Spiff.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Spiff.webp">
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;YouTube has always been a constant source in my life
                             whether that be for inspiration, entertainment, learning about my favorite games,
@@ -221,12 +231,12 @@
                             including Speedrunning which puts a different perspective on the relationship between the
                             Game, Player, and Game Developer. They're also very long, calming videos that I can watch after a long day! ☕
                             <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Spiff.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Spiff.webp">
                             </div>
                         </div>
                         <div class="hide">
                             <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/theater.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/theater.webp">
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;Oh boy, theater... What a wild ride it's been.
                             I've participated in theater on and off since junior high and the people and the laughs
@@ -239,12 +249,12 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;Will I continue theater once I've graduated? Who knows? It always
                             somehow creeps back into my life and I meet some amazing people!
                             <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/theater.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/theater.webp">
                             </div>
                         </div>
                         <div class="hide">
                             <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/LivingTombstone.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/LivingTombstone.webp">
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;Everyday, anytime I work, I am guaranteed to be listening to music!
                             It gets me in the groove and helps me focus on the task I'm doing. Even right now I'm listening to music,
@@ -259,12 +269,12 @@
                             The Living Tombstone being my favorite as I tried to achieve the #1 spot on Spotify Wrapped
                             the same year I saw them perform live in Austin!
                             <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/LivingTombstone.jpg">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/LivingTombstone.webp">
                             </div>
                         </div>
                         <div class="hide">
                             <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Minecraft.png">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Minecraft.webp">
                             </div>
                             &nbsp;&nbsp;&nbsp;&nbsp;My favorite game I would have to say is Minecraft.
                             I've played it since I was a child on my tablet and still keep up with it to this day
@@ -276,7 +286,7 @@
                             I would love to take on a creative project modifying the game to what I desire!
                             I've already collected a list of ideas... 👀
                             <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Minecraft.png">
+                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Minecraft.webp">
                             </div>
                         </div>
                     </div>
@@ -301,12 +311,12 @@
                     to learn and hone my skills! Below is a collection of my many engineering projects!
                 </div>
             </div>
-            <div class="showOnPrint" style="height: 115px; display: none;"></div>
+            <div class="showOnPrint" style="height: 125px; display: none;"></div>
             <div class="article subarticle">
                 <div class="section">
                     <h1>Sprinkler System for Fire Hydrants<div>Spring 2025</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/HydrantSprinkler_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/HydrantSprinkler_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;For my Senior Design Project class, we worked for
                     <a href="https://www.makeitrainwildfire.com/" target="_blank">Make It Rain Wildfire</a> 
@@ -326,9 +336,9 @@
                     devastating wildfires.
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_1.jpg')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_3_Thnl.png')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -337,7 +347,7 @@
                 <div class="section">
                     <h1>Automatic Can Opener<div>Spring 2025</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/CanOpener_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/CanOpener_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;For my Robot Mechanism Design class, we had to design
                     a complex robot utilizing some of the aspects discussed in class like
@@ -356,10 +366,10 @@
                     We also could've made it work for any size cans which was the original goal.
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_1.jpg')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_2.jpg')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_3_Thnl.png')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_3_Thnl.webp')">
+                        <svg id="playBttn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
             </div>
@@ -367,7 +377,7 @@
                 <div class="section">
                     <h1>Talons of Acquisition<div>2021 - 2025</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/TOA_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/TOA_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;In the Robotics & Automation Society (RAS), I
                     participated in the Demobots subcommittee where we create multiple subteams
@@ -385,9 +395,9 @@
                     fully finished and demonstrated to inspire other students and youth!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_2.jpg')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_3_Thnl.png')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -396,7 +406,7 @@
                 <div class="section">
                     <h1>Texas Robo Rumble<div>Spring 2024</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/BattleBot_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/BattleBot_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;I signed up for a Battle Bots competition! You heard that right!
                     Within a couple months, we had to design, build, and battle our own bots in a
@@ -415,9 +425,9 @@
                     Design Methodology class and did a lot of improvements and analysis to the design.
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_2.jpg')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_3_Thnl.png')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -426,7 +436,7 @@
                 <div class="section">
                     <h1>RC Race Car<div>Spring 2024</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/RCCar_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/RCCar_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;For my Machine Elements class, our task was to design,
                     test, and race an RC car. This proved to be quite the challenge due to us
@@ -445,9 +455,9 @@
                     quality assurance is and how to design a better steering mechanism for next time!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_3_Thnl.png')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -456,7 +466,7 @@
                 <div class="section">
                     <h1>Carlos, The 6-Legged Rover<div>Spring 2022</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/Carlos_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/Carlos_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;One day I decided, today I'm going to build my own robot and so I did!
                     I was inspired by the 
@@ -476,9 +486,9 @@
                     <a href="https://youtu.be/M6HiwVCEiQA" target="_blank">YouTube Vlog</a> for more details!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_3_Thnl.png')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -487,7 +497,7 @@
                 <div class="section">
                     <h1>Supernova Fidget Spinner<div>Fall 2021</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/engineering/FS_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/FS_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;For one of my first classes in university, I was tasked with
                     designing, fabricating, and making a full report for a fidget spinner project.
@@ -505,9 +515,9 @@
                     for any of the processes the assignments asked for.
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_3.jpg')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_3.webp')"></div>
                 </div>
             </div>
             <div class="hideOnPrint" style="width: 10px; padding-bottom: 15vh"></div>
@@ -533,10 +543,36 @@
                     <a href="https://www.youtube.com/@RedEngDeveloper" target="_blank">YouTube</a>!
                 </div>
             </div>
-            <div class="showOnPrint" style="height: 90px; display: none;"></div>
+            <div class="showOnPrint" style="height: 105px; display: none;"></div>
             <div class="organizationBar hideOnPrint">
                 <div onclick="switchOrganization(this)" class="selected" style="margin-right: 10px;"><button>Main Projects</button></div>
                 <div onclick="switchOrganization(this)"><button>Demo Projects</button></div>
+            </div>
+            <div class="article subarticle demoProject showOnHughes_">
+                <div class="section">
+                    <h1><a href="https://www.montysfoodtruck.com/" target="_blank">Food Truck's Website
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
+                    </a><div>Fall 2023</div></h1>
+                    <div class="subsection">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/Montys_Main.webp">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;For Christmas, I designed and created a website for my dad's
+                    business! He runs a food truck that serves hot sandwiches, and I wanted to help him out
+                    in his dream of running his own business and being a chef. (His food is already top
+                    notch!) Check out his Facebook to see where he's headed!
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;I've experimented several times with website development before
+                    with Conquer the Tree and the Virtual Robot Simulator as well as having experience designing
+                    an interactive and intuitive user interface, so I figured I could secretly make a well function
+                    website as his Christmas Gift! It turned out really well only having to go through a couple design
+                    changes to make some systems simplier or reformat how some items are displayed. I would definitely do
+                    this again and make for example my own website as I've done here!
+                </div>
+                <div class="section gallery">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Montys_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Montys_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Montys_3.webp')"></div>
+                </div>
             </div>
             <div class="article subarticle demoProject">
                 <div class="section">
@@ -544,7 +580,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a><div>Fall 2023</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/JumbleJam_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/JumbleJam_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;The Jumble Jam Game Jam was quite an interesting game jam concept
                     where you work on 3 games across 24 hours each as the game gets sent over to the next team.
@@ -563,9 +599,9 @@
                     is very slippery!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_3.png')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_3.webp')"></div>
                 </div>
             </div>
             <div class="article subarticle">
@@ -574,7 +610,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a><div>2021 - Present</div></h1>
                     <div class="subsection">
-                        <img class="thnl" style="border-radius: 10px;" src="./assets/sprites/programming/main/SuperheroesInVR_Main.png">
+                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/main/SuperheroesInVR_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;I've had the idea for a while now to create some type of Superhero VR Game!
                     Now, while yes, there have been some before they don't get into that much depth and I think there is
@@ -604,16 +640,16 @@
                     </div>
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_3.png')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_3.webp')"></div>
                 </div>
             </div>
             <div class="article subarticle">
                 <div class="section">
                     <h1>Multiplayer Madness<div>2021 - Present</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/main/MultiplayerMadness_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/MultiplayerMadness_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;A mysterious game called Multiplayer Madness! The idea for this game
                     is inspired by a lot of Minecraft content and other player to player based interactions I've
@@ -629,16 +665,16 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;This project is not yet finished, so check back later!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_3.png')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_3.webp')"></div>
                 </div>
             </div>
             <div class="article subarticle demoProject">
                 <div class="section">
                     <h1>Texas Game Jam Games<div>2021 - 2024</div></h1>
                     <div class="subsection">
-                        <img class="thnl" style="border-radius: 10px;" src="./assets/sprites/programming/demo/TexasGameJam_Main.png">
+                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/demo/TexasGameJam_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;The Texas Game Jam is a jam I've competed in every year
                     at UT. It's hosted by the Electronic Game Developer Society (EGaDS) and is a whole
@@ -661,9 +697,9 @@
                     great small games! Will jam with some of the people I've worked with again!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_3.png')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_3.webp')"></div>
                 </div>
             </div>
             <div class="article subarticle">
@@ -672,7 +708,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a><div>2021 - Present</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/main/VRS_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/VRS_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;The Virtual Robot Simulator is a program that I have worked on for a while.
                     It originally started as a personal project to bring the experience of the robotics competition FTC
@@ -689,9 +725,9 @@
                     positive impact for many users and elementary schools!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_3_Thnl.png')" youtube="https://www.youtube.com/embed/HvywykxdrBU?list=PLszFVnnZcmarYReNB-qCSZLiu2l3Mvlvz">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_3_Thnl.webp')" youtube="https://www.youtube.com/embed/HvywykxdrBU?list=PLszFVnnZcmarYReNB-qCSZLiu2l3Mvlvz">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -700,7 +736,7 @@
                 <div class="section">
                     <h1>Plants vs. Zombies AR<div>Summer 2021</div></h1>
                     <div class="subsection">
-                        <img class="thnl" style="border-radius: 10px;" src="./assets/sprites/programming/demo/PVZAR_Main.png">
+                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/demo/PVZAR_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;My next augmented reality project, Plants vs. Zombies!
                     I was inspired by seeing my favorite games be turned into AR projects like Five
@@ -716,9 +752,9 @@
                     want to make a more fleshed out demo and play in a multiplayer Zomboss battle for the fun of it!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_3_Thnl.png')" youtube="https://www.youtube.com/embed/rU2_OTNgbO0?start=308">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_3_Thnl.webp')" youtube="https://www.youtube.com/embed/rU2_OTNgbO0?start=308">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -727,7 +763,7 @@
                 <div class="section">
                     <h1>FTC Autonomous Program<div>2020 - 2021</div></h1>
                     <div class="subsection">
-                        <img class="thnl" style="border-radius: 10px;" src="./assets/sprites/programming/demo/FTCAuto_Main.jpg">
+                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/demo/FTCAuto_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;For my journey in the FIRST Tech Challenge,
                     I have to show off the amount of prototyping and calculations I did to make
@@ -743,9 +779,9 @@
                     Overall, a very fun programming challenge that combined both of my favorite subjects!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_3_Thnl.png')" youtube="https://www.youtube.com/embed/oeSi75TZSuo">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_3_Thnl.webp')" youtube="https://www.youtube.com/embed/oeSi75TZSuo">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -756,7 +792,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a><div>Fall 2020</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/SirenheadAR_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/SirenheadAR_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;The SirenHead Augmented Reality Experience was very much a random
                     idea I had in the peak of SirenHead popularity, but since I know I'd be able to create it
@@ -770,25 +806,9 @@
                     create these types of things! I also include it here as it's my most downloaded Itch.io application!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_3_Thnl.png')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject" style="display: none !important;">
-                <div class="section">
-                    <h1>FIRST Design<div>Summer 2020</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/FIRSTDesign_Main.png">
-                    </div>
-                    Test
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FIRSTDesign_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FIRSTDesign_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -799,7 +819,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a><div>2020 - Present</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/main/VillainREWIND_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/VillainREWIND_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;Another game that originally started as a game jam,
                     but turns out became really fun to play, Villain REWIND! I played this game a lot in my classes during
@@ -814,25 +834,9 @@
                     I've enjoyed it so much and have been inspired by a Gooseworx song to make a bigger release of it on the fabled Unreal Engine!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_2.jpg')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_3_Thnl.png')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject" style="display: none !important;">
-                <div class="section">
-                    <h1>FTC Auto Autonomous Maker<div>Fall 2019</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/FTCAutoMaker_Main.png">
-                    </div>
-                    Test
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAutoMaker_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAutoMaker_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/')">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -841,7 +845,7 @@
                 <div class="section">
                     <h1>Conquer the Tree<div>2019 - 2020</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/main/CtT_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/CtT_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;The game Conquer the Tree I originally won as part of a Game Jam
                     contest! The company offered to publish a fully finished version of my game on their website
@@ -857,88 +861,20 @@
                     so eventually I hope to publish it again using my own technology to host it!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_3_Thnl.png')" youtube="https://www.youtube.com/embed/ZyUpILygi1E">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_3_Thnl.webp')" youtube="https://www.youtube.com/embed/ZyUpILygi1E">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
             </div>
-            <div class="article subarticle demoProject" style="display: none !important;">
-                <div class="section">
-                    <h1>The Game Says<div>Summer 2019</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/TheGameSays_Main.png">
-                    </div>
-                    Test
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject" style="display: none !important;">
-                <div class="section">
-                    <h1>Video Editor<div>Summer 2019</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/VideoEditor_Main.png">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For my Senior Design Project class, we are working for
-                    <a href="https://www.makeitrainwildfire.com/" target="_blank">Make It Rain Wildfire</a> 
-                    to improve upon and invent new systems for an emergency
-                    sprinkler system attached to fire hydrants. The goal of this system is to prevent flying embers from
-                    wildfires igniting someone's property!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;This project also includes the legality, ease of use, and installation
-                    cost which has required a lot of research so far.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;This project is not yet finished, so check back later!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/VideoEditor_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/VideoEditor_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1>Indicator Demonstrator<div>Spring 2019</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/demo/IndicatorDemonstrator_Main.png">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Indicator Demonstrator was made for a class project!
-                    We were told to make some type of demonstration showing off some aspect of
-                    the PH scale that we've learned. I decided to make a game out of it
-                    which I don't always do for class projects with how large games can quickly become,
-                    but I'm really proud of this one!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I have included a science section to show off a lot of the
-                    research I did including finding which compounds would best fit for the game to make
-                    sure I got a good range. For the game, you must match the compound to the corresponding
-                    color a PH strip type indicator would show if exposed to this compound. This then repeats
-                    until the end where I implemented a scoreboard feature for the first time which was quite fun
-                    so then I could compete with my friends! Never could do well though because of my color-blindness.
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/IndicatorDemonstrator_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/IndicatorDemonstrator_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/IndicatorDemonstrator_3_Thnl.png')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
+            <div class="article subarticle lastArticle">
                 <div class="section">
                     <h1><a href="https://redengdeveloper.itch.io/space-fighters" target="_blank">Space Fighters
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a><div>Spring 2019</div></h1>
                     <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/main/SpaceFighters_Main.png">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/SpaceFighters_Main.webp">
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;Space Fighters! My first experience in the top down shooter variety as well
                     as in the multiplayer games sphere which was the main motivation for designing the game! I wanted to
@@ -955,54 +891,36 @@
                     game for one of my classes recently!
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_3_Thnl.png')" youtube="https://www.youtube.com/embed/zSn4BTo6eGw">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_1.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_2.webp')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_3_Thnl.webp')" youtube="https://www.youtube.com/embed/zSn4BTo6eGw">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
             </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1><a href="https://redengdeveloper.itch.io/abenteuer-demo" target="_blank">Abenteuer
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>2017 - 2018</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" src="./assets/sprites/programming/main/Abenteuer_Main.png">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The project that started it all, and yes, it is a fan game for Jacksepticeye.
-                    I started this project because I wanted to begin learning programming and game development
-                    and my hope was along the way, it would get noticed, and I would be able to create more games off of its success!
-                    I decided to use Unity as it is free to use and from what I heard easy to learn. With only having programmed
-                    small programs from Google Blockly and some games on my TI-84 Calculator, it seemed like the perfect place to begin!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The game was a 2.5D side-scroller, adventure game where you explore the town and capture each alternate
-                    persona of Jacksepticeye in different minigames with the idea of eventually having 3 other side stories included in the game
-                    with other popular content creators acting as the stars. This game was never fully finished or successful,
-                    but I learned a lot about Unity and many of the future chapters' ideas have inspired my other games and storylines!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/Abenteuer_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/Abenteuer_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/Abenteuer_3_Thnl.png')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div style="width: 10px; padding-bottom: 15vh"></div>
+            <div class="hideOnPrint" style="width: 10px; padding-bottom: 15vh"></div>
         </div>
 
         <!-- OTHER PROJECTS SECTION -->
 
         <div id="OtherProjects_" class="page">
-            <div class="article" style="width: auto;">
+            <div class="article" style="display: block;">
                 <div class="section">
                     <h1>Other Projects</h1>
-                    All of my projects are most likely on my 
-                    <a href="https://www.youtube.com/@RedEngDeveloper" target="_blank">YouTube Channel</a>!
-                    <br>
-                    My favorites are all collected in the 
-                    <a href="https://youtube.com/playlist?list=PLszFVnnZcmaopY7no2EGotH84xF_lQEoG&feature=shared" target="_blank">My BEST Videos</a> playlist!
+                    &nbsp;&nbsp;&nbsp;&nbsp;I love creating projects, but my ideas don't only exist
+                    in the scope of Engineering and Programming! This is especially true as my current
+                    venue of showing projects is through YouTube where I have occasionally experimented
+                    with some interesting video ideas... 🤔 I've included a list of my best videos as well
+                    as my other most interesting projects in this section!
+                </div>
+            </div>
+            <div class="article" style="display: block; width: 950px;">
+                <div class="section">
+                    <h1><a href="https://www.youtube.com/playlist?list=PLszFVnnZcmaopY7no2EGotH84xF_lQEoG" target="_blank">~ My BEST Videos! ~
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
+                    </a></h1>
+                    <div id="MyBestPlaylist" class="playlist gallery">
+                    </div>
                 </div>
             </div>
             <div class="article subarticle" style="width: auto;">

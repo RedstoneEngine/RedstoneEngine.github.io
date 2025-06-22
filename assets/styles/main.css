@@ -148,8 +148,8 @@ body {
     margin-bottom: 40px;
     display: flex;
 
-    background-image: url("../sprites/PageBackground.png");
-    background-image: url("../sprites/PageBackground_Gradient.png"),
+    background-image: url("../sprites/PageBackground.webp");
+    background-image: url("../sprites/PageBackground_Gradient.webp"),
         linear-gradient(150deg, rgba(48,73,40,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgba(61,34,64,1) 100%);
 
     border: 2px solid rgb(98, 211, 111);
@@ -159,7 +159,7 @@ body {
 .subarticle {
     width: 950px;
     border: 2px solid rgb(211, 63, 63);
-    background-image: url("../sprites/PageBackground_Gradient.png"),
+    background-image: url("../sprites/PageBackground_Gradient.webp"),
         linear-gradient(150deg, rgba(94,45,45,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgba(61,34,64,1) 100%);
 }
 
@@ -234,7 +234,12 @@ h1 > div {
 }
 
 @media screen and (max-width: 450px) {
+    .article .section:nth-child(2) {
+        margin: 10px 0px 0px 0px;
+    }
     .section {
+        width: 97.5%;
+        margin: 0px;
         text-align: inherit;
     }
 }

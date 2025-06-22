@@ -18,31 +18,31 @@
 }
 
 .asteroid0 {
-    background-image: url('../sprites/particles/asteroid_1.png');
+    background-image: url('../sprites/particles/asteroid_1.webp');
 }
 
 .asteroid1 {
-    background-image: url('../sprites/particles/asteroid_2.png');
+    background-image: url('../sprites/particles/asteroid_2.webp');
 }
 
 .asteroid2 {
-    background-image: url('../sprites/particles/asteroid_3.png');
+    background-image: url('../sprites/particles/asteroid_3.webp');
 }
 
 .asteroid3 {
-    background-image: url('../sprites/particles/asteroid_4.png');
+    background-image: url('../sprites/particles/asteroid_4.webp');
 }
 
 .star0 {
-    background-image: url('../sprites/particles/star_1.png');
+    background-image: url('../sprites/particles/star_1.webp');
 }
 
 .star1 {
-    background-image: url('../sprites/particles/star_2.png');
+    background-image: url('../sprites/particles/star_2.webp');
 }
 
 .star2 {
-    background-image: url('../sprites/particles/star_3.png');
+    background-image: url('../sprites/particles/star_3.webp');
 }
 
 @keyframes starBlink {

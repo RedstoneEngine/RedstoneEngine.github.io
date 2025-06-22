@@ -1,0 +1,51 @@
+.playlist {
+    height: 303.5px;
+    display: block;
+    white-space: nowrap;
+    width: auto;
+    max-width: none;
+    overflow: auto;
+    padding-bottom: 5px;
+}
+
+.playlist > div {
+    display: inline-flex;
+    min-width: 250px;
+    height: 140.625px;
+    margin: 3px;
+}
+
+.playlist > div > div {
+    width: 240px;
+    padding: 5px;
+    margin-right: -31.64px;
+    text-align: left;
+    align-self: baseline;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 2px 2px 2px black;
+}
+
+.playlist > div > svg {
+    position: relative;
+    left: -109.18px;
+    min-width: 31.64px;
+}
+
+/* Scrollbar */
+
+.playlist::-webkit-scrollbar {
+  height: 7.5px;
+  background: transparent;
+  /* make scrollbar transparent */
+}
+
+.playlist::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 100px;
+}

@@ -1,0 +1,70 @@
+.hideOnPrint {
+    display: none !important;
+}
+
+.showOnPrint {
+    display: inherit !important;
+}
+
+#banner img:first-child {
+    content:url("../sprites/TitleBannerPrint.webp")
+}
+
+#banner img:nth-child(2) {
+    content:url("../sprites/TitleBannerPrint_Hughes.webp")
+}
+
+.article {
+    max-width: 95vw;
+    margin-bottom: 15px;
+}
+
+.lastArticle {
+    margin-bottom: 0px;
+}
+
+.subarticle {
+    height: 472.5px;
+}
+
+.subarticle > .section:first-child {
+    margin-top: 5px;
+}
+
+h1 {
+    text-shadow: none;
+    color: black;
+}
+
+.section {
+    color: black;
+    line-height: normal;
+}
+
+.gallery {
+    height: 420px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.gallery > div {
+    -webkit-print-color-adjust: exact; /* For Chrome, Safari, Edge */
+    color-adjust: exact; /* For Firefox */
+    print-color-adjust: exact; /* For Firefox, Safari */
+}
+
+.gallery > div > svg {
+    display: none;
+}
+
+#Programming_ > .article {
+    display: inherit !important;
+}
+
+#starCollection {
+    display: none;
+}
+
+#asteroidCollection {
+    display: none;
+}

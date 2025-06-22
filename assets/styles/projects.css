@@ -1,0 +1,163 @@
+
+/* Engineering Projects */
+
+/*#Engineering_ > .subarticle {
+    min-height: 412px;
+}*/
+
+.showSubarticle {
+    display: flex !important;
+}
+
+.organizationBar {
+    width: 900px;
+    max-width: 85vw;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#Engineering_ > .subarticle > .section:has(> h1) {
+    min-height: 235px;
+}
+
+h1 > a {
+    color: rgb(255, 216.8, 255);
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+
+h1 > a:hover {
+    color: #0484d1;
+}
+
+h1 > a > svg {
+    height: 15px;
+    margin-left: 5px;
+    fill: rgb(255, 216.8, 255);
+    transition-duration: 0.2s;
+}
+
+h1 > a:hover > svg {
+    fill: #0484d1;
+}
+
+.demoProject {
+    display: none;
+}
+
+div:has(> .thnl) {
+    margin: 0px 15px 10px 0px;
+    float: left;
+}
+
+.thnl {
+    height: 200px;
+    margin-bottom: -5px;
+}
+
+#galleryImage {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 11;
+    opacity: 0;
+    transition-duration: .2s;
+}
+
+#galleryImage.show {
+    opacity: 1;
+}
+
+#galleryImage > img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 20px;
+}
+
+#galleryImage > iframe {
+    min-width: 142.22vh;
+    height: 80%;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 20px;
+}
+
+#galleryImage.show > iframe {
+    pointer-events: all;
+}
+
+.gallery {
+    width: 100vw;
+    min-width: 150px;
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.gallery > div {
+    cursor: pointer;
+    height: 32%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery > div > img {
+    position: absolute;
+    max-height: 132.5px;
+    max-width: 146.5px;
+}
+
+.gallery > div > svg {
+    fill: black;
+    height: 30%;
+    transition-duration: .2s;
+}
+
+.gallery > div:hover > svg {
+    fill: rgb(255, 85, 85);
+}
+
+@media screen and (max-width: 1000px) {
+    #galleryImage > iframe {
+        min-width: 90vw;
+        height: 50.625vw;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .showSubarticle {
+        display: block !important;
+    }
+
+    .gallery {
+        height: 150px;
+        width: auto;
+        min-width: inherit;
+        max-width: inherit;
+        flex-direction: inherit;
+    }
+
+    .gallery > div {
+        width: 32%;
+        height: inherit;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .gallery {
+        width: 97.5%;
+    }
+}

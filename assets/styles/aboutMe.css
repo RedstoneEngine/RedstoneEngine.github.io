@@ -36,11 +36,12 @@
 .buttonPanel {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
     min-width: 125px;
     height: 90%;
     min-height: 200px;
     max-height: 275px;
-    justify-content: space-around;
 }
 
 .sectionImg2 {
@@ -70,7 +71,11 @@
         display: block;
     }
     .buttonPanel {
-        align-items: center;
+        min-height: auto;
+        flex-direction: inherit;
+    }
+    .buttonPanel > div {
+        margin: 5px;
     }
 }
 
