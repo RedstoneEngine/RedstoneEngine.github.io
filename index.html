@@ -85,11 +85,11 @@
             <div style="animation: buttonDrift1 28s forwards infinite linear;" class="selected">
                 <button onclick="showPage(0); aboutMePressed();">Who Am I?</button>
             </div>
-            <div style="animation: buttonDrift2 30s forwards infinite linear;">
-                <button onclick="showPage(1);">Engineering</button>
-            </div>
             <div style="animation: buttonDrift3 32s forwards infinite linear;">
-                <button onclick="showPage(2);">Programming</button>
+                <button onclick="showPage(1);">Programming</button>
+            </div>
+            <div style="animation: buttonDrift2 30s forwards infinite linear;">
+                <button onclick="showPage(2);">Engineering</button>
             </div>
             <div style="animation: buttonDrift4 34s forwards infinite linear;">
                 <button onclick="showPage(3);">Other Projects</button>
@@ -141,7 +141,7 @@
                     I love creating games, being hands on, and developing unique solutions to strange problems!
                     I also deeply enjoy spending time with friends, watching YouTube videos, and a bit of acting!
                     <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I grew up in the Texas Coastal Bend Area and will graduate from the University of Texas at Austin
+                    &nbsp;&nbsp;&nbsp;&nbsp;I grew up in the Texas Coastal Bend Area and graduated in May 2025 from the University of Texas at Austin
                     as a Mechanical Engineering Major with an Elements of Computing Certificate and a minor in Entrepreneurship!
                     <br><br>
                     <div class="hideOnHughes">
@@ -156,13 +156,14 @@
                     </div>
                     <div class="showOnHughes">
                         &nbsp;&nbsp;&nbsp;&nbsp;With my strong background in creative problem solving,
-                        I've always been intrigued by the new and what is accomplishable in the STEM field.
-                        I continuously strive to break boundaries with big, innovative ideas and projects
-                        in whatever opportunity I land next! ⚙️🧪
+                        I've always been intrigued by what's new and what can be accomplished in the STEM field.
+                        I continuously strive to break boundaries with innovative new ideas and projects.
+                        Learning programming, engineering, and video production has greatly helped me along in this
+                        complex and exhilarating journey as I look towards new opportunities. ⚙️🧪
                     </div>
                 </div>
             </div>
-            <div class="article subarticle hideOnPrint" style="display: block;">
+            <div class="article subarticle hideOnPrint" style="display: block; display: none;">
                 <div class="section">
                     <h1>What have I been up to...?</h1>
                     <iframe id="aboutMeFrame" style="width: 100%; height: 66.6vh;"
@@ -205,13 +206,12 @@
                             going to the local Spirit Halloween or celebrating a Birthday! You can always count on
                             friends to lift you up after a stressful day.
                             <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Most of my friends right now are in my theater org,
-                            but I still hold some from back in high school and hope to find more as I go through life.
+                            &nbsp;&nbsp;&nbsp;&nbsp;I have a lot of friends from different parts of my life.
                             Each have their own stories, experiences, and skills
-                            that I deeply enjoy hearing about and supporting them when they need it.
+                            that I deeply enjoy hearing about and supporting them when they need it most.
                             <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;I may not at all times have a large amount of friends, but that's the way I like it with
-                            a chosen few close to me as I go through life! I would not be where I am without them and their support!
+                            &nbsp;&nbsp;&nbsp;&nbsp;While some come and go, I always love having a few close friends
+                            that I can count on! I would not be where I am without them and their support!
                             <div class="subsection sectionImg2">
                                 <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.webp">
                             </div>
@@ -280,7 +280,7 @@
                             I've played it since I was a child on my tablet and still keep up with it to this day
                             even though I'm not able to play it as much.
                             <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Every Wednesday, I keep on eye out for the latest Minecraft snapshot update
+                            &nbsp;&nbsp;&nbsp;&nbsp;Every Tuesday, I keep on eye out for the latest Minecraft snapshot update
                             to see what's new for features, optimizations, and developer features. Here's to hoping that
                             they eventually allow full creative freedom of their game through Datapacks!
                             I would love to take on a creative project modifying the game to what I desire!
@@ -530,12 +530,11 @@
                 <div class="section">
                     <h1>Why Programming?</h1>
                     &nbsp;&nbsp;&nbsp;&nbsp;Even though I've always had a natural talent for programming,
-                    I originally had no interest in the subject as I thought all it entailed
-                    was sitting at a desk all day staring at a screen. That was until...
-                    I discovered the world of Game Development and found the joy in modifying the screen to wherever my imagination takes me!
+                    I originally hesitated at the thought, thinking you couldn't do much with it. That was until...
+                    I discovered the world of Game Development with the imagination, the problem solving, and most importantly, working with others!
                     <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I first tried out creating Snake on my TI-84 calculator and seeing my classmates reactions
-                    sparked a whole new world of interest for me as I now search for any and all types of challenges
+                    &nbsp;&nbsp;&nbsp;&nbsp;I started out by creating Snake on my TI-84 calculator, and upon seeing my classmates reactions,
+                    it sparked a whole new world of interest for me as I now search for any and all types of challenges
                     in the software and game development sphere!
                     You can check out most of my games on 
                     <a href="https://redengdeveloper.itch.io/" target="_blank">Itch.io</a>
@@ -548,7 +547,32 @@
                 <div onclick="switchOrganization(this)" class="selected" style="margin-right: 10px;"><button>Main Projects</button></div>
                 <div onclick="switchOrganization(this)"><button>Demo Projects</button></div>
             </div>
-            <div class="article subarticle demoProject showOnHughes_">
+            <div class="article subarticle demoProject">
+                <div class="section">
+                    <h1>Modding Games<div>2025 - Present</div></h1>
+                    <div class="subsection">
+                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/Modding_Main.webp">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Lately, I've stumbled head-first into the world of modding my favorite games!
+                    It started very simple, using Minecraft's built in commands system to create whole new game mechanics,
+                    and when that wasn't enough, going straight into injecting Java code to make some pretty cool new features!
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;The process of modding is quite interesting being able to inject code at the beginning or
+                    end of methods to change the direction and underlining mathematics to change the outcome of the game.
+                    It definitely helped having a good grasp of how game engines and games work to begin with, and I moved on to
+                    modifying more aspects of games. For example, adding a mod to the new game PEAK that adds a whole new class system
+                    of HUNTERS vs CLIMBERS with the goal being to see if the Climbers can reach the top before the Hunters stop them!
+                    Overall, this has been a very worth it journey and can't wait to see what's next!
+                </div>
+                <div class="section gallery">
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Modding_1.png')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Modding_2.png')"></div>
+                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Modding_3_Thnl.jpg')" youtube="https://www.youtube.com/embed/09OCAMJt05M">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="article subarticle showOnHughes_">
                 <div class="section">
                     <h1><a href="https://www.montysfoodtruck.com/" target="_blank">Food Truck's Website
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
@@ -604,72 +628,6 @@
                     <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_3.webp')"></div>
                 </div>
             </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1><a href="https://redengdeveloper.itch.io/superheroes-in-vr" target="_blank">Superheroes in VR
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>2021 - Present</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/main/SuperheroesInVR_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I've had the idea for a while now to create some type of Superhero VR Game!
-                    Now, while yes, there have been some before they don't get into that much depth and I think there is
-                    a lot of untapped potential especially if multiplayer is involved as you would have to uniquely work
-                    together with others to solve complex problems.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The exact plan for the game is not yet set in stone but after having
-                    started the project making the classic web-swinging behavior, some ideas have started to form
-                    in terms of where this game could go utilizing my favorite game mechanic, ecosystems!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;This project is not yet finished, so check back later!
-                    <div style="display: none;">
-                        &nbsp;&nbsp;&nbsp;&nbsp;A superhero VR game sounds super exciting yet where to go with it
-                        is a very interesting questions I've pondered for a while. However, after some more thought,
-                        realizing what game mechanics I enjoy creating, and consuming of some more media for inspiration
-                        I've begun to piece something together that could be quite interesting!
-                        <br><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;The plan is still in its infancy and not finalized yet but having a superhero
-                        game focused more on the detective work especially in a working ecosystem similar to both recently watched
-                        Avatar shows sounds like something I could definitely plan and achieve with the balance of elements and
-                        the public reputation, training and learning of new skills through practice and investigation, and being
-                        a detective learning the source of "evil." However, of course, like I said still in its infancy as a lot
-                        of the interesting ideas sound very similar to exactly being Avatar and while could have different elements,
-                        ect., it does need more to distinguish it from the franchise.
-                        <br><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;This project is not yet finished, so check back later!
-                    </div>
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SuperheroesInVR_3.webp')"></div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>Multiplayer Madness<div>2021 - Present</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/MultiplayerMadness_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;A mysterious game called Multiplayer Madness! The idea for this game
-                    is inspired by a lot of Minecraft content and other player to player based interactions I've
-                    seen from games based on storytelling and adventure.
-                    It's also one of the three game I've been working on as a part of my initiative to learn how to use Unreal!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The main focus is focusing player interactions amongst an island with
-                    random trials, objects, and interactions meant to create interesting storytelling beats dynamically
-                    which may seem challenging but what's programming without a bit of a challenge!
-                    There is also a focus again on exploration as you can explore the dangerous lands outside of the island to
-                    get specific materials and do specific tasks. This project is also meant to be procedural with terrain building/destruction!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;This project is not yet finished, so check back later!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/MultiplayerMadness_3.webp')"></div>
-                </div>
-            </div>
             <div class="article subarticle demoProject">
                 <div class="section">
                     <h1>Texas Game Jam Games<div>2021 - 2024</div></h1>
@@ -706,7 +664,7 @@
                 <div class="section">
                     <h1><a href="https://robotimporter.vrobotsim.online/homepage.html" target="_blank">Virtual Robot Simulator
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>2021 - Present</div></h1>
+                    </a><div>2021 - 2025</div></h1>
                     <div class="subsection">
                         <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/VRS_Main.webp">
                     </div>
@@ -782,33 +740,6 @@
                     <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_1.webp')"></div>
                     <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_2.webp')"></div>
                     <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_3_Thnl.webp')" youtube="https://www.youtube.com/embed/oeSi75TZSuo">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1><a href="https://redengdeveloper.itch.io/sirenhead-ar" target="_blank">SirenHead AR
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>Fall 2020</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/SirenheadAR_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The SirenHead Augmented Reality Experience was very much a random
-                    idea I had in the peak of SirenHead popularity, but since I know I'd be able to create it
-                    easily and quickly as well as trying out augmented reality for the first time I decided
-                    to create a fully working experience!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Now I say experience because you don't do anything besides set it up
-                    and watch but the details are what I'm most proud of. I created the short story, animations,
-                    the rope physics for the power lines, and the particle systems! It all came together really well
-                    and has got me excited to try out more AR tech on my phone I recently got just to be able to
-                    create these types of things! I also include it here as it's my most downloaded Itch.io application!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/SirenheadAR_3_Thnl.webp')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>

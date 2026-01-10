@@ -1,7 +1,7 @@
 
 // Main JS Functions
 
-var pageTitles = ["Who Am I?", "Engineering", "Programming", "Other Projects", "Don't Press!"];
+var pageTitles = ["Who Am I?", "Programming", "Engineering", "Other Projects", "Don't Press!"];
 
 // Page Load
 document.addEventListener("DOMContentLoaded", () => {
