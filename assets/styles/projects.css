@@ -10,10 +10,17 @@
 }
 
 .organizationBar {
+    position: relative;
     width: 900px;
     max-width: 85vw;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 15px;
+    animation: newArticle .5s;
+}
+
+.organizationBar > div {
+    margin-right: 10px;
 }
 
 #Engineering_ > .subarticle > .section:has(> h1) {
@@ -21,7 +28,7 @@
 }
 
 h1 > a {
-    color: rgb(255, 216.8, 255);
+    color: orange;
     text-decoration: none;
     transition-duration: 0.2s;
 }
@@ -33,7 +40,8 @@ h1 > a:hover {
 h1 > a > svg {
     height: 15px;
     margin-left: 5px;
-    fill: rgb(255, 216.8, 255);
+    fill: hsl(39deg 100% 85% / 75%);
+    filter: drop-shadow(4px 4px 1.5px black);
     transition-duration: 0.2s;
 }
 
@@ -53,6 +61,7 @@ div:has(> .thnl) {
 .thnl {
     height: 200px;
     margin-bottom: -5px;
+    border-radius: 10px;
 }
 
 #galleryImage {
@@ -121,8 +130,9 @@ div:has(> .thnl) {
 }
 
 .gallery > div > svg {
-    fill: black;
-    height: 30%;
+    fill: hsl(0 100% 25% / 1);
+    filter: drop-shadow(0px 0px 2px lightgray);
+    height: 25%;
     transition-duration: .2s;
 }
 

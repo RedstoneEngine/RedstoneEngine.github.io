@@ -5,18 +5,32 @@
 }
 
 
-#profilePhoto {
-    height: 300px;
+.profilePhoto {
+    height: 275px;
     max-height: 40vw;
     margin-bottom: var(--profile-margin);
     border-radius: 10px;
 }
 
+#aboutMePhotoSubsection {
+    width: auto;
+    height: 290px;
+    padding-top: 16px;
+    margin-top: 30px;
+    margin-left: 50px;
+    transform: rotate(2deg);
+}
+
+#mobilePhotoSubsection {
+    display: none;
+    padding-bottom: 30px;
+}
+
 #nametag {
     position: relative;
     display: var(--hide-on-hughes);
-    top: -15px;
-    left: 110px;
+    top: -10px;
+    left: 150px;
     rotate: -2.5deg;
     width: fit-content;
     padding: 2px 7px;
@@ -44,6 +58,10 @@
     max-height: 275px;
 }
 
+.buttonPanel > div > button {
+    width: 125px;
+}
+
 .sectionImg2 {
     display: none;
 }
@@ -54,12 +72,12 @@
     margin-bottom: -5px;
 }
 
-@media screen and (max-width: 750px) {
-    #profilePhoto {
-        margin-bottom: -5px;
-    }
-    #nametag {
+@media screen and (max-width: 1050px) {
+    #aboutMePhotoSubsection {
         display: none;
+    }
+    #mobilePhotoSubsection {
+        display: block;
     }
 }
 

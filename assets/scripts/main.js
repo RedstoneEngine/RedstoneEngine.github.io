@@ -1,7 +1,7 @@
 
 // Main JS Functions
 
-var pageTitles = ["Who Am I?", "Programming", "Engineering", "Other Projects", "Don't Press!"];
+var pageTitles = ["Who Am I?", "Programming", "Engineering", "YouTube", "Don't Press!"];
 
 // Page Load
 document.addEventListener("DOMContentLoaded", () => {
@@ -59,26 +59,31 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("navBarCurrent").firstChild.textContent = pageTitles[currIndex] + " ";
             prevIndex = currIndex;
 
-            if (hashLocation == "Don'tPress!")
-                randomPressed();
-            if (hashLocation == "WhoAmI?" || isPorfolio)
-                aboutMePressed();
-
             // Loads subDomain
             if (subDomain != "") {
                 page.children[2].children[0].classList.remove("selected");
-                page.children[2].children[1].classList.add("selected");
-                loadSubDomain(page, true);
+                for (var i = 0; i < page.children[2].children.length; i++) {
+                    var bttnText = page.children[2].children[i].children[0].innerText;
+                    if (bttnText.replaceAll(" ", "").replaceAll("/", "") == subDomain) {
+                        page.children[2].children[i].classList.add("selected");
+                        subDomain = bttnText.replaceAll(" / ", "");
+                    }
+                }
             }
+
+            //Set as Selected
+            pageOpened(currIndex, subDomain);
+            if (isPorfolio)
+                pageOpened(0);
         }
         // Incorrect Load
         else {
             document.location.hash = '';
-            aboutMePressed();
+            pageOpened(0);
         }
     }
     else
-        aboutMePressed();
+        pageOpened(0);
 
     window.addEventListener("scroll", () => scrollResponse());
     scrollResponse();
@@ -86,8 +91,22 @@ document.addEventListener("DOMContentLoaded", () => {
     setupFavoriteVideos();
 });
 
-function aboutMePressed() {
-    document.getElementById("aboutMeFrame").src = "https://www.youtube.com/embed/M6HiwVCEiQA";
+function pageOpened(pageNumber, info) {
+    switch (pageNumber) {
+        case 0:
+            document.getElementById("aboutMeFrame").src = "https://www.youtube.com/embed/M6HiwVCEiQA";
+            loadAboutMe();
+            break;
+        case 1:
+            loadProjectsTable(0, info);
+            break;
+        case 2:
+            loadProjectsTable(1, info);
+            break;
+        case 4:
+            randomPressed();
+            break;
+    }
 }
 
 // Overlay functions
@@ -135,6 +154,9 @@ function scrollResponse() {
 var prevIndex = 0;
 function showPage(index) {
 
+    //Do extra code
+    pageOpened(index);
+
     // Scroll to Top
     if (window.scrollY >= banner.clientHeight + 20)
         window.scrollTo(0, banner.clientHeight + 20);
@@ -181,31 +203,17 @@ function dropdownShowPage(index) {
     showOverlay("navList");
 }
 
-// About Me Code
-function switchPanel(self) {
-    var parent = self.parentElement.parentElement;
-    var index = -1;
-    // Buttons
-    for (var i = 0; i < parent.children.length; i++) {
-        parent.children[i].classList.remove("selected");
-        if (parent.children[i].children[0] == self)
-            index = i;
-    }
-    self.parentElement.classList.add("selected");
-    // Panels
-    parent = document.getElementById("myInterests")
-    for (var i = 0; i < parent.children.length; i++) {
-        parent.children[i].classList.add("hide");
-    }
-    parent.children[index].classList.remove("hide");
-}
-
 // Engineering Code
 function showGallery(self) {
     // Show Video
-    if (self.style.backgroundImage.includes("_Thnl") || self.hasAttribute("youtube")) {
-        var src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 12) + ".mp4";
-        if (self.hasAttribute("youtube"))
+    if (self.hasAttribute("youtube")) {
+        var src;
+        if (self.getAttribute("youtube") == "local") {
+            src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 7) + ".mp4";
+            var insertIndex = src.lastIndexOf("/");
+            src = src.slice(0, insertIndex) + "/videos" + src.slice(insertIndex);
+        }
+        else
             src = self.getAttribute("youtube");
         document.getElementById("galleryImage").children[1].src = src;
         document.getElementById("galleryImage").children[0].style.display = "none";
@@ -226,44 +234,6 @@ function showGallery(self) {
 //No fullres option
 function reloadGalleryImage(self) {
     self.src = self.src.substring(0, self.src.lastIndexOf('/') - 8) + self.src.substring(self.src.lastIndexOf('/'));
-}
-
-function switchOrganization(self) {
-    var parent = self.parentNode;
-    var index = -1;
-    for (var i = 0; i < parent.children.length; i++) {
-        if (parent.children[i] == self) {
-            index = i;
-            parent.children[i].classList.add("selected");
-        }
-        else {
-            parent.children[i].classList.remove("selected");
-        }
-    }
-
-    if (index == 0)
-        document.location.hash = document.location.hash.split('_')[0];
-    else if (document.location.hash.split('_').length == 1)
-        document.location.hash += "_Demo";
-
-    loadSubDomain(parent.parentNode, index == 1);
-}
-
-function loadSubDomain(parent, isSub)
-{
-    for (var i = 0; i < parent.children.length; i++)
-        if (parent.children[i].classList.contains("subarticle")) {
-            if (((!isSub && !parent.children[i].classList.contains("demoProject")) ||
-                (isSub && parent.children[i].classList.contains("demoProject"))) &&
-                (!parent.children[i].classList.contains("showOnHughes_") || document.title == "Gavin Hughes")) {
-                    parent.children[i].classList.remove("hide");
-                    parent.children[i].classList.add("showSubarticle");
-                }
-            else {
-                parent.children[i].classList.add("hide");
-                parent.children[i].classList.remove("showSubarticle");
-            }
-        }
 }
 
 //Unfortunately manual setup but oh well
@@ -328,7 +298,7 @@ function addVideo(videoTitle, videoLink) {
     newVideo.appendChild(title);
 
     //Play Bttn
-    newVideo.appendChild(document.getElementById("playBttn").cloneNode(true));
+    //newVideo.appendChild(document.getElementById("playBttn").cloneNode(true));
 
     document.getElementById("MyBestPlaylist").appendChild(newVideo);
 }

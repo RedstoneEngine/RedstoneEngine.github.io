@@ -11,7 +11,8 @@ body {
     background-position-x: 20%;
     overflow-x: hidden;
 
-    font-family: Arial;
+    font-family: sn_pro;
+    font-size: 17px;
     color: white;
 }
 
@@ -141,6 +142,10 @@ body {
     display: flex;
 }
 
+.sideBySides {
+    display: flex;
+}
+
 .article {
     width: 850px;
     max-width: 85vw;
@@ -148,12 +153,16 @@ body {
     margin-bottom: 40px;
     display: flex;
 
+    background-size: 70px, 100%;
     background-image: url("../sprites/PageBackground.webp");
     background-image: url("../sprites/PageBackground_Gradient.webp"),
         linear-gradient(150deg, rgba(48,73,40,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgba(61,34,64,1) 100%);
 
     border: 2px solid rgb(98, 211, 111);
     border-radius: 10px;
+
+    position: relative;
+    animation: newArticle .5s;
 }
 
 .subarticle {
@@ -168,9 +177,13 @@ body {
     padding: 12px 12px;
 
     text-align: justify;
-    background-color: rgba(51, 51, 51, .666);
+    background-color: rgb(80 80 80 / 47%);
     border-radius: 10px;
     line-height: 135%;
+}
+
+.subarticle > .section {
+    background-color: rgb(75 75 75 / 44%);
 }
 
 .subsection {
@@ -184,10 +197,16 @@ body {
 h1 {
     display: flex;
     justify-content: space-between;
-    color: rgb(255, 216.8, 255);
-    text-shadow: 2px 2px 2px black;
-    font-size: 20px;
+    color: #00c6ff;
+    text-shadow: 4px 4px 3px black;
+    font-size: 25px;
+    text-align: center;
     margin: 0px 0px 10px 0px;
+}
+
+.subarticle > .section > h1 {
+    color: orange;
+    font-size: 22px;
 }
 
 h1 > div {

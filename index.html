@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="./assets/styles/print.css?v=6_21_25" media="print">
 
         <script src="./assets/scripts/main.js?v=6_21_25"></script>
+        <script src="./assets/scripts/customElements.js?v=1_30_26"></script>
         <script src="./assets/scripts/particles.js?v=4_3_25"></script>
         <script src="./assets/scripts/dontPress.js?v=4_3_25"></script>
 
@@ -83,7 +84,7 @@
 
         <div id="navBar" class="navBar" style="justify-content: space-around;">
             <div style="animation: buttonDrift1 28s forwards infinite linear;" class="selected">
-                <button onclick="showPage(0); aboutMePressed();">Who Am I?</button>
+                <button onclick="showPage(0);">Who Am I?</button>
             </div>
             <div style="animation: buttonDrift3 32s forwards infinite linear;">
                 <button onclick="showPage(1);">Programming</button>
@@ -92,10 +93,10 @@
                 <button onclick="showPage(2);">Engineering</button>
             </div>
             <div style="animation: buttonDrift4 34s forwards infinite linear;">
-                <button onclick="showPage(3);">Other Projects</button>
+                <button onclick="showPage(3);">YouTube</button>
             </div>
             <div class="hideOnHughes" style="animation: buttonDrift5 36s forwards infinite linear;">
-                <button onclick="showPage(4); randomPressed();">Don't Press!</button>
+                <button onclick="showPage(4);">Don't Press!</button>
             </div>
         </div>
         <div id="shortNavBar" class="navBar">
@@ -107,19 +108,19 @@
             </div>
         </div>
         <div id="navList" class="dropdownContainer">
-            <div class="dropdownButton" onclick="dropdownShowPage(0); aboutMePressed();">
+            <div class="dropdownButton" onclick="dropdownShowPage(0);">
                 Who Am I?
             </div>
             <div class="dropdownButton" onclick="dropdownShowPage(1)">
-                Engineering
-            </div>
-            <div class="dropdownButton" onclick="dropdownShowPage(2)">
                 Programming
             </div>
-            <div class="dropdownButton" onclick="dropdownShowPage(3)">
-                Other Projects
+            <div class="dropdownButton" onclick="dropdownShowPage(2)">
+                Engineering
             </div>
-            <div class="dropdownButton hideOnHughes" onclick="dropdownShowPage(4); randomPressed();">
+            <div class="dropdownButton" onclick="dropdownShowPage(3)">
+                YouTube
+            </div>
+            <div class="dropdownButton hideOnHughes" onclick="dropdownShowPage(4);">
                 Don't Press!
             </div>
         </div>
@@ -130,166 +131,82 @@
         <!-- ABOUT ME SECTION -->
  
         <div id="WhoAmI?_" class="page showPage">
-            <div class="article">
-                <div id="aboutMeSection" class="section">
-                    <h1>About Me</h1>
-                    <div class="subsection">
-                        <img id="profilePhoto"src="./assets/sprites/aboutMe/MainPhoto_Transparent.webp">
-                        <div id="nametag">Gavin Hughes</div>
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;My name is Gavin Hughes and I am a passionate Creative Engineer!
-                    I love creating games, being hands on, and developing unique solutions to strange problems!
-                    I also deeply enjoy spending time with friends, watching YouTube videos, and a bit of acting!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I grew up in the Texas Coastal Bend Area and graduated in May 2025 from the University of Texas at Austin
-                    as a Mechanical Engineering Major with an Elements of Computing Certificate and a minor in Entrepreneurship!
-                    <br><br>
-                    <div class="hideOnHughes">
-                        &nbsp;&nbsp;&nbsp;&nbsp;As I'm sure you will see looking around, I create many projects in different interests
-                        which I try and collect together to show on my YouTube Channel and now on this website as well!
-                        I'm also very curious by nature and would love to hear about other people's projects,
-                        so join my
-                        <a href="https://discord.com/invite/XAjYeEmwZE" target="_blank">Discord</a>
-                        or shoot me an
-                        <a href="mailto:redengdeveloper+portfolio@gmail.com" target="_blank">Email</a>
-                        about what you've been working on recently! 👀
-                    </div>
-                    <div class="showOnHughes">
-                        &nbsp;&nbsp;&nbsp;&nbsp;With my strong background in creative problem solving,
-                        I've always been intrigued by what's new and what can be accomplished in the STEM field.
-                        I continuously strive to break boundaries with innovative new ideas and projects.
-                        Learning programming, engineering, and video production has greatly helped me along in this
-                        complex and exhilarating journey as I look towards new opportunities. ⚙️🧪
+            <div class="sideBySides">
+                <div class="article" style="width: 700px;">
+                    <div id="aboutMeSection" class="section">
+                        <h1 style="display: block;">A Little About Me!</h1>
+                        <div id="mobilePhotoSubsection" class="subsection">
+                            <img class="profilePhoto" src="./assets/sprites/aboutMe/MainPhoto_Transparent.webp">
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;My name is Gavin and I am a passionate Creative Engineer!
+                        I love creating games, being hands on, and developing unique solutions to strange problems!
+                        In my free time, I also enjoy spending time with friends, watching YouTube videos, and a bit of acting!
+                        <br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;I grew up in the Texas Coastal Bend Area and graduated in May 2025 from the University of Texas at Austin
+                        as a Mechanical Engineering Major with a minor in Computer Science and Entrepreneurship!
+                        <br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;I absolutely love the field of STEM and will search
+                        non-stop for the latest algorithm, dive deep into new unknown worlds, and endlessly explain my
+                        latest fascinations with my friends and on my YouTube channel! I hope to never let
+                        this wonder die to explore exactly where this journey will take me next!
+                        <!--<br><br>
+                        <div class="hideOnHughes">
+                            Be sure to catch what I'm up to on my
+                            YouTube
+                            and join my
+                            <a href="https://discord.com/invite/XAjYeEmwZE" target="_blank">Discord Community!</a>
+                        </div>-->
                     </div>
                 </div>
-            </div>
-            <div class="article subarticle hideOnPrint" style="display: block; display: none;">
-                <div class="section">
-                    <h1>What have I been up to...?</h1>
-                    <iframe id="aboutMeFrame" style="width: 100%; height: 66.6vh;"
-                    title="How I Created my First Robot!" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div id="aboutMePhotoSubsection" class="article subarticle">
+                    <div class="subsection">
+                        <img class="profilePhoto" src="./assets/sprites/aboutMe/MainPhoto_Transparent.webp">
+                        <div id="nametag">Gavin</div>
+                    </div>
                 </div>
             </div>
             <div class="article subarticle hideOnPrint">
                 <div class="section">
-                    <h1 class="sectionTitle1">Topic</h1>
+                    <h1 class="sectionTitle1" style="color: white; font-size: 20px;">Topic:</h1>
                     <h1 class="sectionTitle2">My Hobbies!</h1>
                     <div class="buttonPanel">
                         <div class="selected">
-                            <button onclick="switchPanel(this);">My Friends</button>
+                            <button onclick="selectNewInterest(this);">My Friends</button>
                         </div>
                         <div>
-                            <button onclick="switchPanel(this);">YouTube</button>
+                            <button onclick="selectNewInterest(this);">YouTube</button>
                         </div>
                         <div>
-                            <button onclick="switchPanel(this);">Theater</button>
+                            <button onclick="selectNewInterest(this);">Theater</button>
                         </div>
                         <div>
-                            <button onclick="switchPanel(this);">Music</button>
+                            <button onclick="selectNewInterest(this);">Music</button>
                         </div>
                         <div>
-                            <button onclick="switchPanel(this);">Minecraft</button>
+                            <button onclick="selectNewInterest(this);">Minecraft</button>
                         </div>
                     </div>
                 </div>
                 <div class="section">
                     <h1 class="sectionTitle1">My Hobbies!</h1>
                     <div id="myInterests">
-                        <div>
-                            <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.webp">
-                            </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Hanging out with my friends is a great way I spend my time
-                            whether it be on Discord playing Lethal Company or Minecraft or hanging out in person
-                            going to the local Spirit Halloween or celebrating a Birthday! You can always count on
-                            friends to lift you up after a stressful day.
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;I have a lot of friends from different parts of my life.
-                            Each have their own stories, experiences, and skills
-                            that I deeply enjoy hearing about and supporting them when they need it most.
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;While some come and go, I always love having a few close friends
-                            that I can count on! I would not be where I am without them and their support!
-                            <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/friends.webp">
-                            </div>
+                        <div class="subsection sectionImg1">
+                            <img class="sidePhoto" src="">
                         </div>
-                        <div class="hide">
-                            <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Spiff.webp">
-                            </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;YouTube has always been a constant source in my life
-                            whether that be for inspiration, entertainment, learning about my favorite games,
-                            or even vlogging the projects I work on!
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;I've had a few favorite YouTubers over the years including
-                            Jacksepticeye, Mumbo Jumbo, and Game Theory, but my current favorite is AstralSpiff!
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;He plays games in the horror category but often puts a spin on it
-                            including Speedrunning which puts a different perspective on the relationship between the
-                            Game, Player, and Game Developer. They're also very long, calming videos that I can watch after a long day! ☕
-                            <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Spiff.webp">
-                            </div>
-                        </div>
-                        <div class="hide">
-                            <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/theater.webp">
-                            </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Oh boy, theater... What a wild ride it's been.
-                            I've participated in theater on and off since junior high and the people and the laughs
-                            are what I always come back for! Everyone there always arrives on their A-game and bring
-                            so much energy and wackiness to every rehearsal.
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;For the University Theatre Guild, I've participated in 5 Children's Shows
-                            and my first musical: Trail to Oregon! One the best plays I've seen and been apart of! 🐂
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Will I continue theater once I've graduated? Who knows? It always
-                            somehow creeps back into my life and I meet some amazing people!
-                            <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/theater.webp">
-                            </div>
-                        </div>
-                        <div class="hide">
-                            <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/LivingTombstone.webp">
-                            </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Everyday, anytime I work, I am guaranteed to be listening to music!
-                            It gets me in the groove and helps me focus on the task I'm doing. Even right now I'm listening to music,
-                            specifically The Struts!
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;My music tastes have changed over the years from popular pop and 
-                            alternative rock, to video game soundtracks and fan songs, to some emotional songs
-                            about growing up and life as we know it.
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Some of my favorite artists over the years have been
-                            Imagine Dragons, Or3o, Derivakat, Gooseworx, and The Living Tombstone.
-                            The Living Tombstone being my favorite as I tried to achieve the #1 spot on Spotify Wrapped
-                            the same year I saw them perform live in Austin!
-                            <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/LivingTombstone.webp">
-                            </div>
-                        </div>
-                        <div class="hide">
-                            <div class="subsection sectionImg1">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Minecraft.webp">
-                            </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;My favorite game I would have to say is Minecraft.
-                            I've played it since I was a child on my tablet and still keep up with it to this day
-                            even though I'm not able to play it as much.
-                            <br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;Every Tuesday, I keep on eye out for the latest Minecraft snapshot update
-                            to see what's new for features, optimizations, and developer features. Here's to hoping that
-                            they eventually allow full creative freedom of their game through Datapacks!
-                            I would love to take on a creative project modifying the game to what I desire!
-                            I've already collected a list of ideas... 👀
-                            <div class="subsection sectionImg2">
-                                <img class="sidePhoto" src="./assets/sprites/aboutMe/Minecraft.webp">
-                            </div>
+                        <div></div>
+                        <div class="subsection sectionImg2">
+                            <img class="sidePhoto" src="">
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="article subarticle hideOnPrint" style="display: block;">
+                <div class="section">
+                    <h1>What have I been up to...?</h1>
+                    <iframe id="aboutMeFrame" class="videoFrame"
+                    title="How I Created my First Robot!" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <div id="aboutMeEndSpacer" style="width: 10px; padding-bottom: 15vh"></div>
@@ -300,224 +217,43 @@
         <div id="Engineering_" class="page">
             <div class="article">
                 <div class="section">
-                    <h1>Why Engineering?</h1>
+                    <h1>My History with Engineering</h1>
                     &nbsp;&nbsp;&nbsp;&nbsp;Being a Mechanical Engineer has been a dream of mine
-                    since elementary school when first asked what career I would be interested in.
+                    since elementary school when I first began learning about the world!
                     The ability to be hands on designing a problem to a solution inundated with creativity
                     and problem solving sounds like the perfect place for me!
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;Because of this, I went into University to learn Mechanical Engineering
-                    and man has there been some ups and downs. However, being here has given me the perfect place
-                    to learn and hone my skills! Below is a collection of my many engineering projects!
+                    and man are there a lot of classes about different Dynamics 😅 However, every class has been so 
+                    interesting in so many different aspects as I learn how the world works! I am so glad I was able
+                    to spend my time in school learning all the fundamentals of Physics and Engineering and I hope
+                    to continue to use what I learn towards my future endeavors!
                 </div>
             </div>
             <div class="showOnPrint" style="height: 125px; display: none;"></div>
-            <div class="article subarticle">
+            <!--Organization Bar Placeholder-->
+            <div></div>
+            <!-- Prefab -->
+            <div class="article subarticle" style="display: none;">
                 <div class="section">
-                    <h1>Sprinkler System for Fire Hydrants<div>Spring 2025</div></h1>
+                    <h1><a href="LINK" target="_blank">TITLE
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
+                        </a>
+                        <div>DATE</div>
+                    </h1>
                     <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/HydrantSprinkler_Main.webp">
+                        <img class="thnl" loading="lazy" src="">
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For my Senior Design Project class, we worked for
-                    <a href="https://www.makeitrainwildfire.com/" target="_blank">Make It Rain Wildfire</a> 
-                    to improve upon and invent new systems for an emergency
-                    sprinkler system attached to fire hydrants. The goal of this system was to prevent flying embers from
-                    wildfires igniting someone's property!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;This project also included research into the legality, ease of use, installation
-                    cost, water usage, and deformation for these systems. A lot for one semester but we were able to pull
-                    it all together in the end and develop a new device to attach onto theirs. Our idea was a long-distance
-                    remote-controlled valve system that allows for both less manpower to enable/disable these systems and
-                    the reduction of water usage due to the electronic system able to now have a timer that can turn the
-                    system on and off when the ground is damp enough. We went out to test our design
-                    but the water pressure was much higher than anticipated which broke the valve we bought.
-                    An unsuccessful test but definitely hoping that all our research and design ideas
-                    can go forward into a next iteration allowing this potentially property saving system to be used in
-                    devastating wildfires.
+                    <div>
+                        <!-- DESC -->
+                    </div>
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/HydrantSprinkler_3_Thnl.webp')">
+                    <div onclick="showGallery(this);"></div>
+                    <div onclick="showGallery(this);"></div>
+                    <div onclick="showGallery(this);">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>Automatic Can Opener<div>Spring 2025</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/CanOpener_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For my Robot Mechanism Design class, we had to design
-                    a complex robot utilizing some of the aspects discussed in class like
-                    mechanical advantage and 4 bar systems.
-                    For our project, we chose to make an automatic can opener that will rotate the can while
-                    using a blade to slowly cut the top off of the can.
-                    While the project initially seemed simple, we ended up having to change our designs
-                    multiple times due to pushback from the teaching team which ultimately ended up with us
-                    going back to our original idea.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The idea we settled with is using a manually-controlled reverse
-                    break-drum clamp to grab the can while it is rotated using a simple gear system. While rotating,
-                    the top of the can will be cut using a slider crank that pushes a blade periodically into the can.
-                    I wish we didn't get as much pushback during the design phase so we had more time to make more prototypes
-                    to test the period of cutting and cutting more towards the top of the can to reduce deformation issues.
-                    We also could've made it work for any size cans which was the original goal.
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/CanOpener_3_Thnl.webp')">
-                        <svg id="playBttn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>Talons of Acquisition<div>2021 - 2025</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/TOA_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;In the Robotics & Automation Society (RAS), I
-                    participated in the Demobots subcommittee where we create multiple subteams
-                    to create our own robots to demonstrate during robotics events like UT's STEM Girl Day!
-                    My subteam that I headed, Talons of Acquisition (TOA), had the goal of making a
-                    simple claw machine meant to be modularized and improved throughout its lifetime.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;This robot unfortunately has taken the longest to make
-                    simply due to the nature of the subcommittee being low-commitment, however, it has
-                    been the most fun as I've got to meet so many cool and unique friends throughout my
-                    4 years on the team! I ended up being the main mechanical engineer designing and
-                    manufacturing a lot of the subsystems pictured. Before I left, we had begun work
-                    on some of the electrical and software aspects of the design and hope to keep
-                    in contact with the team past graduation! I also can't wait to see the design
-                    fully finished and demonstrated to inspire other students and youth!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/TOA_3_Thnl.webp')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>Texas Robo Rumble<div>Spring 2024</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/BattleBot_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I signed up for a Battle Bots competition! You heard that right!
-                    Within a couple months, we had to design, build, and battle our own bots in a
-                    double-elimination bracket.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I was the main one on CAD and designed the body of the bot.
-                    A couple design factors I thought crucial for the body is: 1. Being able to be flipped
-                    over which is why the body isn't that tall so the wheels could stick out on either side
-                    and 2. Having a secondary offense mechanism of a ramp.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;One of the most difficult parts was getting the weapon machined
-                    as MechE's Machine Shop Staff was incredibly unhelpful however someone from Texas Inventionworks helped
-                    us out. Unfortunately, our motor ended up being flipped for the weapon which caused it to self-destruct.
-                    HOWEVER, my ramp design worked, and we won a battle while we fixed our main weapon.
-                    We ended up winning 5th overall! My next semester we ended up building the same robot for our
-                    Design Methodology class and did a lot of improvements and analysis to the design.
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/BattleBot_3_Thnl.webp')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>RC Race Car<div>Spring 2024</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/RCCar_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For my Machine Elements class, our task was to design,
-                    test, and race an RC car. This proved to be quite the challenge due to us
-                    having to design a gearbox and turning mechanism from scratch with little
-                    help from the professor and TAs.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;After a lot of research and prototyping we were able to come up with the
-                    design shown here. As this class also discussed deflection and fatigue, we did
-                    an FEA analysis both for the axle and upon impact as well as hand calculations for
-                    different stress conditions.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;From our analysis results and not wanting to damage our steering
-                    mechanism, we added a front ramming bar to protect ourselves. Unfortunately, during
-                    competition our servo horn got stripped and we had to quickly replace it but we could only
-                    turn right which was the opposite way of the track. Shows how important
-                    quality assurance is and how to design a better steering mechanism for next time!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/RCCar_3_Thnl.webp')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>Carlos, The 6-Legged Rover<div>Spring 2022</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/Carlos_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;One day I decided, today I'm going to build my own robot and so I did!
-                    I was inspired by the 
-                    <a href="https://shop.knexusergroup.org.uk/products/71050" target="_blank">K'NEX Spider Bot</a> 
-                    toy I has as a child and wanted to recreate it using the lasercutters and printers I was now
-                    trained for at Texas Inventionworks.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I modeled it in Fusion360 as it's the CAD software I was most familar with at the time and then
-                    built and assembled it within the span of a semester. The thing I unnexpectedly had the most trouble
-                    with was the servos as I accidentally bought limited 180° servos, so I had to take them apart
-                    and unattach the potentiometer.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;After building it, I showed to my friends to see how they would respond to it as
-                    I had put two sound sensors on the front but the robot ended up being too loud and too slow for the
-                    sounds sensors to do anything. Next time could be interesting to try it with distance sensors and have it stop
-                    every couple seconds to sense motion and move towards it. Watch my
-                    <a href="https://youtu.be/M6HiwVCEiQA" target="_blank">YouTube Vlog</a> for more details!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/Carlos_3_Thnl.webp')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle lastArticle">
-                <div class="section">
-                    <h1>Supernova Fidget Spinner<div>Fall 2021</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/engineering/FS_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For one of my first classes in university, I was tasked with
-                    designing, fabricating, and making a full report for a fidget spinner project.
-                    This involved sending sketches, bill of materials, conducting an FEA analysis of a
-                    drop test, and setting up a CAM operation to create a mold for the fidget spinners.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For the designing of the Fidget Spinner, I was tasked with
-                    learning and using Solidworks which deemed to be a lot more challenging than anticipated
-                    with the organic shape I had in mind. The sketches and FEA tests
-                    were done in Solidworks with the CAM setup being done in Fusion360.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The central piece was 3D printed and friction fit
-                    with the main body being made using injection molding. It suprisingly turned out exactly
-                    how I planned and I never had to sacrifice the design due to it being too complicated
-                    for any of the processes the assignments asked for.
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/engineering/FS_3.webp')"></div>
                 </div>
             </div>
             <div class="hideOnPrint" style="width: 10px; padding-bottom: 15vh"></div>
@@ -528,303 +264,56 @@
         <div id="Programming_" class="page">
             <div class="article">
                 <div class="section">
-                    <h1>Why Programming?</h1>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Even though I've always had a natural talent for programming,
-                    I originally hesitated at the thought, thinking you couldn't do much with it. That was until...
-                    I discovered the world of Game Development with the imagination, the problem solving, and most importantly, working with others!
+                    <h1>My History with Programming</h1>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Programming used to be this mystical thing that I only ever
+                    touched during my school's Hour of Code. Hacking? Controlling the OS? I can't do that!
+                    However, through, continuous exposure, finding I had a really good knack for it,
+                    and being able to explore my inner most creative thoughts to create games. Now that...
+                    That had a lot of potential!
                     <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I started out by creating Snake on my TI-84 calculator, and upon seeing my classmates reactions,
-                    it sparked a whole new world of interest for me as I now search for any and all types of challenges
-                    in the software and game development sphere!
-                    You can check out most of my games on 
-                    <a href="https://redengdeveloper.itch.io/" target="_blank">Itch.io</a>
-                    and my video updates on
-                    <a href="https://www.youtube.com/@RedEngDeveloper" target="_blank">YouTube</a>!
+                    &nbsp;&nbsp;&nbsp;&nbsp;I began my adventure on my TI-84 calculator recreating classic games
+                    like Snake which futher moved to creating my own game ideas in Unity! All the while,
+                    it's been incredibly rewarding curating experiences for my friends and even strangers! In the present,
+                    I enjoy exploring every topic of programming, including things like shader code and low-level algorithms!
+                    I can't wait to see where this adventure takes me next!
                 </div>
             </div>
             <div class="showOnPrint" style="height: 105px; display: none;"></div>
             <div class="organizationBar hideOnPrint">
-                <div onclick="switchOrganization(this)" class="selected" style="margin-right: 10px;"><button>Main Projects</button></div>
-                <div onclick="switchOrganization(this)"><button>Demo Projects</button></div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1>Modding Games<div>2025 - Present</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/Modding_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Lately, I've stumbled head-first into the world of modding my favorite games!
-                    It started very simple, using Minecraft's built in commands system to create whole new game mechanics,
-                    and when that wasn't enough, going straight into injecting Java code to make some pretty cool new features!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The process of modding is quite interesting being able to inject code at the beginning or
-                    end of methods to change the direction and underlining mathematics to change the outcome of the game.
-                    It definitely helped having a good grasp of how game engines and games work to begin with, and I moved on to
-                    modifying more aspects of games. For example, adding a mod to the new game PEAK that adds a whole new class system
-                    of HUNTERS vs CLIMBERS with the goal being to see if the Climbers can reach the top before the Hunters stop them!
-                    Overall, this has been a very worth it journey and can't wait to see what's next!
+                <div class="selected">
+                    <button onclick="projectFilter(this)">All</button>
                 </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Modding_1.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Modding_2.png')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Modding_3_Thnl.jpg')" youtube="https://www.youtube.com/embed/09OCAMJt05M">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
+                <div>
+                    <button onclick="projectFilter(this)">Full Releases</button>
+                </div>
+                <div>
+                    <button onclick="projectFilter(this)">Website</button>
+                </div>
+                <!--<div onclick="projectFilter(this)" style="margin-right: 10px;"><button>Unreal Engine</button></div>
+                <div onclick="projectFilter(this)" style="margin-right: 10px;"><button>Learning</button></div>-->
+                <div>
+                    <button onclick="projectFilter(this)">AR / VR</button>
                 </div>
             </div>
-            <div class="article subarticle showOnHughes_">
+            <!-- Prefab -->
+            <div class="article subarticle" style="display: none;">
                 <div class="section">
-                    <h1><a href="https://www.montysfoodtruck.com/" target="_blank">Food Truck's Website
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>Fall 2023</div></h1>
+                    <h1><a href="LINK" target="_blank">TITLE
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
+                        </a>
+                        <div>DATE</div>
+                    </h1>
                     <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/Montys_Main.webp">
+                        <img class="thnl" loading="lazy" src="">
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For Christmas, I designed and created a website for my dad's
-                    business! He runs a food truck that serves hot sandwiches, and I wanted to help him out
-                    in his dream of running his own business and being a chef. (His food is already top
-                    notch!) Check out his Facebook to see where he's headed!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I've experimented several times with website development before
-                    with Conquer the Tree and the Virtual Robot Simulator as well as having experience designing
-                    an interactive and intuitive user interface, so I figured I could secretly make a well function
-                    website as his Christmas Gift! It turned out really well only having to go through a couple design
-                    changes to make some systems simplier or reformat how some items are displayed. I would definitely do
-                    this again and make for example my own website as I've done here!
+                    <div>
+                        <!-- DESC -->
+                    </div>
                 </div>
                 <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Montys_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Montys_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/Montys_3.webp')"></div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1><a href="https://egads-austin.itch.io/2023-jumble-jam-games" target="_blank">Jumble Jam Games
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>Fall 2023</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/demo/JumbleJam_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The Jumble Jam Game Jam was quite an interesting game jam concept
-                    where you work on 3 games across 24 hours each as the game gets sent over to the next team.
-                    Unfortunately, the next 2 games we were sent were 3D games meaning it was mainly me able to
-                    work on the game and the games also had no clear vision, so...
-                    I present to you 3 whole game ideas I designed and made within 72 hours!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Penguin Fight is an interesting take on a rhythm fighting game where
-                    each move is given rhythmically in the song and then executed on by the enemy in this case Obi-Wan!
-                    Penguin Finder was very much open sandbox for us in terms of you had to find and return 5 different
-                    penguin statues. My favorite room is the dark room where you have to use a scanning feature like in the
-                    game
-                    <a href="https://store.steampowered.com/app/475190/Scanner_Sombre/" target="_blank">Scanner Sombre</a>.
-                    The third game is Save the Penguins! where you must guide the penguins
-                    to a safe shelter before the storm but the penguins have a bit of a mind of their own and the terrain
-                    is very slippery!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/JumbleJam_3.webp')"></div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1>Texas Game Jam Games<div>2021 - 2024</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/demo/TexasGameJam_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The Texas Game Jam is a jam I've competed in every year
-                    at UT. It's hosted by the Electronic Game Developer Society (EGaDS) and is a whole
-                    lot of fun each time! It's great working with a team of very talented people to
-                    be able to pull off an interesting game within 24 hours!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The first year we made
-                    <a href="https://insighted.itch.io/vertices-and-pi" target="_blank">Vertices and Pi</a> 
-                    in Unity which contains
-                    a collection of cool minigames all tied up in a sweet story, second year we got a bit
-                    too ambitious by trying to make a 3D Unreal game which didn't get fully finished, third year
-                    we went with Godot and made
-                    <a href="https://redengdeveloper.itch.io/rat-tide-skirmish" target="_blank">Rat-Tide Skirmish</a> 
-                    which is a 2 vs. 2 fighting game where you throw traps
-                    at each other and run along the walls, and finally the forth year we went back to Unity and
-                    made
-                    <a href="https://redengdeveloper.itch.io/tango-to-the-end-of-time" target="_blank">Tango to the End of Time</a> 
-                    which is an extremely challenging physics-based timing game
-                    where you have to catapult yourself around planets to the end. Overall, super fun and exciting working on these
-                    great small games! Will jam with some of the people I've worked with again!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/TexasGameJam_3.webp')"></div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1><a href="https://robotimporter.vrobotsim.online/homepage.html" target="_blank">Virtual Robot Simulator
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>2021 - 2025</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/VRS_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The Virtual Robot Simulator is a program that I have worked on for a while.
-                    It originally started as a personal project to bring the experience of the robotics competition FTC
-                    to a virtual environment during Covid times, however, a respresentative from FTC was making their
-                    own simulator and asked me to join the team after seeing my skills and initiative!
-                    <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-                    The Virtual Robot Simulator hopes to provide a simulator to those teams in FTC and inspired elementary
-                    students who wish to experience the world of robotics! Because of this, we offer the ability to program
-                    using Blocks and Java, the ability to start a multiplayer competition between others, lessons ranging
-                    from beginner to advanced topics, and the ability to import your own robots that have been made through
-                    a CAD software which I have been in charge of designing and creating! I've also worked a lot on the visual
-                    design and ensuring a smooth user experience for new users. Overall, a very rewarding experience as the
-                    problems are complicated, the user experience is important, and the program has had an active
-                    positive impact for many users and elementary schools!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VRS_3_Thnl.webp')" youtube="https://www.youtube.com/embed/HvywykxdrBU?list=PLszFVnnZcmarYReNB-qCSZLiu2l3Mvlvz">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1>Plants vs. Zombies AR<div>Summer 2021</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/demo/PVZAR_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;My next augmented reality project, Plants vs. Zombies!
-                    I was inspired by seeing my favorite games be turned into AR projects like Five
-                    Nights at Freddy's and Minecraft and while both projects unfortunately failed, it gave
-                    me a lot of ideas on how to fix them and made me realize the perfect franchise to take
-                    up the mantel as the next Pokemon Go phenomenon!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;A Plants vs. Zombies augmented reality game mostly speaks
-                    for itself, but some extra cool features involve adding a multiplayer feature where
-                    you and others can all defend the same lawn against a ZOMBOSS, having to travel to certain biomes
-                    around your neighborhood to get special plants, and having custom AR minigames like the first
-                    Plants vs. Zombies game that utilizes the new tech. While I already made a demo, I kind of
-                    want to make a more fleshed out demo and play in a multiplayer Zomboss battle for the fun of it!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/PVZAR_3_Thnl.webp')" youtube="https://www.youtube.com/embed/rU2_OTNgbO0?start=308">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle demoProject">
-                <div class="section">
-                    <h1>FTC Autonomous Program<div>2020 - 2021</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" style="border-radius: 10px;" src="./assets/sprites/programming/demo/FTCAuto_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;For my journey in the FIRST Tech Challenge,
-                    I have to show off the amount of prototyping and calculations I did to make
-                    the "ultimate" autonomous program! This challenge involved a 30 second time period
-                    to score the most points possible with a 2 vs. 2 team.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;I implemented a system that would take in coordinate points for the
-                    robot to go along a designated path that would dynamically change based on system parameters
-                    and the randomization of the field. This was checked using encoder wheels, distance sensors,
-                    and an Intertial Measurement Unit (IMU) which can be seen in the first picture. I then implemented
-                    2 systems for the drivers including wheel locking so we wouldn't be pushed while launching rings
-                    and an automatic alignment and correct power set to launch the rings reliably into the top goal!
-                    Overall, a very fun programming challenge that combined both of my favorite subjects!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/demo/FTCAuto_3_Thnl.webp')" youtube="https://www.youtube.com/embed/oeSi75TZSuo">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1><a href="https://redengdeveloper.itch.io/villain-rewind-demo" target="_blank">Villain REWIND
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>2020 - Present</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/VillainREWIND_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Another game that originally started as a game jam,
-                    but turns out became really fun to play, Villain REWIND! I played this game a lot in my classes during
-                    quarantine to pass the time once assignments were done.
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;In this game, you must continuously reach the end of the same room as you are rewound back,
-                    however, the position of the player is tracked every run and, in beat with the song, a trap will be placed
-                    where the player has been before which makes the player not be able to take the same path twice and
-                    will lead to eventual chaos with traps down every single path. This game requires a lot of quick thinking
-                    and has been very fun to try and beat on my "impossible" mode where the time to get through the room each time
-                    is very small and the amount of times you have to run through is very large.
-                    I've enjoyed it so much and have been inspired by a Gooseworx song to make a bigger release of it on the fabled Unreal Engine!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/VillainREWIND_3_Thnl.webp')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle">
-                <div class="section">
-                    <h1>Conquer the Tree<div>2019 - 2020</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/CtT_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The game Conquer the Tree I originally won as part of a Game Jam
-                    contest! The company offered to publish a fully finished version of my game on their website
-                    so I went straight to work. This specific company's platform allows a multiplayer couch experience
-                    where you can control the game through players' phones which I thought was a cool concept!
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;The game involves a dynamically created board based on a growing tree where
-                    you must be the first to eat leaves and acorns to earn points! The only way to be the first one to move is
-                    by moving the least amount of spaces per round which makes it an interesting game dynamic. For the full game,
-                    powerups and minigames were included that resemble classic games like snake, whac-a-mole,
-                    and a few originals like an acorn launching game. It has also gone through a couple publishing platforms
-                    as the original platform vanished and the previous one became corporate and booted multiple indie games,
-                    so eventually I hope to publish it again using my own technology to host it!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/CtT_3_Thnl.webp')" youtube="https://www.youtube.com/embed/ZyUpILygi1E">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="article subarticle lastArticle">
-                <div class="section">
-                    <h1><a href="https://redengdeveloper.itch.io/space-fighters" target="_blank">Space Fighters
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                    </a><div>Spring 2019</div></h1>
-                    <div class="subsection">
-                        <img class="thnl" loading="lazy" src="./assets/sprites/programming/main/SpaceFighters_Main.webp">
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Space Fighters! My first experience in the top down shooter variety as well
-                    as in the multiplayer games sphere which was the main motivation for designing the game! I wanted to
-                    design a game that was both cooperative as well as competitive where both players' goal is to collect
-                    resources, defeat waves of enemies, and finally defeat a random boss.
-                    <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-                    I learned a lot from this game specifically in what types of game experiences I deeply enjoy creating.
-                    I liked having a multiplayer aspect to where I could play and have fun with my friends and hopefully be
-                    able to see others having fun in an experience I had created. It also showed me that I liked creating
-                    different enemy AI. It's a weird combination of putting yourself in the enemies perspective and throwing
-                    everything you got at them while having the player figure out their patterns and weaknesses to be able
-                    to take out the enemy while not making it seem like the game revolves around the player in a type of ecosystem.
-                    I may come back to the game to this game at some point, especially since I made a crab-based version of this
-                    game for one of my classes recently!
-                </div>
-                <div class="section gallery">
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_1.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_2.webp')"></div>
-                    <div onclick="showGallery(this);" style="background-image: url('./assets/sprites/programming/main/SpaceFighters_3_Thnl.webp')" youtube="https://www.youtube.com/embed/zSn4BTo6eGw">
+                    <div onclick="showGallery(this);"></div>
+                    <div onclick="showGallery(this);"></div>
+                    <div onclick="showGallery(this);">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                     </div>
                 </div>
@@ -832,9 +321,9 @@
             <div class="hideOnPrint" style="width: 10px; padding-bottom: 15vh"></div>
         </div>
 
-        <!-- OTHER PROJECTS SECTION -->
+        <!-- YOUTUBE SECTION -->
 
-        <div id="OtherProjects_" class="page">
+        <div id="YouTube_" class="page">
             <div class="article" style="display: block;">
                 <div class="section">
                     <h1>Other Projects</h1>
@@ -868,7 +357,7 @@
             <div class="article" style="width: 1000px; display: block;">
                 <div class="section">
                     <h1>You shouldn't have pressed it...</h1>
-                    <iframe id="dontPressFrame" style="width: 100%; height: 66.6vh;"
+                    <iframe id="dontPressFrame" class="videoFrame"
                     title="Get Stick Bugged lol" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
