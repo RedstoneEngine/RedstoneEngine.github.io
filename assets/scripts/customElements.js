@@ -81,7 +81,9 @@ function loadProjectsTable(index, filter) {
             if (xhr.status === 200) {
                 var response = xhr.responseText;
                 projectsTable[index] = response.split("\r\n");
-                console.log("1. " + projectsTable[index]);
+                if (projectsTable[index].length < 2)
+                    projectsTable[index] = response.split("\n");
+                console.log(projectsTable[index]);
                 loadProjects(index, filter);
             } else {
                 console.error("Request failed. Status:", xhr.status);
@@ -121,8 +123,9 @@ function loadProjects(index, filter) {
     var description = "";
 
     projectsTable[index].forEach((element) => {
-        console.log("2. " + element);
+        console.log("2. ");
         var row = element.split(",");
+        console.log(row);
 
         //New Node
         if (row[0] != "" && row[0] != "Title") {
