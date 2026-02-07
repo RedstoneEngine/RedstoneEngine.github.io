@@ -11,6 +11,8 @@ function loadAboutMe()
             if (xhr.status === 200) {
                 var response = xhr.responseText;
                 interestTable = response.split("\r\n");
+                if (interestTable.length < 2)
+                    interestTable = response.split("\n");
                 loadInterest("My Friends");
             } else {
                 console.error("Request failed. Status:", xhr.status);
@@ -77,13 +79,11 @@ function loadProjectsTable(index, filter) {
     if (projectsTable[index] == null) {
         const xhr = new XMLHttpRequest();
         xhr.onload = function() {
-            console.log("0. ");
             if (xhr.status === 200) {
                 var response = xhr.responseText;
                 projectsTable[index] = response.split("\r\n");
                 if (projectsTable[index].length < 2)
                     projectsTable[index] = response.split("\n");
-                console.log(projectsTable[index]);
                 loadProjects(index, filter);
             } else {
                 console.error("Request failed. Status:", xhr.status);
@@ -123,9 +123,7 @@ function loadProjects(index, filter) {
     var description = "";
 
     projectsTable[index].forEach((element) => {
-        console.log("2. ");
         var row = element.split(",");
-        console.log(row);
 
         //New Node
         if (row[0] != "" && row[0] != "Title") {
