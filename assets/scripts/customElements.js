@@ -77,9 +77,11 @@ function loadProjectsTable(index, filter) {
     if (projectsTable[index] == null) {
         const xhr = new XMLHttpRequest();
         xhr.onload = function() {
+            console.log("0. ");
             if (xhr.status === 200) {
                 var response = xhr.responseText;
                 projectsTable[index] = response.split("\r\n");
+                console.log("1. " + projectsTable[index]);
                 loadProjects(index, filter);
             } else {
                 console.error("Request failed. Status:", xhr.status);
@@ -119,6 +121,7 @@ function loadProjects(index, filter) {
     var description = "";
 
     projectsTable[index].forEach((element) => {
+        console.log("2. " + element);
         var row = element.split(",");
 
         //New Node
