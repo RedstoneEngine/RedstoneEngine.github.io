@@ -72,6 +72,35 @@
     margin-bottom: -5px;
 }
 
+#mySpecialInterests {
+    overflow-y: scroll;
+    height: 400px;
+    padding-right: 10px;
+    line-height: 115%;
+    font-size: 16.5px;
+}
+
+.galleryLinks {
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+
+.galleryLinks > .subsection {
+    width: 200px;
+}
+
+.galleryLinks > .subsection > a {
+    padding-bottom: 2px;
+}
+
+.galleryLinks > .subsection > .sidePhoto {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 120px;
+}
+
 @media screen and (max-width: 1050px) {
     #aboutMePhotoSubsection {
         display: none;

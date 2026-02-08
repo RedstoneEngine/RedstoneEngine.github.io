@@ -87,17 +87,17 @@
                 <button onclick="showPage(0);">Who Am I?</button>
             </div>
             <div style="animation: buttonDrift3 32s forwards infinite linear;">
-                <button onclick="showPage(1);">Programming</button>
+                <button onclick="showPage(1);">Games & Software</button>
             </div>
             <div style="animation: buttonDrift2 30s forwards infinite linear;">
-                <button onclick="showPage(2);">Engineering</button>
+                <button onclick="showPage(2);">Hardware & Robotics</button>
             </div>
             <div style="animation: buttonDrift4 34s forwards infinite linear;">
-                <button onclick="showPage(3);">YouTube</button>
+                <button onclick="showPage(3);">Other Projects</button>
             </div>
-            <div class="hideOnHughes" style="animation: buttonDrift5 36s forwards infinite linear;">
+            <!--<div class="hideOnHughes" style="animation: buttonDrift5 36s forwards infinite linear;">
                 <button onclick="showPage(4);">Don't Press!</button>
-            </div>
+            </div>-->
         </div>
         <div id="shortNavBar" class="navBar">
             <div>
@@ -112,17 +112,17 @@
                 Who Am I?
             </div>
             <div class="dropdownButton" onclick="dropdownShowPage(1)">
-                Programming
+                Games & Software
             </div>
             <div class="dropdownButton" onclick="dropdownShowPage(2)">
-                Engineering
+                Hardware & Robotics
             </div>
             <div class="dropdownButton" onclick="dropdownShowPage(3)">
-                YouTube
+                Other Projects
             </div>
-            <div class="dropdownButton hideOnHughes" onclick="dropdownShowPage(4);">
+            <!--<div class="dropdownButton hideOnHughes" onclick="dropdownShowPage(4);">
                 Don't Press!
-            </div>
+            </div>-->
         </div>
         <div id="navBarSpacer"></div>
 
@@ -171,19 +171,19 @@
                     <h1 class="sectionTitle2">My Hobbies!</h1>
                     <div class="buttonPanel">
                         <div class="selected">
-                            <button onclick="selectNewInterest(this);">My Friends</button>
+                            <button onclick="selectNewInterest(this, true);">My Friends</button>
                         </div>
                         <div>
-                            <button onclick="selectNewInterest(this);">YouTube</button>
+                            <button onclick="selectNewInterest(this, true);">YouTube</button>
                         </div>
                         <div>
-                            <button onclick="selectNewInterest(this);">Theater</button>
+                            <button onclick="selectNewInterest(this, true);">Theater</button>
                         </div>
                         <div>
-                            <button onclick="selectNewInterest(this);">Music</button>
+                            <button onclick="selectNewInterest(this, true);">Music</button>
                         </div>
                         <div>
-                            <button onclick="selectNewInterest(this);">Minecraft</button>
+                            <button onclick="selectNewInterest(this, true);">Minecraft</button>
                         </div>
                     </div>
                 </div>
@@ -200,6 +200,57 @@
                     </div>
                 </div>
             </div>
+            <!--<div class="article subarticle hideOnPrint">
+                <div class="section">
+                    <h1 class="sectionTitle1" style="color: white; font-size: 20px;">Topic:</h1>
+                    <h1 class="sectionTitle2">My Special Interests!</h1>
+                    <div class="buttonPanel">
+                        <div class="selected">
+                            <button onclick="selectNewInterest(this, false);">Ecosystems</button>
+                        </div>
+                        <div>
+                            <button onclick="selectNewInterest(this, false);">...</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h1 class="sectionTitle1">My Special Interests!</h1>
+                    <div id="mySpecialInterests">
+                        <div class="galleryLinks">
+                            <a class="subsection sectionImg1" href="LINK" target="_blank">
+                                <div class="link">
+                                    Title 1
+                                </div>
+                                <div class="sidePhoto"></div>
+                            </a>
+                            <a class="subsection sectionImg1" href="LINK" target="_blank">
+                                <div class="link">
+                                    Title 2
+                                </div>
+                                <div class="sidePhoto"></div>
+                            </a>
+                            <a class="subsection sectionImg1" href="LINK" target="_blank">
+                                <div class="link">
+                                    Title 3
+                                </div>
+                                <div class="sidePhoto"></div>
+                            </a>
+                            <a class="subsection sectionImg1" href="LINK" target="_blank">
+                                <div class="link">
+                                    Title 4
+                                </div>
+                                <div class="sidePhoto"></div>
+                            </a>
+                        </div>
+                        <div></div>
+                        <div class="subsection sectionImg2">
+                            <img class="sidePhoto" src="">
+                            <img class="sidePhoto" src="">
+                            <img class="sidePhoto" src="">
+                        </div>
+                    </div>
+                </div>
+            </div>-->
             <div class="article subarticle hideOnPrint" style="display: block;">
                 <div class="section">
                     <h1>What have I been up to...?</h1>
@@ -235,7 +286,7 @@
             <!-- Prefab -->
             <div class="article subarticle" style="display: none;">
                 <div class="section">
-                    <h1><a href="LINK" target="_blank">TITLE
+                    <h1><a class="link" href="LINK" target="_blank">TITLE
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                         </a>
                         <div>DATE</div>
@@ -279,10 +330,10 @@
             </div>
             <div class="showOnPrint" style="height: 105px; display: none;"></div>
             <div class="organizationBar hideOnPrint">
-                <div class="selected">
+                <div>
                     <button onclick="projectFilter(this)">All</button>
                 </div>
-                <div>
+                <div class="selected">
                     <button onclick="projectFilter(this)">Full Releases</button>
                 </div>
                 <div>
@@ -297,7 +348,7 @@
             <!-- Prefab -->
             <div class="article subarticle" style="display: none;">
                 <div class="section">
-                    <h1><a href="LINK" target="_blank">TITLE
+                    <h1><a class="link" href="LINK" target="_blank">TITLE
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                         </a>
                         <div>DATE</div>
@@ -335,7 +386,7 @@
             </div>
             <div class="article" style="display: block; width: 950px;">
                 <div class="section">
-                    <h1><a href="https://www.youtube.com/playlist?list=PLszFVnnZcmaopY7no2EGotH84xF_lQEoG" target="_blank">~ My BEST Videos! ~
+                    <h1><a class="link" href="https://www.youtube.com/playlist?list=PLszFVnnZcmaopY7no2EGotH84xF_lQEoG" target="_blank">~ My BEST Videos! ~
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                     </a></h1>
                     <div id="MyBestPlaylist" class="playlist gallery">

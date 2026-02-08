@@ -5,13 +5,13 @@
         transform: translate(0px, 0px) rotate(0deg);
     }
     25% {
-        transform: translate(-6px, 8px) rotate(-1deg);
+        transform: translate(-6px, 8px) rotate(-.5deg);
     }
     50% {
-        transform: translate(-2px, 4px) rotate(-3deg);
+        transform: translate(-2px, 4px) rotate(-1.5deg);
     }
     75% {
-        transform: translate(8px, -5px) rotate(4deg);
+        transform: translate(8px, -5px) rotate(2deg);
     }
     100% {
         transform: translate(0px, 0px) rotate(0deg);
@@ -23,13 +23,13 @@
         transform: translate(0px, 0px) rotate(0deg);
     }
     25% {
-        transform: translate(8px, 3px) rotate(-1deg);
+        transform: translate(8px, 3px) rotate(-.5deg);
     }
     50% {
-        transform: translate(-5px, -8px) rotate(4deg);
+        transform: translate(-5px, -8px) rotate(2deg);
     }
     75% {
-        transform: translate(5px, -6px) rotate(-2deg);
+        transform: translate(5px, -6px) rotate(-1deg);
     }
     100% {
         transform: translate(0px, 0px) rotate(0deg);
@@ -41,13 +41,13 @@
         transform: translate(0px, 0px) rotate(0deg);
     }
     25% {
-        transform: translate(-6px, -2px) rotate(4deg);
+        transform: translate(-6px, -2px) rotate(2deg);
     }
     50% {
-        transform: translate(-1px, 8px) rotate(-4deg);
+        transform: translate(-1px, 8px) rotate(-2deg);
     }
     75% {
-        transform: translate(3px, -6px) rotate(-3deg);
+        transform: translate(3px, -6px) rotate(-1.5deg);
     }
     100% {
         transform: translate(0px, 0px) rotate(0deg);
@@ -59,13 +59,13 @@
         transform: translate(0px, 0px) rotate(0deg);
     }
     25% {
-        transform: translate(3px, -6px) rotate(-3deg);
+        transform: translate(3px, -6px) rotate(-1.5deg);
     }
     50% {
-        transform: translate(-8px, -1px) rotate(4deg);
+        transform: translate(-8px, -1px) rotate(2deg);
     }
     75% {
-        transform: translate(-2px, 4px) rotate(-3deg);
+        transform: translate(-2px, 4px) rotate(-1.5deg);
     }
     100% {
         transform: translate(0px, 0px) rotate(0deg);
@@ -77,13 +77,13 @@
         transform: translate(0px, 0px) rotate(0deg);
     }
     25% {
-        transform: translate(-5px, 8px) rotate(-1deg);
+        transform: translate(-5px, 8px) rotate(-.5deg);
     }
     50% {
-        transform: translate(-2px, 5px) rotate(-3deg);
+        transform: translate(-2px, 5px) rotate(-1.5deg);
     }
     75% {
-        transform: translate(3px, -7px) rotate(-3deg);
+        transform: translate(3px, -7px) rotate(-1.5deg);
     }
     100% {
         transform: translate(0px, 0px) rotate(0deg);

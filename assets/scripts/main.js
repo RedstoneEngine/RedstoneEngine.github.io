@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Loads subDomain
             if (subDomain != "") {
-                page.children[2].children[0].classList.remove("selected");
                 for (var i = 0; i < page.children[2].children.length; i++) {
+                    page.children[2].children[i].classList.remove("selected");
                     var bttnText = page.children[2].children[i].children[0].innerText;
                     if (bttnText.replaceAll(" ", "").replaceAll("/", "") == subDomain) {
                         page.children[2].children[i].classList.add("selected");
