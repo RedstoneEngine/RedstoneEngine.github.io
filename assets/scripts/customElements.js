@@ -35,7 +35,7 @@ function loadAboutMe()
                 interestTable[1] = response.split("\r\n");
                 if (interestTable[1].length < 2)
                     interestTable[1] = response.split("\n");
-                loadSpecialInterest("Ecosystems");
+                loadSpecialInterestTeaser("Ecosystems");
             } else {
                 console.error("Request failed. Status:", xhr.status);
             }
@@ -74,45 +74,29 @@ function loadInterest(interestIndex) {
     document.getElementById("myInterests").children[1].innerHTML = sectionString;
 
     //Images
-    document.getElementById("myInterests").children[0].children[0].src = "./assets/sprites/aboutMe/" + interestIndex + ".webp"
-    document.getElementById("myInterests").children[2].children[0].src = "./assets/sprites/aboutMe/" + interestIndex + ".webp"
+    document.getElementById("myInterests").children[0].children[0].src = "./assets/sprites/aboutMe/" + interestIndex + ".webp";
+    document.getElementById("myInterests").children[2].children[0].src = "./assets/sprites/aboutMe/" + interestIndex + ".webp";
 }
 
-/*function loadSpecialInterest(interestIndex) {
+/*function loadSpecialInterestTeaser(interestIndex) {
     //Puts response based on table
-    var inCorrectSection = false;
     var sectionString = "";
     interestTable[1].forEach((element) => {
         var keyItem = element.split(",");
-        if (inCorrectSection && keyItem[0] != "")
-            inCorrectSection = false;
-        if (keyItem[0] == interestIndex || inCorrectSection) {
+        if (keyItem[0] == interestIndex) {
             inCorrectSection = true;
             sectionString += "&nbsp;&nbsp;&nbsp;&nbsp;";
-            for (var i = 5; i < keyItem.length; i++)
+            for (var i = 6; i < keyItem.length; i++)
                 sectionString += keyItem[i].replaceAll("\"", "") + ",";
             sectionString = sectionString.slice(0, -1);
-            sectionString += "<br><br>";
-        }
-        if (keyItem[0] == interestIndex) {
-            //Images
-            for (var i = 0; i < 4; i++) {
-                var linkKeyValue = keyItem[i + 1].split(" = ");
-                var galleryImg = document.getElementById("mySpecialInterests").children[0].children[i];
-                //Link
-                galleryImg.href = linkKeyValue[1];
-                //Title
-                galleryImg.children[0].firstChild.data = linkKeyValue[0];
-                //Img
-                galleryImg.children[1].style.backgroundImage =
-                    "url('./assets/sprites/aboutMe/specialInterests/" + interestIndex + "_" + (i + 1) + ".webp')";
-                
-                document.getElementById("mySpecialInterests").children[2].children[0].src = "./assets/sprites/aboutMe/specialInterests/" + interestIndex + ".webp";
-            }
+            sectionString += " ... <br>";
+
+            //Image
+            document.getElementById("mySpecialInterests").children[0].children[0].src =
+                "./assets/sprites/aboutMe/specialInterests/" + interestIndex + "_" + (parseInt(keyItem[1]) + 1) + ".webp";
         }
     });
-    sectionString = sectionString.slice(0, -8);
-    document.getElementById("mySpecialInterests").children[1].innerHTML = sectionString;
+    document.getElementById("mySpecialInterests").children[1].children[0].innerHTML = sectionString;
 }*/
 
 function selectNewInterest(self, isHobby) {
@@ -125,10 +109,10 @@ function selectNewInterest(self, isHobby) {
     }
     self.parentElement.classList.add("selected");
 
-    //if (isHobby)
+    if (isHobby)
         loadInterest(interestIndex);
-    //else
-    //    loadSpecialInterest(interestIndex);
+    else
+        loadSpecialInterestTeaser(interestIndex);
 }
 
 
@@ -234,8 +218,10 @@ function loadProjects(index, filter) {
                     currNode.children[1].children[i].style.backgroundImage = "url('./assets/sprites/" + id.toLowerCase() + "/" + shortName + "_" + (i + 1) + ".webp')"
 
                 //Has Video
-                if (row[4] != "")
+                if (row[4] != "") {
                     currNode.children[1].children[2].setAttribute("youtube", row[4]);
+                    currNode.children[1].children[2].style.borderColor = "white";
+                }
                 //Remove play button
                 else {
                     currNode.children[1].children[2].children[0].remove();

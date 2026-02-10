@@ -50,8 +50,8 @@ body {
 }
 
 #banner {
-    height: 155px;
-    max-height: 25vw;
+    height: 175px;
+    max-height: 30vw;
     margin-bottom: 25px;
 
     display: flex;
@@ -60,8 +60,8 @@ body {
 
 #banner > img {
     position: absolute;
-    height: inherit;
-    max-height: inherit;
+    height: 130px;
+    max-height: 20vw;
 }
 
 #banner > div {
@@ -73,6 +73,21 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     z-index: -1;
+}
+
+.bannerTitle {
+    display: block !important;
+    align-content: end;
+    text-align: center;
+    height: 115px !important;
+    max-height: 21vw;
+    margin-top: 50px;
+    color: whitesmoke;
+}
+
+.bannerTitle > div {
+    font-size: 13px;
+    color: rgb(173, 173, 173);
 }
 
 .navBar {

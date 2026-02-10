@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
             hashLocation = hashLocation.substring(0, hashLocation.length - 9);
 
             // Remove NavBar
-            document.getElementById("navBar").classList.add("hide");
-            document.getElementById("shortNavBar").classList.add("hide");
-            document.getElementById("navBarSpacer").classList.add("hide");
+            navBar.classList.add("hide");
+            shortNavBar.classList.add("hide");
+            navBarSpacer.classList.add("hide");
             document.getElementById("aboutMeEndSpacer").classList.add("hide");
 
             // Set Pages to be full height
@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
             page.classList.add("showPage");
             
             // Highlight Correct Button
-            document.getElementById("navBar").children[0].classList.remove("selected");
+            navBar.children[0].classList.remove("selected");
             var currIndex = pageTitles.findIndex((title) => title.replaceAll(' ', '') === hashLocation);
-            document.getElementById("navBar").children[currIndex].classList.add("selected");
-            document.getElementById("navBarCurrent").firstChild.textContent = pageTitles[currIndex] + " ";
+            navBar.children[currIndex].classList.add("selected");
+            document.getElementById("navBarCurrent").firstChild.textContent = navBar.children[currIndex].innerText;
             prevIndex = currIndex;
 
             // Loads subDomain
@@ -166,19 +166,19 @@ function showPage(index) {
         var currPage = null;
 
         // Hide Previous Selection
-        document.getElementById("navBar").children[prevIndex].classList.remove("selected");
+        navBar.children[prevIndex].classList.remove("selected");
         prevPage = document.getElementById(pageTitles[prevIndex].replaceAll(' ', '') + "_");
         setTimeout(() => {prevPage.classList.remove("showPage")}, 250);
 
         // Show Current Selection
-        document.getElementById("navBar").children[index].classList.add("selected");
+        navBar.children[index].classList.add("selected");
         var pageName = pageTitles[index].replaceAll(' ', '');
         currPage = document.getElementById(pageName + "_");
         currPage.classList.add("showPage");
 
         // Store Location Name
         document.location.hash = pageName;
-        document.getElementById("navBarCurrent").firstChild.textContent = pageTitles[index] + " ";
+        document.getElementById("navBarCurrent").firstChild.textContent = navBar.children[index].innerText;
 
         // Animations
         if (index > prevIndex) {

@@ -23,7 +23,6 @@
 
 #mobilePhotoSubsection {
     display: none;
-    padding-bottom: 30px;
 }
 
 #nametag {
@@ -73,11 +72,7 @@
 }
 
 #mySpecialInterests {
-    overflow-y: scroll;
-    height: 400px;
-    padding-right: 10px;
-    line-height: 115%;
-    font-size: 16.5px;
+
 }
 
 .galleryLinks {
