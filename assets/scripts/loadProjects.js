@@ -102,6 +102,7 @@ function loadProjects(index, filter) {
 
             //Thnl / GIF
             newNode.children[1].children[0].children[0].children[0].src = "./assets/sprites/programming/" + row[0].replaceAll(" ", "").replaceAll(".", "") +".webp";
+            newNode.children[1].children[1].poster = "./assets/sprites/programming/" + row[0].replaceAll(" ", "").replaceAll(".", "") +"_Poster.webp";
             newNode.children[1].children[1].children[0].src = "./assets/sprites/programming/" + row[0].replaceAll(" ", "").replaceAll(".", "") +".mp4";
 
             //Setup Hover response

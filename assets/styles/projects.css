@@ -153,6 +153,11 @@
     width: 75%;
     height: 75%;
 
+    background-size: 70px, 100%;
+    background-image: url("../../assets/sprites/PageBackground.webp");
+    background-image: url("../../assets/sprites/PageBackground_Gradient.webp"),
+        linear-gradient(150deg, rgba(48,73,40,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgb(71, 37, 75) 100%);
+
     border: 2px solid rgb(98, 211, 111);
     border-radius: 15px;
 }
@@ -183,7 +188,7 @@
 @media screen and (max-width: 1200px) {
     #projectsOverlay > iframe {
         min-width: 90vw;
-        height: 90vh;
+        height: 90svh;
     }
     #projectsOverlayExit {
         margin-top: calc(5vh - 2px);

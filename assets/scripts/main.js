@@ -219,17 +219,22 @@ function showGallery(self) {
         document.getElementById("galleryImage").children[1].src = src;
         document.getElementById("galleryImage").children[0].style.display = "none";
         document.getElementById("galleryImage").children[1].style.display = "inherit";
+        showOverlay("galleryImage");
+        document.body.style.overflowY = "hidden";
     }
     // Show Image
     else {
-        var src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 2);
-        src = src.substring(0, src.lastIndexOf('/')) + "/fullres" + src.substring(src.lastIndexOf('/'));
-        document.getElementById("galleryImage").children[0].src = src;
-        document.getElementById("galleryImage").children[0].style.display = "inherit";
-        document.getElementById("galleryImage").children[1].style.display = "none";
+        document.getElementById("galleryImage").children[0].src = "";
+        setTimeout(() => {
+            var src = self.style.backgroundImage.substring(5, self.style.backgroundImage.length - 2);
+            src = src.substring(0, src.lastIndexOf('/')) + "/fullres" + src.substring(src.lastIndexOf('/'));
+            document.getElementById("galleryImage").children[0].src = src;
+            document.getElementById("galleryImage").children[0].style.display = "inherit";
+            document.getElementById("galleryImage").children[1].style.display = "none";
+            showOverlay("galleryImage");
+            document.body.style.overflowY = "hidden";
+        }, 100);
     }
-    showOverlay("galleryImage");
-    document.body.style.overflowY = "hidden";
 }
 
 //Show Gallery called from Programming Pages
@@ -238,14 +243,19 @@ window.showGalleryCall = function(src, video) {
         document.getElementById("galleryImage").children[1].src = src;
         document.getElementById("galleryImage").children[0].style.display = "none";
         document.getElementById("galleryImage").children[1].style.display = "inherit";
+        showOverlay("galleryImage");
+        document.body.style.overflowY = "hidden";
     }
     else {
-        document.getElementById("galleryImage").children[0].src = src;
-        document.getElementById("galleryImage").children[0].style.display = "inherit";
-        document.getElementById("galleryImage").children[1].style.display = "none";
+        document.getElementById("galleryImage").children[0].src = "";
+        setTimeout(() => {
+            document.getElementById("galleryImage").children[0].src = src;
+            document.getElementById("galleryImage").children[0].style.display = "inherit";
+            document.getElementById("galleryImage").children[1].style.display = "none";
+            showOverlay("galleryImage");
+            document.body.style.overflowY = "hidden";
+        }, 100);
     }
-    showOverlay("galleryImage");
-    document.body.style.overflowY = "hidden";
 }
 
 //No fullres option

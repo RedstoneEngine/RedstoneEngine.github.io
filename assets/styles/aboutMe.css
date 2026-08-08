@@ -22,6 +22,9 @@
 }
 
 #mobilePhotoSubsection {
+    height: 275px;
+    max-height: 40vw;
+
     display: none;
 }
 
