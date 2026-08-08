@@ -1,0 +1,286 @@
+
+/* Root User Interface Behavior*/
+
+:root {
+    --show-on-hughes: none !important;
+    --hide-on-hughes: block !important;
+}
+
+@font-face{
+    font-family: sn_pro;
+    src: url('../font/SN_Pro/SNPro-VariableFont_wght.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.showOnHughes {
+    display: var(--show-on-hughes) !important;
+}
+
+.hideOnHughes {
+    display: var(--hide-on-hughes) !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Colored Buttons with Border */
+
+button {
+    padding: 5px 15px;
+
+    background-color: var(--button-background-color);
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.5) inset, 3px 3px 0 0 rgba(0, 0, 0, 0);
+    color: white;
+
+    border: 2px solid var(--button-color);
+    border-radius: 10px;
+
+    font-size: 18px;
+    font-family: sn_pro;
+    cursor: pointer;
+    transition-duration: 0.4s;
+
+    --button-color: cornflowerblue;
+    --button-background-color: rgba(100, 148, 237, 0.1);
+    --button-shadow-color: rgba(100, 148, 237, 0.55);
+}
+
+@media (hover: hover) {
+    button:hover {
+        color: black;
+        background-color: var(--button-color);
+        box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.5) inset, 3px 3px 0 0 var(--button-shadow-color);
+    }
+}
+
+button.selected {
+    --button-color: orange;
+    --button-background-color: rgba(255, 166, 0, 0.25);
+    --button-shadow-color: rgba(255, 166, 0, 0.625);
+    animation: none !important;
+}
+
+button.green {
+    --button-color: rgb(98, 211, 111);
+    --button-background-color: rgb(33, 70, 37);
+    --button-shadow-color: rgba(98, 211, 111, 0.625);
+}
+
+button > svg {
+    margin-top: 3px;
+    margin-bottom: -2px;
+    width: 22px;
+    height: 17.5px;
+    fill: white;
+    transition-duration: 0.4s;
+}
+
+@media (hover: hover) {
+    button:hover > svg {
+        fill: black;
+    }
+}
+
+button:active > svg {
+    fill: black;
+}
+
+.buttonContext {
+    position: absolute;
+    width: 18.5px;
+    height: 29.5px;
+    margin-left: .25vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    color: white;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition-duration: .1s;
+}
+
+.buttonContext > div {
+    padding: 1px 5px;
+
+    background-color: rgb(36, 36, 36);
+    color: white;
+    border: 2px rgb(98, 211, 111) solid;
+    border-radius: 3px;
+
+    font-size: 17px;
+    white-space: nowrap;
+    text-wrap: nowrap;
+}
+
+@media (hover: hover) {
+    button:hover > .buttonContext {
+        height: 32.5px;
+        opacity: 1;
+    }
+}
+
+/* Top NavBar with Buttons */
+
+.navBar {
+    display: flex;
+    width: 85vw;
+    padding-bottom: 25px;
+    z-index: 1;
+}
+
+.navBarLock {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    padding: 15px 7.5vw 25px 7.5vw;
+
+    mask-image: linear-gradient(0deg, rgba(48, 73, 40, 0) 0%, rgba(255, 255, 255, 1) 25%);
+    background: url("../sprites/Background_Tiled.webp") repeat fixed;
+    background-size: 200vw;
+    background-position-x: 20%;
+}
+
+#shortNavBar {
+    padding-left: 3vw;
+    display: none;
+}
+
+#shortNavBar.navBarLock {
+    padding-left: 10.5vw;
+}
+
+#navBarCurrent {
+    padding: 4px 10px 4px 15px;
+}
+
+#navList {
+    background-color: rgb(0, 0, 0, .15);
+}
+
+#navList > div {
+    position: fixed;
+    transition-duration: 0s;
+}
+
+#navList > div > div {
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+}
+
+#navBarSpacer {
+    display: none;
+    height: 59.8px;
+}
+
+/* Dropdown Selection Button */
+
+.dropdownContainer {
+    height: 0px;
+    max-height: fit-content;
+    padding: 2px 0px;
+    margin-bottom: -250px;
+    overflow: hidden;
+
+    background-color: rgb(36, 36, 36);
+    border: 2px solid rgb(98, 211, 111);
+    border-radius: 3px;
+    opacity: 0;
+    transition-duration: .6s;
+    z-index: 11;
+}
+
+.overlayFrame.show > .dropdownContainer{
+    height: 250px;
+    opacity: 1;
+}
+
+.dropdownButton {
+    display: block;
+    padding: 0px 7px;
+
+    background-color: rgb(0, 0, 0, 0);
+    color: white;
+    fill: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition-duration: .4s;
+}
+
+.dropdownButton:active {
+    background-color: rgb(255, 255, 255, .25);
+}
+
+.dropdownButton:hover {
+    background-color: rgb(255, 255, 255, .25);
+}
+
+.dropdownButton > svg {
+    width: 17.5px;
+    height: 17.5px;
+    margin: 2px 2px -2px 0px;
+}
+
+.dropdownInfo {
+    margin: 2px 0px -2px -3px;
+    color: rgb(255, 255, 255, .5);
+    font-size: 12px;
+}
+
+/* Links */
+
+a {
+    color: #0484d1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Video Frame */
+
+.videoFrame {
+    width: 100%;
+    height: 55vh;
+}
+
+@media screen and (max-width: 1050px) {
+    .videoFrame {
+        height: 45vw;
+    }
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 7.5px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 100px;
+}

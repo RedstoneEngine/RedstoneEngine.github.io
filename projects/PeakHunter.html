@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- HEADER PAGE SETUP-->
+
+        <title>RedEng Developer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link class="icon" rel="icon" sizes="288x288" href="../assets/sprites/WebsiteIcon.ico" type="image/x-icon">
+        <link class="icon" rel="apple-touch-icon" href="../assets/sprites/WebsiteIcon.ico" type="image/x-icon">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="../assets/styles/userInterface.css?v=8_7_26">
+        <link rel="stylesheet" href=".../assets/styles/base.css?v=8_7_26">
+
+        <link rel="stylesheet" href="./assets/projectPage.css?v=8_7_26">
+
+        <!-- Scripts -->
+        <script src="././assets/projectPage.js?v=8_7_26"></script>
+    </head>
+    <body>
+        <button id="ClickToOpen" class="green" onclick="openLink('https://thunderstore.io/c/peak/p/BloopTankStudios/Hunter/')">
+            Click to Play
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
+        </button>
+        <div id="IntroSection" class="flex">
+            <div id="ColorfulDescript">
+                <div class="flex">
+                    <div class="subsection">
+                        <img class="icon" src="../assets/sprites/programming/PeakHunter.webp">
+                    </div>
+                    <video class="gif" autoplay loop muted>
+                        <source type="video/mp4" src="../assets/sprites/programming/PeakHunter.mp4">
+                    </video>
+                </div>
+                <div class="flex tags">
+                    <div class="subsection filterTag">Game Design</div>
+                    <div class="subsection filterTag">Solo</div>
+                    <div class="subsection filterTag">Unity Plugin Mod</div>
+                </div>
+            </div>
+            <div class="section firstParagraph">
+                <div id="ColorfulDescript_Mobile" class="mobileElement subsection"></div>
+                <h1>Peak Hunter</h1>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Peak Hunter is a unique spin on a recent game that I've loved playing,
+                <a href="https://store.steampowered.com/app/3527290/PEAK/" target="_blank">PEAK</a>.
+                In PEAK your goal is to climb your way past many climates and obstacles as you attempt to reach the Peak and leave on
+                a helicopter. In my mod Peak Hunter before starting, you select your roles: Climber or Hunter. Climbers have the same goal,
+                reach the top, except 1 random climber will receive a stun blowgun on a cooldown to be used against the Hunter(s).
+                Hunters, however, must stop the Climbers from reaching the Peak using a new explosive hand attack!
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;This was my first plugin mod where I had to use patching to modify the behavior of native Unity game functions,
+                and while challenging was worth it as it gained over 8k downloads in 4 months! This mod was made primarly
+                as a unique video idea for a new collaborative channel <a href="https://www.youtube.com/@BloopTank" target="_blank">BloopTank</a> and
+                the video was also a success reaching 25k views and an additional 80 subscribers in 1 month from an almost empty channel!
+                I have since due to community requests, added a few more features, improved balancing, and fixed bugs!
+            </div>
+        </div>
+        <div id="MainGallery" class="flexCentered">
+            <svg class="arrowBttn disabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M201.4 297.4C188.9 309.9 188.9 330.2 201.4 342.7L361.4 502.7C373.9 515.2 394.2 515.2 406.7 502.7C419.2 490.2 419.2 469.9 406.7 457.4L269.3 320L406.6 182.6C419.1 170.1 419.1 149.8 406.6 137.3C394.1 124.8 373.8 124.8 361.3 137.3L201.3 297.3z"/></svg>
+            <div class="section">
+                <div class="gallery">
+                    <div>
+                        <img onclick="showGallery(this);" loading="lazy" src="./PeakHunter/Main_Vid.webp" video="https://www.youtube.com/embed/09OCAMJt05M">
+                        <div class="videoPlayMarker">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM252.3 211.1C244.7 215.3 240 223.4 240 232L240 408C240 416.7 244.7 424.7 252.3 428.9C259.9 433.1 269.1 433 276.6 428.4L420.6 340.4C427.7 336 432.1 328.3 432.1 319.9C432.1 311.5 427.7 303.8 420.6 299.4L276.6 211.4C269.2 206.9 259.9 206.7 252.3 210.9z"/></svg>
+                        </div>
+                        <img onclick="showGallery(this);" loading="lazy" src="./PeakHunter/Main_1.webp">
+                        <img onclick="showGallery(this);" loading="lazy" src="./PeakHunter/Main_4.webp">
+
+                    </div>
+                </div>
+            </div>
+            <svg class="arrowBttn disabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M439.1 297.4C451.6 309.9 451.6 330.2 439.1 342.7L279.1 502.7C266.6 515.2 246.3 515.2 233.8 502.7C221.3 490.2 221.3 469.9 233.8 457.4L371.2 320L233.9 182.6C221.4 170.1 221.4 149.8 233.9 137.3C246.4 124.8 266.7 124.8 279.2 137.3L439.2 297.3z"/></svg>
+        </div>
+        <div style="width: 10px; padding-bottom: 2vh"></div>
+    </body>
+</html>

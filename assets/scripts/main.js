@@ -1,8 +1,6 @@
 
 // Main JS Functions
 
-var pageTitles = ["Who Am I?", "Programming", "Engineering", "YouTube", "Don't Press!"];
-
 // Page Load
 document.addEventListener("DOMContentLoaded", () => {
     // Assign Element Variables
@@ -46,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Remove First Page
             if (!isPorfolio)
-                document.getElementById(pageTitles[0].replaceAll(' ', '') + "_").classList.remove("showPage")
+                document.getElementById("AboutMe_").classList.remove("showPage")
 
             // Show Current Page
             var page = document.getElementById(hashLocation + "_");
@@ -54,81 +52,84 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Highlight Correct Button
             navBar.children[0].classList.remove("selected");
-            var currIndex = pageTitles.findIndex((title) => title.replaceAll(' ', '') === hashLocation);
+            var currIndex = -1;
+            for (var i = 0; i < navBar.children.length; i++)
+                if (navBar.children[i].getAttribute("value") === hashLocation)
+                    currIndex = i;
             navBar.children[currIndex].classList.add("selected");
             document.getElementById("navBarCurrent").firstChild.textContent = navBar.children[currIndex].innerText;
             prevIndex = currIndex;
 
             // Loads subDomain
             if (subDomain != "") {
+                var validSubdomain = false;
+                page.children[2].children[0].classList.remove("selected");
                 for (var i = 0; i < page.children[2].children.length; i++) {
-                    page.children[2].children[i].classList.remove("selected");
-                    var bttnText = page.children[2].children[i].children[0].innerText;
-                    if (bttnText.replaceAll(" ", "").replaceAll("/", "") == subDomain) {
+                    var filterHash = page.children[2].children[i].getAttribute("hash");
+                    if (filterHash == subDomain) {
                         page.children[2].children[i].classList.add("selected");
-                        subDomain = bttnText.replaceAll(" / ", "");
+                        subDomain = page.children[2].children[i].innerText;
+                        validSubdomain = true;
                     }
+                }
+                if (!validSubdomain) {
+                    page.children[2].children[0].classList.add("selected");
+                    subDomain = "";
                 }
             }
 
             //Set as Selected
-            pageOpened(currIndex, subDomain);
-            if (isPorfolio)
-                pageOpened(0);
+            pageOpened(navBar.children[currIndex].getAttribute("value"), subDomain);
         }
         // Incorrect Load
         else {
             document.location.hash = '';
-            pageOpened(0);
+            pageOpened("AboutMe");
         }
     }
     else
-        pageOpened(0);
+        pageOpened("AboutMe");
 
     window.addEventListener("scroll", () => scrollResponse());
     scrollResponse();
-
-    setupFavoriteVideos();
 });
 
-function pageOpened(pageNumber, info) {
-    switch (pageNumber) {
-        case 0:
-            document.getElementById("aboutMeFrame").src = "https://www.youtube.com/embed/M6HiwVCEiQA";
-            loadAboutMe();
+function pageOpened(pageTitle, info) {
+    switch (pageTitle) {
+        case "AboutMe":
+            document.getElementById("aboutMeFrame").src = "https://www.youtube.com/embed/FheamLV15RM";
             break;
-        case 1:
+        case "Programming":
             loadProjectsTable(0, info);
             break;
-        case 2:
+        case "Engineering":
             loadProjectsTable(1, info);
-            break;
-        case 4:
-            randomPressed();
             break;
     }
 }
 
 // Overlay functions
+var overlayNum = 0;
 function showOverlay(showId, anchor) {
-    if (!document.getElementById("overlay").classList.contains("showOverlay")) {
-        document.getElementById("overlay").classList.add("showOverlay");
-        document.getElementById("overlay").onclick = function(e) {showOverlay(showId)};
+    if (!document.getElementById(showId).classList.contains("show")) {
+        document.getElementById(showId).onclick = function(e) {showOverlay(showId)};
         document.getElementById(showId).classList.add("show");
         // Anchor Element to Self
         if (anchor != null) {
             var rect = anchor.getBoundingClientRect();
-            document.getElementById(showId).style.top = rect.bottom + "px";
-            document.getElementById(showId).style.left = (rect.right - 125) + "px";            
+            document.getElementById(showId).children[0].style.top = rect.bottom + "px";
+            document.getElementById(showId).children[0].style.left = rect.left + "px";            
         }
+        overlayNum++;
     }
     else {
-        document.getElementById("overlay").classList.remove("showOverlay");
         document.getElementById(showId).classList.remove("show");
-        document.body.style.overflowY = "auto";
         // Disable Video just in case
         if (document.getElementById("galleryImage"))
             document.getElementById("galleryImage").children[1].src = "";
+        overlayNum--;
+        if (overlayNum == 0)
+            document.body.style.overflowY = "auto";
     }
 }
 
@@ -152,33 +153,34 @@ function scrollResponse() {
 
 // Nav Button Selection
 var prevIndex = 0;
-function showPage(index) {
+function showPage(self) {
 
-    //Do extra code
-    pageOpened(index);
+    //Do extra code per page
+    pageOpened(self.getAttribute("value"));
 
     // Scroll to Top
     if (window.scrollY >= banner.clientHeight + 20)
         window.scrollTo(0, banner.clientHeight + 20);
 
+    var index = [...self.parentElement.children].indexOf(self);
     if (index != prevIndex) {
         var prevPage = null;
         var currPage = null;
 
         // Hide Previous Selection
         navBar.children[prevIndex].classList.remove("selected");
-        prevPage = document.getElementById(pageTitles[prevIndex].replaceAll(' ', '') + "_");
+        prevPage = document.getElementById(navBar.children[prevIndex].getAttribute("value") + "_");
         setTimeout(() => {prevPage.classList.remove("showPage")}, 250);
 
         // Show Current Selection
         navBar.children[index].classList.add("selected");
-        var pageName = pageTitles[index].replaceAll(' ', '');
+        var pageName = self.getAttribute("value");
         currPage = document.getElementById(pageName + "_");
         currPage.classList.add("showPage");
 
         // Store Location Name
         document.location.hash = pageName;
-        document.getElementById("navBarCurrent").firstChild.textContent = navBar.children[index].innerText;
+        document.getElementById("navBarCurrent").firstChild.textContent = self.innerText;
 
         // Animations
         if (index > prevIndex) {
@@ -198,9 +200,8 @@ function showPage(index) {
 }
 
 // Dropdown Page Selection
-function dropdownShowPage(index) {
-    showPage(index);
-    showOverlay("navList");
+function dropdownShowPage(self) {
+    showPage(self);
 }
 
 // Engineering Code
@@ -231,74 +232,27 @@ function showGallery(self) {
     document.body.style.overflowY = "hidden";
 }
 
+//Show Gallery called from Programming Pages
+window.showGalleryCall = function(src, video) {
+    if (video) {
+        document.getElementById("galleryImage").children[1].src = src;
+        document.getElementById("galleryImage").children[0].style.display = "none";
+        document.getElementById("galleryImage").children[1].style.display = "inherit";
+    }
+    else {
+        document.getElementById("galleryImage").children[0].src = src;
+        document.getElementById("galleryImage").children[0].style.display = "inherit";
+        document.getElementById("galleryImage").children[1].style.display = "none";
+    }
+    showOverlay("galleryImage");
+    document.body.style.overflowY = "hidden";
+}
+
 //No fullres option
 function reloadGalleryImage(self) {
     self.src = self.src.substring(0, self.src.lastIndexOf('/') - 8) + self.src.substring(self.src.lastIndexOf('/'));
 }
 
-//Unfortunately manual setup but oh well
-function setupFavoriteVideos() {
-    var videoInfo = ["How I Became the #1 Living Tombstone Fan!", "liyx33umy78",
-        "[Conquer the Tree] Now Released on AirConsole.com!", "9XybB5iKBDs",
-        "How I Created my First Robot!", "M6HiwVCEiQA",
-        "[VRS] A Virtual Robot Simulator for FTC!", "HvywykxdrBU",
-        "Devlog - Swinging Like Spiderman!", "pgUL1RheLG4",
-        "250 Subscriber S̴p̷e̴c̵̱̓i̵̖̊ḁ̸̈ḻ̷͇̉!̵͚̣̿̔", "K8w44mNalI0",
-        "Making a 3D Plants vs. Zombies Augmented Reality Game!", "rU2_OTNgbO0",
-        "Scrolling RPG Dialogue System in Vanilla Minecraft!", "UCEZmEWEHOY",
-        "[ TRULY EXCELLENT. ] Deltacraft - Deltarune in Minecraft Java Edition", "XXp-lb8CZ7w",
-        "[Villain REWIND] I Made a Cool Game out of Nowhere??", "p2JFJR0HKDA",
-        "Realistic Water in Minecraft?", "DklCVXgwtDg",
-        "Working TNT Yeeter!", "zhM8zV9gDYY",
-        "[Space Fighters!] A New Shoot Em' Up Game", "0KUQqyvHXVk",
-        "SHOW YOURSELF DELTACRAFT! - Deltarune in Minecraft Bedrock Edition", "ucubTxwIqGM",
-        "[Abenteuer] The BETA is FINISHED!", "7Lj53xyhhSA",
-        "Bedrock Commands - Creating a 2D Game: First Demo!", "mMm0U7JsQPo",
-        "Minecraft - Rainbow Six Siege Project!", "Eydxh8v-vNU",
-        "Minecraft Bedrock - Making My Very Own GAME SHOW!", "xTIYSt-OpFg",
-        "My Five Night's At Freddy's Mod!", "ZkBx7dQK9BE",
-        "My First Bedrock Redstone Contraption! - Triangular Piston Door!", "pE4xGnBATzU",
-        "I made Snake, a Memory Game, and Pong on my TI-84 Calculator!", "bsU8hg-PrxA",
-        "Lego Elf on the Shelf!", "RZlHjFEPytI"];
-
-    var playlistElement = document.getElementById("MyBestPlaylist");
-
-    //Add odds then evens
-    for (var i = 0; i < videoInfo.length / 2; i += 2) {
-        addVideo(videoInfo[i * 2], videoInfo[i * 2 + 1]);
-    }
-
-    playlistElement.appendChild(document.createElement("br"));
-
-    for (var i = 1; i < videoInfo.length / 2; i += 2) {
-        addVideo(videoInfo[i * 2], videoInfo[i * 2 + 1]);
-    }
-    
-    //Setup scrolling
-    playlistElement.addEventListener('wheel', (event) => {
-        event.preventDefault(); // Prevent default vertical scrolling
-
-        // Adjust the scroll amount based on deltaY (mouse wheel direction)
-        playlistElement.scrollLeft += event.deltaY;
-    });
-}
-
-function addVideo(videoTitle, videoLink) {
-    //Thumbnail
-    var newVideo = document.createElement("div");
-    newVideo.style.backgroundImage = "url('./assets/sprites/youtube/" + videoTitle.replaceAll('#', '').replaceAll('?', '').replaceAll("'", '').replaceAll(':', '') + ".webp')";
-
-    //Link
-    newVideo.setAttribute("youtube", "https://www.youtube.com/embed/" + videoLink + "?list=PLszFVnnZcmaopY7no2EGotH84xF_lQEoG");
-    newVideo.onclick = function() { showGallery(this); }
-
-    //Title
-    var title = document.createElement("div");
-    title.innerText = videoTitle;
-    newVideo.appendChild(title);
-
-    //Play Bttn
-    //newVideo.appendChild(document.getElementById("playBttn").cloneNode(true));
-
-    document.getElementById("MyBestPlaylist").appendChild(newVideo);
+function openLink(link) {
+    window.open(link, '_blank');
 }

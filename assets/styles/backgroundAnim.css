@@ -1,0 +1,58 @@
+
+.particle {
+    left: 0px;
+    top: 0px;
+    position: fixed;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    image-rendering: -moz-crisp-edges; /* Firefox */
+	image-rendering: -o-crisp-edges; /* Opera */
+	image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+	image-rendering: pixelated;
+	-ms-interpolation-mode: nearest-neighbor;
+    
+    transition: transform linear 1s;
+    z-index: -10;
+}
+
+.asteroid0 {
+    background-image: url('../sprites/backgroundAnim/celestials/asteroid_1.webp');
+}
+
+.asteroid1 {
+    background-image: url('../sprites/backgroundAnim/celestials/asteroid_2.webp');
+}
+
+.asteroid2 {
+    background-image: url('../sprites/backgroundAnim/celestials/asteroid_3.webp');
+}
+
+.asteroid3 {
+    background-image: url('../sprites/backgroundAnim/celestials/asteroid_4.webp');
+}
+
+.star0 {
+    background-image: url('../sprites/backgroundAnim/celestials/star_1.webp');
+}
+
+.star1 {
+    background-image: url('../sprites/backgroundAnim/celestials/star_2.webp');
+}
+
+.star2 {
+    background-image: url('../sprites/backgroundAnim/celestials/star_3.webp');
+}
+
+@keyframes starBlink {
+    0% {
+        opacity: .666;
+    }
+    50% {
+        opacity: .15;
+    }
+    100% {
+        opacity: .666;
+    }
+}

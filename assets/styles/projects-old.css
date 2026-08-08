@@ -1,0 +1,106 @@
+
+/* Engineering Projects */
+
+.showSubarticle {
+    display: flex !important;
+}
+
+#Engineering_ > .subarticle > .section:has(> h1) {
+    min-height: 235px;
+}
+
+.link {
+    color: orange;
+    text-decoration: none;
+    transition-duration: 0.2s;
+    font-family: sn_pro;
+}
+
+.link:hover {
+    color: #0484d1;
+}
+
+.link > svg {
+    height: 15px;
+    margin-left: 5px;
+    fill: hsl(39deg 100% 85% / 75%);
+    filter: drop-shadow(4px 4px 1.5px black);
+    transition-duration: 0.2s;
+}
+
+.link:hover > svg {
+    fill: #0484d1;
+}
+
+.demoProject {
+    display: none;
+}
+
+.subsection.leftThnl {
+    margin: 0px 15px 10px 0px;
+    float: left;
+}
+
+.gallery {
+    width: 100vw;
+    min-width: 150px;
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.gallery > div {
+    cursor: pointer;
+    height: 32%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery > div > img {
+    position: absolute;
+    max-height: 132.5px;
+    max-width: 146.5px;
+}
+
+.gallery > div > svg {
+    fill: hsl(0 100% 25% / 1);
+    filter: drop-shadow(0px 0px 2px lightgray);
+    height: 25%;
+    transition-duration: .2s;
+}
+
+.gallery > div:hover > svg {
+    fill: rgb(255, 85, 85);
+}
+
+@media screen and (max-width: 725px) {
+    .showSubarticle {
+        display: block !important;
+    }
+
+    .gallery {
+        height: 150px;
+        width: auto;
+        min-width: inherit;
+        max-width: inherit;
+        flex-direction: inherit;
+    }
+
+    .gallery > div {
+        width: 32%;
+        height: inherit;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .gallery {
+        width: 97.5%;
+    }
+}

@@ -1,0 +1,290 @@
+
+/* Base Styles */
+
+body {
+    padding: 0px 7.5vw;
+    margin: 8px 0px;
+
+    background: url("../sprites/Background_Tiled.webp") repeat fixed;
+    background-color: rgb(15, 21, 28);
+    background-size: 200vw;
+    background-position-x: 20%;
+    overflow-x: hidden;
+
+    font-family: sn_pro;
+    font-size: 17px;
+    color: white;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* Socials */
+
+#socialsBKGD {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+
+    border-radius: 6px;
+}
+
+#socials {
+    margin: 0px;
+    padding: 5px 6px;
+}
+
+#socialsList {
+    background-color: rgb(0, 0, 0, .15);
+}
+
+#socialsList > div {
+    position: fixed;
+    right: 10px;
+    top: 45px;
+}
+
+/* Top of Website Display */
+
+#banner {
+    height: 175px;
+    max-height: 30vw;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: center;
+}
+
+#banner > img {
+    position: absolute;
+    height: 130px;
+    max-height: 20vw;
+}
+
+#banner > div {
+    position: absolute;
+    width: 85vw;
+    height: 155px;
+
+    background-position-y: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.bannerTitle {
+    display: block !important;
+    align-content: end;
+    text-align: center;
+    height: 115px !important;
+    max-height: 21vw;
+    margin-top: 50px;
+    color: whitesmoke;
+}
+
+.bannerTitle > div {
+    font-size: 13px;
+    color: rgb(173, 173, 173);
+}
+
+/* Pages, Articles, Sections, and Subsections */
+
+.page {
+    position: relative;
+    top: 0px;
+    height: 0px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pageFullHeight {
+    height: auto !important;
+}
+
+.showPage {
+    display: flex;
+}
+
+.sideBySides {
+    display: flex;
+}
+
+.article {
+    width: 850px;
+    max-width: 85vw;
+    padding: 0px 16px 0px 0px;
+    margin-bottom: 40px;
+    display: flex;
+
+    background-size: 70px, 100%;
+    background-image: url("../sprites/PageBackground.webp");
+    background-image: url("../sprites/PageBackground_Gradient.webp"),
+        linear-gradient(150deg, rgba(48,73,40,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgb(71, 37, 75) 100%);
+
+    border: 2px solid rgb(98, 211, 111);
+    border-radius: 10px;
+
+    position: relative;
+    animation: newArticle .5s;
+}
+
+.subarticle {
+    width: 950px;
+    border: 2px solid rgb(211, 63, 63);
+    background-image: url("../sprites/PageBackground_Gradient.webp"),
+        linear-gradient(150deg, rgba(94,45,45,1) 0%, rgba(41,41,41,1) 25%, rgba(41,41,41,1) 75%, rgb(71, 37, 75) 100%);
+}
+
+.section {
+    margin: 16px 0px 16px 16px;
+    padding: 12px 12px;
+
+    text-align: justify;
+    background-color: rgb(80 80 80 / 47%);
+    border-radius: 10px;
+    line-height: 135%;
+}
+
+.subarticle > .section {
+    background-color: rgb(75 75 75 / 44%);
+}
+
+.subsection {
+    width: fit-content;
+
+    background-color: rgba(36, 36, 36, .75);
+    border-radius: 10px;
+}
+
+.subsection:has(> img) {
+    margin: 0px 0px 15px 15px;
+    float: right;
+}
+
+h1 {
+    display: flex;
+    justify-content: space-between;
+    color: #00c6ff;
+    text-shadow: 4px 4px 3px black;
+    font-size: 25px;
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+}
+
+.subarticle > .section > h1 {
+    color: orange;
+    font-size: 22px;
+}
+
+.subarticle > .section > div > h1 {
+    color: orange;
+    font-size: 22px;
+    text-wrap: nowrap;
+}
+
+h1 > div {
+    color: rgb(171, 171, 171);
+    font-size: 15px;
+    text-shadow: none;
+}
+
+/* Overlays */
+
+.overlayFrame {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 11;
+    opacity: 0;
+    transition-duration: .2s;
+    background-color: rgb(0, 0, 0, .25);
+}
+
+.overlayFrame.show {
+    opacity: 1;
+    pointer-events: inherit;
+}
+
+/* Gallery */
+
+#galleryImage {
+    backdrop-filter: blur(2px);
+    z-index: 12;
+}
+
+#galleryImage > img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 20px;
+}
+
+#galleryImage > iframe {
+    min-width: 142.22vh;
+    height: 80%;
+    border: 1px rgb(171, 171, 171) solid;
+    border-radius: 20px;
+}
+
+#galleryImage.show > iframe {
+    pointer-events: all;
+}
+
+/* Resizing Changes */
+
+@media screen and (max-width: 1200px) {
+    #banner > div {
+        display: var(--show-on-hughes);
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #banner > div {
+        display: none;
+    }
+    .bannerTitle {
+        width: 95vw !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #galleryImage > iframe {
+        min-width: 90vw;
+        height: 50.625vw;
+    }
+}
+
+@media screen and (max-width: 875px) {
+    #navBar {
+        display: none;
+    }
+    #shortNavBar {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .article {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .article .section:nth-child(2) {
+        margin: 10px 0px 0px 0px;
+    }
+    .section {
+        width: 97.5%;
+        margin: 0px;
+        text-align: inherit;
+    }
+}
