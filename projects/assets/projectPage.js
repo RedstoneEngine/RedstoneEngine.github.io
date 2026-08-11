@@ -17,6 +17,8 @@ const observer = new ResizeObserver((entries) => {
     }
 });
 
+var scrollDelay = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
     //Copy over galleries to mobile-galleries
     var mobileElements = document.getElementsByClassName('mobileElement');
@@ -42,8 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
         galleries[i].parentElement.parentElement.children[2].addEventListener("touchstart", (e) => {e.preventDefault(); galleryMoveArrows(e.currentTarget)}, {passive: false});
 
         galleries[i].addEventListener('wheel', (e) => {
-            e.preventDefault();
+            var prevScroll = e.currentTarget.scrollLeft;
             e.currentTarget.scrollLeft += e.deltaY;
+
+            if (e.currentTarget.scrollTop > 0)
+                return;
+
+            else if (e.currentTarget.scrollLeft != prevScroll) {
+                e.preventDefault();
+                scrollDelay = Date.now();
+            }
+            else if (Date.now() - scrollDelay < 1000)
+                e.preventDefault();
+                
         });
         galleries[i].addEventListener('scroll', (e) => {
             areArrowsDisabled(e.currentTarget);

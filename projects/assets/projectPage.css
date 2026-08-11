@@ -1,16 +1,12 @@
 
 :root {
-    --gallery-image-height: 165px;
+    --gallery-image-height: 155px;
     --gallery-padding: 15px;
 }
 
 body {
     min-height: 94.9vh;
     padding: 10px 25px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
     background-size: 70px, 100%;
     background-image: url("../../assets/sprites/PageBackground.webp");
@@ -41,6 +37,22 @@ body {
     margin-top: 0px;
 }
 
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionWithGallery {
+    display: flex;
+    width: 85vw;
+}
+
+.sectionWithGallery > div {
+    flex: 1;
+    position: relative;
+}
+
 .subsection:has(> .icon) {
     position: absolute;
     margin: 0px;
@@ -64,17 +76,61 @@ body {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
 }
 
+.section {
+    padding: 15px 15px;
+}
+
+.smallSection {
+    width: 750px;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 900px) {
+    .table {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .table > div {
+        width: 50%;
+    }
+
+    .table > div > div > .section > .gallery {
+        max-width: 40vw;
+    }
+
+    .table > div > div > .section > .gallery > div > img {
+        height: calc(var(--gallery-image-height) - 15px);
+    }
+}
+
 .firstParagraph {
     margin: 0px 25px 10px 50px;
-    padding: 15px 15px;
 }
 
 h1 {
     display: block;
+    margin: 0px;
 
     color: orange;
     font-size: 30px;
     line-height: 100%;
+}
+
+h2 {
+    display: block;
+    margin: 0px;
+
+    color: #00c6ff;
+    font-size: 25px;
+    line-height: 100%;
+    
+    text-shadow: 4px 4px 3px black;
+    text-align: center;
+}
+
+h3 {
+    margin: 0px;
 }
 
 .tags {
@@ -127,7 +183,7 @@ div:has(> .gallery) {
     width: max-content;
     max-width: 80vw;
 
-    overflow: scroll;
+    overflow-x: scroll;
     scrollbar-width: none;
     mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
@@ -146,6 +202,8 @@ div:has(> .gallery) {
 .gallery > div > img {
     height: var(--gallery-image-height);
     margin: 0px 5px;
+
+    object-fit: cover;
 
     border: 2px rgba(199, 199, 199, 0) solid;
     border-radius: 7.5px;
@@ -178,6 +236,64 @@ div:has(> .gallery) {
     fill: rgb(255, 255, 255);
 }
 
+.divider {
+    height: 2px;
+    width: 70%;
+    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.666);
+    mask-image: linear-gradient(to right, transparent 0%, black 50%, transparent 100%);
+}
+
+@media screen and (min-width: 700px) {
+    .verticalGallery {
+        margin-left: -5vw;
+        margin-right: -12.5vw;
+    }
+
+    .verticalGallery > svg {
+        display: none;
+    }
+
+    .verticalGallery > .section {
+        max-height: fit-content;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+
+    .verticalGallery > .section > .gallery {
+        height: 100%;
+        max-height: fit-content;
+        overflow-x: hidden;
+        scrollbar-width: inherit;
+        mask-image: linear-gradient(transparent 0%, black 5%, black 95%, transparent 100%);
+    }
+
+    .verticalGallery > .section > .gallery > div {
+        flex-direction: column;
+    }
+
+    .verticalGallery > .section > .gallery > div > img {
+        margin: 5px 0px;
+    }
+
+    .verticalGallery > .section > .gallery > div::after {
+        display: none;
+    }
+
+    .verticalGallery > .section > .gallery > div > .videoPlayMarker > svg {
+        display: block;
+        margin-left: calc((var(--gallery-image-height) * 16 / 9 - 60px) / 2);
+        margin-top: calc((var(--gallery-image-height) + 7px + 60px) / -2);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .sectionWithGallery {
+        display: block;
+    }
+}
+
 #ColorfulDescript_Mobile {
     display: none;
 
@@ -188,6 +304,16 @@ div:has(> .gallery) {
 #ColorfulDescript_Mobile > .tags {
     width: calc(37.3vw + 52.5px - 10px);
     margin: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+    .tempTopSpacer {
+        height: 35px;
+    }
+}
+
+.endSpacer {
+    height: 15px;
 }
 
 @media screen and (max-width: 1150px) and (min-width: 900px) {
@@ -211,7 +337,7 @@ div:has(> .gallery) {
         margin-top: 2vw;
         margin-left: 5vw;
     }
-    .firstParagraph {
+    .section {
         margin: 0px 0px 10px 0px;
     }
     .arrowBttn {
@@ -222,8 +348,15 @@ div:has(> .gallery) {
         max-width: calc(90vw - 50px);;
     }
     :root {
-        --gallery-image-height: 140px;
+        --gallery-image-height: 130px;
         --gallery-padding: 10px;
+    }
+    .sectionWithGallery {
+        width: 95vw;
+    }
+    .verticalGallery {
+        margin-left: -5vw;
+        margin-right: -7.5vw;
     }
 }
 
@@ -238,7 +371,7 @@ div:has(> .gallery) {
     div:has(> .gif) {
         padding-left: 2.5vw;
     }
-    .firstParagraph {
+    .section {
         width: inherit;
     }
     .arrowBttn {
@@ -249,17 +382,23 @@ div:has(> .gallery) {
         max-width: calc(90vw - 40px);;
     }
     :root {
-        --gallery-image-height: 115px;
+        --gallery-image-height: 105px;
         --gallery-padding: 5px;
     }
     .gallery > div > img {
-        width: 140px;
+        width: 130px;
         object-fit: cover;
     }
     .gallery > div > .videoPlayMarker > svg {
-        margin-left: calc((140px + 6px + 50px) / -2);
+        margin-left: calc((130px + 6px + 50px) / -2);
         margin-top: calc((var(--gallery-image-height) - 50px) / 2);
 
         height: 50px;
+    }
+    .sectionWithGallery {
+        width: inherit;
+    }
+    .endSpacer {
+        height: 30px;
     }
 }

@@ -141,7 +141,7 @@
     height: 40px;
     padding: 5px;
     margin-right: calc(12.5% - 2px);
-    margin-top: calc(12.5vh - 2px);
+    margin-top: calc(7.5vh - 2px);
 
     box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.5) inset !important;
 
@@ -151,7 +151,7 @@
 
 #projectsOverlay > iframe {
     width: 75%;
-    height: 75%;
+    height: 85%;
 
     background-size: 70px, 100%;
     background-image: url("../../assets/sprites/PageBackground.webp");
@@ -191,7 +191,7 @@
         height: 90svh;
     }
     #projectsOverlayExit {
-        margin-top: calc(5vh - 2px);
+        margin-top: calc(5svh - 2px);
         margin-right: calc(5vw - 2px);
     }
 }
@@ -211,6 +211,15 @@
 @media screen and (max-width: 800px) {
     .projectThnl {
         width: 100%;
+    }
+    #projectsOverlay {
+        backdrop-filter: blur(2px);
+    }
+    #projectsOverlay > iframe {
+        height: 95svh;
+    }
+    #projectsOverlayExit {
+        margin-top: calc(2.5svh - 2px);
     }
 }
 
