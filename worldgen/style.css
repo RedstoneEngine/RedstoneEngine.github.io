@@ -1,0 +1,6 @@
+:root {
+    --border: oklch(100% 0 0 / .1);
+    --secondary: oklch(26.9% 0 0);
+    --ring: oklch(55.6% 0 0);
+    --card: oklch(20.5% 0 0);
+}
