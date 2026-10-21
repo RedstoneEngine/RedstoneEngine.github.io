@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+        <script src="../../rendering/baseRenderer.js" type="module"></script>
+    </head>
+    <body>
+        <h1>What is Density?</h1>
+        <block class="brown">
+            Shaping a procedural world can be tricky due to the nature of it, it's procedural and infinite.
+            How do you control infinity? This is where the concept of Density can be incredibly useful!
+        </block>
+        <block>
+            If we look at Density in it's simplest form, it's a computation to give us 1 number per every block in the world.
+            <divider></divider>
+            Each number in this first 2D example will represent how high the terrain should be. -1 being the lowest
+            and +1 being the highest. We will also be representing
+            black as -1 going all the way to white at +1 for an easier visual intepretation of what's happening.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 100px;" src="./2dDensityTest.webp">
+            <img style="top: 10px; left: 385px;" src="./TempArrow.webp">
+            <img style="top: 10px; left: 650px;" src="./3dDensityTest.webp">
+        </diagram>
+        <block>
+            Let's first take a look at our most useful form of Density, Simplex Noise! It's an infinite plane of
+            random white and black spots mixed together to form a rolling hill pattern exactly like the Basic Biome Example.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <canvas style="top: 20px; left: 100px;" width="256" height="256" display="2D" function2D="simplex2D(x * .5 + params.time, z * .5);" min="-1" max="1" uniforms="time"></canvas>
+            <img style="top: 10px; left: 385px;" src="./TempArrow.webp">
+            <canvas style="top: 20px; left: 650px;" width="256" height="256" display="3DBlocks" size="50" function3D="simplex2D(x * .5 + params.time, z * .5) - clamp(remap(y, -75, 75, -1, 1), -1, 1);" uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Let's modify it to look interesting. I'm going to do that by curvemapping the Simplex Noise to create
+            flat plains in the middle and end of our noise to create some plains and plateaus which should break up the
+            motony of the landscape.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 20px; height: 256px;" src="./2dCurveMapped.webp">
+            <canvas style="top: 20px; left: 465px;" width="256" height="256" display="2D" function2D="
+                let noise = simplex2D(x * .5 + params.time, z * .5);
+                if (noise < -.5) {
+                    return remap(noise, -1, -.5, -1, -.1);
+                }
+                if (noise < .25) {
+                    return remap(noise, -.5, .25, -.1, .1);
+                }
+                if (noise < .5) {
+                    return remap(noise, .25, .5, .1, .9);
+                }
+                return remap(noise, .5, 1, .9, 1);
+                " min="-1" max="1" uniforms="time"></canvas>
+            <canvas style="top: 20px; left: 730px;" width="256" height="256" display="3DBlocks" size="50" function3D="
+                var noise = simplex2D(x * .5 + params.time, z * .5);
+                if (noise < -.5) {
+                    noise = remap(noise, -1, -.5, -1, -.1);
+                }
+                else if (noise < .25) {
+                    noise = remap(noise, -.5, .25, -.1, .1);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .25, .5, .1, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise - clamp(remap(y, -75, 75, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            This is the general technique of shaping World Generation, finding ways to modify and add noise values to create
+            interesting, varied results! We'll go over a few more techniques and noises over the following lessons but it
+            ultimately comes down to experimentation to create your own patterns!
+            <divider></divider>
+            But first, we've run into a problem... Plugging this directly into our Terrain density creates this weird result!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 70px; height: 256px;" src="./2dFail.webp">
+            <img style="top: 10px; left: 670px; height: 256px;" src="./2dFailWorld.webp">
+        </diagram>
+        <block>
+            This is because Hytale uses a different rule for placing blocks in order to have more control over 3D density features.
+            The rule Hytale uses is that if the density value is greater than 0 at a block
+            place a block, if it's less than or equal to 0, place air. That's why when we apply this new rule to our 2D Noise pattern we get
+            this result which doesn't look anything like what we're going for!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <canvas style="top: 20px; left: 100px;" width="256" height="256" display="2D" function2D="simplex2D(x * .5 + params.time, z * .5);" min="-1" max="1" uniforms="time"></canvas>
+            <canvas style="top: 20px; left: 385px;" width="256" height="256" display="2DBlocks" size="50" function2D="simplex2D(x * .5 + params.time, z * .5);" min="-1" max="1" uniforms="time"></canvas>
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="50" function3D="simplex2D(x * .5 + params.time, z * .5);" uniforms="time"></canvas>
+        </diagram>
+        <block>
+            But don't worry! What we just learned is not for naught, we just need to go back to the drawing board!
+            The new plan is to just create a plane of blocks for this new 3D format and I think the BaseHeight density is the perfect node for the job!
+            <divider></divider>
+            First we'll need to add a reference of a BaseHeight value
+            from our WorldStructure file. In most scenarios, we'll want to use the 'Base' value of '140'. That means
+            that at y=140, the density value will be 0 and for every block up this node will add 1 and going down it'll subtract 1.
+        </block>
+        <diagram style="height: 500px; width: 1100px;">
+            <img style="top: 10px; left: 125px; height: 125px;" src="./BaseHeightNode.webp">
+            <canvas style="top: 200px; left: 50px;" width="256" height="256" display="3D" size="50" function3D="y;" uniforms="time" min="-128" max="128" ></canvas>
+            <canvas style="top: 200px; left: 365px;" width="256" height="256" display="3DBlocks" size="50" function3D="y;" uniforms="time"></canvas>
+            <table style="top: 50px; left: 675px;">
+                <tr class="header">
+                    <td colspan="100%"><h2>MyBiome</h2> WorldStructureAsset</td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                        Framework
+                    </td>
+                    <td>2 List Entries</td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        &emsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                        0
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        &emsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                        1
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;Type</td>
+                    <td>Decimal Constants</td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        &emsp;&emsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                        Entries
+                    </td>
+                    <td>3 List Entries</td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        &emsp;&emsp;&emsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                        0
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;&emsp;Name</td>
+                    <td><highlight>Base</highlight></td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;&emsp;&emsp;Value</td>
+                    <td><highlight>140</highlight></td>
+                </tr>
+                <tr>
+                    <td colspan="100%">...</td>
+                </tr>
+            </table>
+        </diagram>
+        <block>
+            This creates a flat plane in the opposite direction where above y=140, the density at each block above is above 0 making them solid.
+            We can inverse it and create height variation in a couple different ways with the following one being how Hytale does it.
+            <divider></divider>
+            We will first curvemap the BaseHeight to invert it while defining a range of available blocks to modify using noise.
+            In this case we'll do 40 blocks below to 20 blocks above, setting the bottom value to 1 to create a constant floor and -1 for air above.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 25px; height: 260px;" src="./CurvemappedBaseHeight.webp">
+            <canvas style="top: 20px; left: 700px;" width="256" height="256" display="3D" size="50" function3D="clamp(remap(y, -80, 40, 1, -1), -1, 1);" min="-1" max="1" uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Doing this creates a plane in the middle of our range at y=130. Let's now add a constant value to see our range of blocks in action!
+            Going to +1 raises our plane upwards, while towards -1 lowers the plane. Hitting or going beyond our [-1, 1] bounds though will break
+            our summation and create infinite gaps or infinite pillars of blocks otherwise known as "artifacts," so we'll need to be careful with our summation
+            moving forward always making sure it's within this [-1, 1] bounds!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 50px; height: 160px;" src="./AddSlider.webp">
+            <block style="top: 210px; left: 120px; width: auto;">
+                <slider>
+                    Constant Density:
+                    <code>0.0</code>
+                    <input class="range" type="range" oninput="updateSlider(this);" canvas="sumConstant" uniform="constant" min="-1.1" max="1.1" value="0" step=".1">
+                </slider>
+            </block>
+            <canvas id="sumConstant" style="top: 20px; right: 50px;" width="256" height="256" display="3DBlocks" size="50" function3D="params.constant + clamp(remap(y, -80, 40, 1, -1), -1, 1);" uniforms="time, constant" constant="0"></canvas>
+        </diagram>
+        <block>
+            And this is exactly what we wanted! -1 creates dips in the terrain, while +1 creates mountains! So let's go ahead and
+            add a simplex noise to the curvemapped BaseHeight! And ta-da! We have an infinite 3D world of rolling hills with the
+            same setup as the Basic Biome you start off with!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 50px; left: 50px; height: 180px;" src="./SimplexSumBaseHeight.webp">
+            <canvas style="top: 20px; left: 680px;" width="256" height="256" display="3DBlocks" size="50" function3D="simplex2D(x * .5 + params.time, z * .5) - clamp(remap(y, -80, 40, -1, 1), -1, 1);" uniforms="time"></canvas>
+        </diagram>
+        <block>
+            We can also now add back in our curvemapped simplex noise to see some plains and plateaus in game!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <canvas style="top: 20px; left: 200px;" width="256" height="256" display="3DBlocks" size="50" function3D="
+                var noise = simplex2D(x * .5 + params.time, z * .5);
+                if (noise < -.5) {
+                    noise = remap(noise, -1, -.5, -1, -.1);
+                }
+                else if (noise < .25) {
+                    noise = remap(noise, -.5, .25, -.1, .1);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .25, .5, .1, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise - clamp(remap(y, -80, 40, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+            <img style="top: 10px; right: 200px; height: 256px;" src="./PlateausInGame.webp">
+        </diagram>
+        <block>
+            In the next guide, we'll continue shaping our Simplex Noise into different interesting looking patterns using octaves, mix, more curvemappers, and warp!
+        </block>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('')" class="blue disabled"><div>Shaping Techniques</div><img src="../../density/" loading="lazy"/></file>
+            </div>
+        </diagram>
+        <!--<block>
+            Concept of procedural, infinite shaping through infinite noise<br>
+            Show simplified example of 2d noise applying to 3d terrain<br>
+            Curve map noise to have dips, flat areas, and plateaus w/ graph showing change and slider<br>
+            Say it can go farther however if you put this in, it'll look like this<br>
+            The reason why is that the game makes it a bit more complicated for more control like 3D Terrain so it instead uses the rule of >0 and <=0 and
+            gets a value for every single block<br>
+            Apply that to the 2d Noise and we can see why it does the same in 3D. Put x, y, and z labels<br>
+            Instead, let's see how to create something that resembles land, a flat plane<br>
+            Show baseheight in 3d and blocks w/ labels for other baseheights<br>
+            But it's inverted so let's curvemap it<br>
+            Add a value -1.5 to 1.5 through a slider w/ labels of values<br>
+            If added value goes above or below -1/1 then it's all solid or air so we'll want to watch out for that<br>
+            Noise goes from -1/1 to so let's see what happens when we add it!<br>
+            It works! It converts our previous rule of -1 being low to 1 being high into Hytale's rules<br>
+            And with that, we've explained the biome basic setup<br>
+            Let's add back in that previous curvemapper for plains and plateaus<br>
+            In the next guide, we'll talk about some other ways we can further shape the 2D noise using octaves, mix, and warp.
+        </block>
+        <block>
+            Easiest way to add more detail/variation:<br>
+            Show example of octaves changing from Lucanurity and Persistence<br>
+            Your best friend for varying up terrain:<br>
+            Mix examples: Minecraft terrain & Mixing plateaus together<br>
+            Last one for cool looking terrain but also most expensive:<br>
+            Fast Gradient Warp (While expensive can look super cool in specific areas like for materials or for certain Points of Interest)<br>
+        </block>
+        <block>
+            Let's add Rivers and Mountains!<br>
+            The most common way is to apply the abs value to noise and you get this interesting result!<br>
+            Show graph and 2d representation<br>
+            If we normalize the results back to -1 to 1 and add it to our curvemapped baseheight we get this!<br>
+            Let's put this back into the terrain, there's a few ways to do this:<br>
+            Add, however, we generally want water to remain at the same elevation<br>
+            Min/smoothMin<br>
+            Or we can use the noise again as a sort of blurred mask between the 2 features<br>
+            This works well to blend into mountain noise!<br>
+            However, I think mountains would look good as a row of mountains with occasional central gullies<br>
+            So let's curvemap again to create another peak like how we did with using the abs value<br>
+            Let's do one more thing to create interesting rivers and that's add that Fast Gradient Warp<br>
+            This'll be tricky as if we directly apply it, it'll mess with the mountains as well<br>
+            Now we can create 2d noodles of terrain that could be useful for caves as well as more control over how our rivers and mountains look<br>
+            You can also add even more masks overtime which will be useful for things like materials, props, and more density features<br>
+        </block>-->
+    </body>
+</html>

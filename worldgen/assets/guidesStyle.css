@@ -1,0 +1,299 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 200px;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+row {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+row > block {
+    width: 450px;
+}
+
+block {
+    max-width: 750px;
+    padding: 10px;
+    margin-bottom: 40px;
+    line-height: 1.5em;
+    display: block;
+
+    --type-color: #513893;
+
+    background-color: #2b2e33;
+    border: var(--type-color) solid 3px;
+    border-radius: 10px;
+}
+
+header {
+    background-color: var(--type-color);
+    margin: -10px -10px 10px -10px;
+    padding: 5px;
+}
+
+h2 {
+    width: fit-content;
+    margin: 0px;
+    padding: 5px 10px;
+
+    font-size: 16px;
+    font-weight: normal;
+    border: rgba(255, 255, 255, .25) solid 1px;
+    background-color: rgba(0, 0, 0, .333);
+}
+
+code {
+    padding: 3.5px;
+    font-weight: bold;
+    border: grey solid 1px;
+    white-space: pre-wrap;
+}
+
+code.standalone {
+    padding: 10px 10px 15px 10px;
+    margin-bottom: 40px;
+
+    --type-color: #844769;
+
+    background-color: #2b2e33;
+    border-color: var(--type-color);
+}
+
+block > img, diagram > img {
+    width: 100%;
+    margin-top: 10px;
+
+    border-radius: 10px;
+}
+
+block > div > img {
+    margin-top: 10px;
+
+    border-radius: 10px;
+}
+
+block > divider {
+    display: block;
+    height: 1px;
+    margin: 15px -10px;
+    background-color: rgba(255, 255, 255, .25);
+}
+
+table {
+    background-color: #535353;
+    color: #d9d9d9;
+    border-spacing: 0px;
+}
+
+td {
+    padding: 5px 7.5px;
+    padding-right: 50px;
+    border: #303030 solid 1px;
+}
+
+td > svg {
+    height: 23px;
+    margin-left: -4px;
+    margin-bottom: -5px;
+    fill: #d9d9d9;
+}
+
+td:first-child {
+    padding-left: 15px;
+}
+
+.header > td {
+    background-color: #333333;
+    border: none;
+    font-size: 12px;
+    font-style: italic;
+    color: #646464;
+}
+
+td > h2 {
+    display: inline;
+    color: #bf994f;
+    background: none;
+    border: none;
+    font-style: normal;
+}
+
+.label > td {
+    background-color: #3b3b3b;
+}
+
+.label > td:last-child {
+    font-style: italic;
+    color: #646464;
+}
+
+.label.empty > td {
+    color: #646464;
+}
+
+diagram {
+    position: relative;
+    width: 90%;
+    margin-bottom: 40px;
+
+    overflow: auto;
+
+    --type-color: #513893;
+    background-color: #5038932e;
+}
+
+diagram > header {
+    margin: 0px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+diagram > block {
+    position: absolute;
+    width: 400px;
+}
+
+diagram > img {
+    width: auto;
+    position: absolute;
+    filter: drop-shadow(black 2px 2px 2px);
+}
+
+diagram > selection {
+    position: absolute;
+
+    --type-color: rgba(255, 255, 255, .75);
+    pointer-events: none;
+
+    border: var(--type-color) solid 2px;
+    border-radius: 10px;
+}
+
+diagram > svg {
+    position: absolute;
+    pointer-events: none;
+}
+
+diagram > code.standalone {
+    position: absolute;
+    display: block;
+}
+
+diagram > table {
+    position: absolute;
+}
+
+diagram > canvas {
+    position: absolute;
+}
+
+.nextup {
+    width: auto;
+    --type-color: #999938;
+}
+
+.nextup > div {
+    padding: 20px 60px;
+    display: flex;
+}
+
+highlight {
+    background-color: rgba(255, 255, 0, 0.25);
+}
+
+/* Slider */
+
+.range {
+    position: relative;
+    top: 7px;
+
+    margin: -10px 15px;
+    padding: 10px 0px;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.range::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #555555;
+  border-radius: 0px;
+}
+
+.range::-webkit-slider-thumb {
+    margin-top: -5px;
+    margin-bottom: -5px;
+
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #b7b6b6;
+    border-radius: 0px;
+}
+
+slider > code {
+    display: inline-block;
+    width: 30px;
+    text-align: right;
+}
+
+/* Folder Icon */
+.folderIcon {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-top: 0px;
+    margin-right: 5px;
+
+    --type-color: #5c6b78;
+
+    image-rendering: pixelated;
+    background-color: var(--type-color);
+    background-image: url(./Folder.webp);
+    background-size: cover;
+    background-blend-mode: multiply;
+    mask-image: url(./Folder.webp);
+    mask-size: cover;
+
+    backdrop-filter: blur(1px);
+}
+
+.folderIcon.small {
+    width: 24px;
+    height: 24px;
+}
+
+/* Custom Back */
+back {
+    display: grid;
+    align-self: center;
+    padding: 10px;
+    margin-right: 50px;
+
+    cursor: pointer;
+    text-align: center;
+
+    fill: grey;
+    color: grey;
+    transition-duration: .2s;
+}
+
+back > svg {
+    width: 65px;
+}
+
+back:hover {
+    fill: lightgray;
+    color: lightgray;
+}

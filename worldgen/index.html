@@ -1,16 +1,131 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js"></script>
+        <title>WorldGenV2 Guides</title>
+        <link class="icon" rel="icon" sizes="288x288" href="./assets/Icon.ico" type="image/x-icon">
+        <link class="icon" rel="apple-touch-icon" href="./assets/Icon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="./assets/default.css">
+        <link rel="stylesheet" href="./assets/style.css">
+        <script src="./assets/script.js" defer></script>
     </head>
     <body>
-        <script type="module" src="https://cdn.jsdelivr.net/gh/Voronoi-Studios/Node-Graph@0.3.1/dist/node-graph.js"></script>
-        <node-graph
-        id="graph"
-        start-step="0"
-        can-step="true"
-        style="user-select: none;">
-        </node-graph>
+        <navbar>
+            <button onclick="goHome()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg>
+                Home
+            </button>
+            <button id="backBttn" onclick="goBack()" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                Back
+            </button>
+        </navbar>
+
+        <page>
+            <h1 id="Title">Hytale WorldGenV2 Guides</h1>
+            <directory id="Home" style="display: none1;">
+                <folder key="Create"><img class="grey"/>Creating a World</folder>
+                <folder key="Density"><img class="blue"/>Terrain Density</folder>
+                <folder key="Materials"><img class="brown"/>Materials</folder>
+                <folder key="Props"><img class="green"/>Props</folder>
+                <folder key="World"><img class="yellow"/>World Settings</folder>
+                <folder key="Graphs"><img class="pink"/>Graphs</folder>
+                <folder key="Math"><img class="green"/>Vectors & Trig</folder>
+                <folder key="Examples"><img class="orange"/>Example Worlds</folder>
+            </directory>
+            <directory id="Create" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file file="Definition" class="brown"><div>What is a World?</div><img src="./create/definition/Icon.webp" loading="lazy"/></file>
+                <file file="WorldGenV1" class="green"><div>WorldGenV1</div><img src="./create/worldgenv1/Icon.webp" loading="lazy"/></file>
+                <file file="WorldGenV2" class="green"><div>WorldGenV2</div><img src="./create/worldgenv2/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Pre-Generated Worlds</div><img src="./create/pregenworld/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Fragment / Permanent Portals</div><img src="./create/portals/Icon.webp" loading="lazy"/></file>
+            </directory>
+            <directory id="Density" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file file="Definition" class="brown"><div>What is Density?</div><img src="./density/definition/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Shaping Techniques</div><img src="" loading="lazy"/></file>
+                <file class="green disabled"><div>Rivers & Mountains</div><img src="" loading="lazy"/></file>
+                <file class="orange disabled"><div>Optimizations</div><img src="./density/optimizations/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Caves</div><img src="./density/caves/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Floating Islands</div><img src="" loading="lazy"/></file>
+                <file class="orange disabled"><div>3D Terrain</div><img src="./density/3dterrain/Icon.webp" loading="lazy"/></file>
+                <file class="pink disabled"><div>Cell Noise</div><img src="./density/cellnoise/Icon.webp" loading="lazy"/></file>
+                <file class="pink disabled"><div>Points of Interest</div><img src="./density/poi/Icon.webp" loading="lazy"/></file>
+                <file class="yellow disabled"><div>Misc Densities</div><img src="" loading="lazy"/></file>
+                <!--Other Densities and what they're used for-->
+            </directory>
+            <directory id="Materials" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="brown disabled"><div>What are Materials?</div><img src="./materials/definition/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Materials & Masking</div><img src="./materials/basics/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Optimizations</div><img src="./materials/optimizations/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Terrain Gradient</div><img src="./materials/gradient/Icon.webp" loading="lazy"/></file>
+            </directory>
+            <directory id="Props" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="brown disabled"><div>What are Props?</div><img src="./props/definition/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Prop Placement</div><img src="./props/placement/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Prop Types</div><img src="./props/types/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Prefab Tips</div><img src="./props/prefabtips/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Optimizations</div><img src="./props/optimizations/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Specific Prop Orientations</div><img src="./props/orientation/Icon.webp" loading="lazy"/></file>
+            </directory>
+            <directory id="World" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="green disabled"><div>Environments</div><img src="./world/environments/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Gameplay</div><img src="./world/gameplay/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>NPC Spawning</div><img src="./world/npcs/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Music / Sounds</div><img src="./world/sounds/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Spawnpoints</div><img src="./world/spawnpoints/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Multiple Biomes</div><img src="./world/biomes/Icon.webp" loading="lazy"/></file>
+                <file class="pink disabled"><div>World Events</div><img src="./world/events/Icon.webp" loading="lazy"/></file>
+            </directory>
+            <directory id="Graphs" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="brown disabled"><div>What is a Graph?</div><img src="./graphs/definition/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Examples</div><img src="./graphs/examples/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Procedural Prefabs</div><img src="./graphs/subprops/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Optimizations</div><img src="./graphs/optimizations/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Procedural Trees</div><img src="./graphs/trees/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Terrain Features</div><img src="./graphs/terrain/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Caves</div><img src="./graphs/caves/Icon.webp" loading="lazy"/></file>
+                <file class="pink disabled"><div>Dungeons</div><img src="./graphs/dungeons/Icon.webp" loading="lazy"/></file>
+            </directory>
+            <directory id="Math" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="green disabled"><div>Sinusoidal Dunes</div><img src="./math/dunes/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Offset Positions to Terrain</div><img src="./math/vectoroffset/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>Spiraled Terrain</div><img src="./math/spiral/Icon.webp" loading="lazy"/></file>
+            </directory>
+            <directory id="Examples" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="orange disabled"><div>Prehistoric Journey</div><img src="./examples/prehistoricjourney/Icon.webp" loading="lazy"/></file>
+            </directory>
+                <directory id="Prehistoric Journey" style="display: none;">
+                <folder key="back"><img class="back"/>Go Back</folder>
+                <file class="density"><div>Broken Terrain</div><img src=""/></file>
+                <file class="density"><div>Breaching Tunnels</div><img src=""/></file>
+                <file class="density"><div>Windswept Curves</div><img src=""/></file>
+                <file class="density"><div>Sinkhole</div><img src=""/></file>
+                <file class="material"><div>Material Masking</div><img src=""/></file>
+                <file class="propVector"><div>Base Props</div><img src=""/></file>
+                <file class="propVector"><div>Sinkhole Props</div><img src=""/></file>
+                <file class="propVector"><div>Spinal Props</div><img src=""/></file>
+                <file class="assetEditor"><div>Enviromental Attributes</div><img src=""/></file>
+                <file class="assetEditor"><div>Biome Blending</div><img src=""/></file>
+            </directory>
+
+            <!--MISC FEATURES-->
+            <!--Link to Documentation Resources-->
+            <!--Tips on how to publish/publicize-->
+            <!--Curated Challenges-->
+            <!--Example Worlds w/ lego guides and ideation-->
+            <!--Glossary for Features-->
+            <!--Link to Dono-->
+
+            <iframe id="Guide" style="display: none;" src=""></iframe>
+        </page>
+
     </body>
 </html>

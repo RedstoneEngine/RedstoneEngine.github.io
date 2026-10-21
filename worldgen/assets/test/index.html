@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./style.css">
+        <script src="./script.js"></script>
+        <script src="./rendering/baseRenderer.js" type="module"></script>
+    </head>
+    <body>
+        <script type="module" src="https://cdn.jsdelivr.net/gh/Voronoi-Studios/Node-Graph@0.3.1/dist/node-graph.js"></script>
+        <node-graph
+        id="graph"
+        src="https://cdn.jsdelivr.net/gh/RedstoneEngine/RedstoneEngine.github.io@HEAD/worldgen/NodeFiles/SkewedMountain.json"
+        start-step="0"
+        can-step="true"
+        style="user-select: none;">
+        </node-graph>
+        <canvas width="256" height="256" display="2D" function2D="simplex2D(x + params.time, z);" min="-1" max="1" uniforms="time"></canvas>
+        <canvas width="256" height="256" display="3D" function2D="simplex2D(x + params.time, z);" min="-1" max="1" uniforms="time"></canvas>
+        <canvas width="256" height="256" display="3D" function3D="simplex3D(x + params.time, y, z);" min="-1" max="1" uniforms="time"></canvas>
+
+        <canvas width="256" height="256" display="2DBlocks" size="50" function2D="simplex2D(x + params.time, z);" uniforms="time"></canvas>
+        <canvas width="256" height="256" display="3DBlocks" size="50" function2D="simplex2D(x + params.time, z);" uniforms="time"></canvas>
+        <canvas width="256" height="256" display="3DBlocks" size="50" function3D="simplex3D(x + params.time, y, z);" uniforms="time"></canvas>
+
+        <canvas width="256" height="256" display="3DBlocks" size="50" function3D="simplex2D(x + params.time, z) - clamp(remap(y, -50, 50, -1, 1), -1, 1);" uniforms="time"></canvas>
+        <canvas width="256" height="256" display="3D" size="50" function3D="y;" min="-128" max="128" uniforms="time"></canvas>
+        <canvas width="256" height="256" display="3DBlocks" size="50" function3D="
+            let offset = 75.0;
+            if (y < -30 - offset) {
+                return 1.0;
+            }
+
+            let r = rotate(vec3f(x, y - 30, z) * .666, params.time) + vec3f(0, offset, 0);
+            let v = twist(vec3f(r.x, r.y, r.z), vec3f(0, -45, 0), vec3f(0, 0, 1), vec2f(0.1, -50), vec2f(1, 20));
+
+            let result = clamp(remap(-abs(v.x), -15, -3, -100, 0), -100, 0) +
+            clamp(remap(distance(vec2f(v.x, v.z), vec2f(0, 0)), 30, 110, 95, -100), -200, 95) + 
+            remap(simplex2D(v.x*1, v.z*1), -1, 1, -15, 0) +
+            -v.y;
+
+            return result;" min="-128" max="128" uniforms="time"></canvas>
+
+    </body>
+</html>

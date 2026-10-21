@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>WorldGenV1</h1>
+        <block class="brown">
+            The WorldGenV1 <a onclick="window.parent.goToPage('Home/Create/Definition')">World</a> Assets are currently
+            only modifiable via Modding. Asset Pack modification is coming with Chapter 1 soon though! It's recommended
+            to only do small modifications like ore spawns using WorldGenV1 while for creating full worlds it's
+            recommended to use the more up to date <a onclick="window.parent.goToPage('Home/Create/WorldGenV2')">WorldGenV2</a>.
+        </block>
+
+        <block>
+            In order to have an Instance use the WorldGenV1 generator, set the <code>WorldGen: Type</code> to
+            <code>"Hytale"</code> with the specific World's Assets being defined at <code>WorldGen: Name</code>.
+            <br><br>
+
+            For the default World you spawn into, this value is set as <code>"Default"</code>.
+        </block>
+
+        <code class="standalone"><header>instance.bson</header>{
+    ...
+
+    "WorldGen": {
+        "Type": "<highlight>Hytale</highlight>",
+        "Name": "<highlight>Default</highlight>"
+    }
+
+    ...
+}</code>
+
+        <block class="orange">
+            This section will be updated whenever Asset Pack modification becomes available!
+        </block>
+    </body>
+</html>

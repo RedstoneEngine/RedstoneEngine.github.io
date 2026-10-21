@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>WorldGenV2</h1>
+        <block class="brown">
+            The WorldGenV2 <a onclick="window.parent.goToPage('Home/Create/Definition')">World</a> Generator can be
+            complicated but is broken down into multiple digestable steps that are fun to learn and was made with the
+            community in mind!
+        </block>
+
+        <block>
+            The first step of creating a custom WorldGenV2 world is typing the command<br>
+            <code>/worldgen2 create</code> and filling out the following info!
+        </block>
+
+        <diagram style="width: 60%; height: 600px;">
+            <header>Create a New World</header>
+            <img style="top: 50px; left: 50px; height: 500px;" src="./Worldgen2Command.webp">
+            <block class="yellow" style="top: 70px; left: 650px; width: auto;">
+                Name of your First Biome!
+            </block>
+            <selection class="yellow" style="top: 115px; left: 70px; width: 440px; height: 60px;"></selection>
+            <img style="top: 250px; left: 760px; height: 200px;" src="./NewAssetPack.webp">
+            <block class="orange" style="top: 190px; left: 590px; width: auto;">
+                Same identifiers as creating an Asset Pack
+            </block>
+            <selection class="orange" style="top: 190px; left: 70px; width: 440px; height: 135px;"></selection>
+            <block class="pink" style="top: 490px; left: 620px; width: auto;">
+                Leave these values the same for now
+            </block>
+            <selection class="pink" style="top: 335px; left: 70px; width: 440px; height: 130px;"></selection>
+            <svg width="900" height="500">
+                <line x1="525" y1="100" x2="640" y2="75" stroke="#fff" stroke-width="3" stroke-dasharray="8 8" />
+                <line x1="525" y1="225" x2="750" y2="300" stroke="#fff" stroke-width="3" stroke-dasharray="8 8" />
+                <line x1="525" y1="390" x2="670" y2="450" stroke="#fff" stroke-width="3" stroke-dasharray="8 8" />
+            </svg>
+        </diagram>
+
+        <block class="green">
+            Once you hit 'Launch,' the game will do a few things:
+            <divider></divider>
+
+            First, it'll create the required WorldGenV2 assets inside the <code>/Server/HytaleGenerator/</code> folder
+            of your new/existing mod with a corresponding Instance file in <code>/Server/Instances/</code>.
+            <br>
+
+            <div style="display: flex; justify-content: space-around;">
+                <img style="height: 350px;" src="./NewBiomeAssets.webp">
+                <img style="height: 200px;" src="./NewInstance.webp">
+            </div>
+            <divider></divider>
+
+            Then, the game will generate a new World based off of the newly created Instance and
+            teleport your Player into it.
+            <br>
+
+            <div style="display: flex; justify-content: space-around;">
+                <img style="height: 250px;" src="./BasicWorld.webp">
+            </div>
+            <divider></divider>
+
+            Finally, it runs the command <code>/viewport --radius=5</code> so you can see your changes live!
+        </block>
+
+        <block>
+            Let's test to see if the viewport command worked by making a modification!
+        </block>
+
+        <row>
+            <block class="orange">
+                <header><h2>Step 1 - Open up the Node Editor</h2></header>
+                In order to make any modifications, we'll need to open up the Node Editor. This tool will quickly
+                become your new best friend for World creation!
+                <br>
+
+                <div style="display: flex; justify-content: space-around;">
+                    <img style="width: 75%; border: rgba(255, 255, 255, .5) solid 1px;" src="./NodeEditorStartScreen.webp">
+                </div>
+                <br>
+                
+                In order to open the Node Editor, you'll need to be in creative mode
+                and opped. You can press 'O' to switch to Creative Mode and <code>/op self</code> to op yourself.
+                Afterwards, press 'B' and under 'Assets' select 'Asset Node Editor' to open it!
+                <br>
+
+                <img src="./OpenNodeAssetEditor.webp">
+            </block>
+            <block class="orange">
+                <header><h2>Step 2 - Find the Biome File</h2></header>
+                Once the Node Editor is open, we'll want to select 'Open file...' and locate the Biome we named earlier.
+                <br><br>
+
+                To go quickly through it for now, paste this line into your File Explorer, to locate your World folder inside Hytale's Files
+                <br>
+                <code>%appdata%/Hytale/UserData/Saves/</code>
+                <br>
+
+                <img src="./SaveFolderLocation.webp">
+                <br><br>
+
+                Then, open your World Folder and locate the Biome by navigating to
+                <br>
+                <code>/[WORLD NAME]/mods/[MOD NAME]/Server/HytaleGenerator/Biomes/</code>
+                <br>
+
+                <img src="./SelectBiomeInFiles.webp">
+            </block>
+            <block class="orange">
+                <header><h2>Step 3 - Make a Modification and Save</h2></header>
+                We'll go over all these parts in a bit but we first only want to see if our Viewport is working, so any
+                small modification will do.
+                <br><br>
+                What I'll modify is the Curve Points in the Terrain Density to move the terrain up by 10 blocks by setting the
+                'In' Points of the 'Manual Curve' to '10' and '60' respectively.
+                <br>
+                <img src="./BasicNodesModified.webp">
+                <br>
+                After Saving by hitting <code>Ctrl-S</code>, we can go back to the game and see our changes update live!
+                <br>
+                <div style="display: flex; justify-content: space-around;">
+                    <img style="width: 50%;" src="./BasicModified.webp">
+                </div>
+            </block>
+        </row>
+
+        <block>
+            You've created and modified your first Biome! Now is the time to experiment!
+            <br><br>
+            Where you go is up to you as you build out your world, but I generally recommend following the steps in the
+            order of the articles listed on the Website. However, I have found staring at stone gets boring after a while
+            without adding some materials, grass, and trees in between!
+            <br><br>
+            So this last diagram should hopefully point you in the right direction if you decide to jump around!
+        </block>
+
+        <diagram style="height: 800px;">
+            <header>WorldGenV2 Structure</header>
+            <block class="brown" style="top: 70px; left: 50px;">
+                <header><h2>Instance</h2></header>
+                Controls the <a>Gameplay</a> like <a>Breach Events</a>
+            </block>
+            <code class="standalone" style="top: 225px; left: 100px;"><header>instance.bson</header>{
+    ...
+
+    "WorldGen": {
+        "Type": "<highlight>HytaleGenerator</highlight>",
+        "WorldStructure": "<highlight>[Asset Name]</highlight>"
+    }
+
+    ...
+}
+            </code>
+            <block class="yellow" style="top: 70px; left: 550px;">
+                <header><h2>World Structure</h2></header>
+                Controls <a>Biomes' Transitions</a> and <a>Spawnpoints</a>
+            </block>
+            <table style="top: 225px; left: 550px;">
+                <tr class="header">
+                    <td colspan="100%"><h2>MyBiome</h2> WorldStructureAsset</td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                        Biomes
+                    </td>
+                    <td>0 List Entries</td>
+                </tr>
+                <tr class="label empty">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                        Density
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="label">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                        Default Biome
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Reference to BiomeAsset</td>
+                    <td><highlight>[Asset Name]</highlight></td>
+                </tr>
+                <tr>
+                    <td colspan="100%">...</td>
+                </tr>
+            </table>
+            <block class="grey" style="top: 70px; left: 1050px;">
+                <header><h2>Biomes</h2></header>
+                Holds a majority of the info that makes a Biome, a Biome. Openable in the Node Editor
+            </block>
+            <block class="blue" style="top: 270px; left: 1200px;">
+                <header><h2>Terrain Shape (<a>Density</a>)</h2></header>
+                Shape of the World defined per Biome
+            </block>
+            <block class="brown" style="top: 390px; left: 1200px;">
+                <header><h2><a>Materials</a></h2></header>
+                The Grass, Dirt, Water, and Stone that generates
+            </block>
+            <block class="green" style="top: 510px; left: 1200px;">
+                <header><h2>Structures, Trees, & Grass (<a>Props</a>)</h2></header>
+                Fine-tuned placement of Blocks
+            </block>
+            <block class="yellow" style="top: 630px; left: 1200px;">
+                <header><h2><a>Environment</a> Reference</h2></header>
+                The Tints, Weather Events, <a>NPCs</a>, & <a>Sounds</a> that make up a Biome
+            </block>
+            <svg width="1300" height="700">
+                <line x1="480" y1="90" x2="540" y2="90" stroke="#fff" stroke-width="3" />
+                <line x1="985" y1="90" x2="1045" y2="90" stroke="#fff" stroke-width="3" />
+                <line x1="1120" y1="170" x2="1120" y2="650" stroke="#fff" stroke-width="3" />
+                <line x1="1120" y1="290" x2="1185" y2="290" stroke="#fff" stroke-width="3" />
+                <line x1="1120" y1="410" x2="1185" y2="410" stroke="#fff" stroke-width="3" />
+                <line x1="1120" y1="530" x2="1185" y2="530" stroke="#fff" stroke-width="3" />
+                <line x1="1120" y1="650" x2="1185" y2="650" stroke="#fff" stroke-width="3" />
+            </svg>
+        </diagram>
+
+        <block>
+            The last helpful info to know is Hytale's file organization! This is helpful for locating files to open up
+            in the Node Editor!
+            <br><br>
+            For example, it can be very useful to open up Hytale's default Biome assets to figure out how they've created
+            some of their features or try out any of their examples in the 'Examples' folder! You can either 'Duplicate' the
+            Asset in the Asset Editor or locate them using the following method.
+        </block>
+        <row>
+            <block class="orange">
+                <img class="folderIcon brown">
+                <b>Location of Hytale's Files</b><br>
+                <code>%appdata%/Hytale/</code>
+                <divider></divider>
+                <img class="folderIcon small green">
+                <code>install</code> - Hytale's Install Location<br>
+                <img class="folderIcon small pink">
+                <code>UserData</code> - Your Save Data<br>
+                <img class="folderIcon small pink">
+                <code>data/[pre-release, etc]/</code> - Your Save Data if you're not on the 'Release' patchline
+            </block>
+            <div>
+                <block class="orange">
+                    <img class="folderIcon green">
+                    <b>Hytale's Install Location</b><br>
+                    <code>/install/[pre-release, release, etc]/package/game/latest/</code>
+                    <divider></divider>
+                    <img class="folderIcon small yellow">
+                    <code>Assets.zip</code> - Hytale's Default Assets
+                </block>
+                <block class="orange">
+                    <img class="folderIcon pink">
+                    <div style="height: 12px;"></div>
+                    <b>Your Save Data</b>
+                    <div style="height: 8px;"></div>
+                    <divider></divider>
+                    <img class="folderIcon small yellow">
+                    <code>Mods</code> - Global Mods<br>
+                    <img class="folderIcon small yellow">
+                    <code>Saves/[World Name]/Mods/</code> - Mods Local to this World
+                </block>
+            </div>
+            <block class="orange">
+                <img class="folderIcon yellow">
+                <div style="height: 12px;"></div>
+                <b>Asset Pack</b>
+                <div style="height: 8px;"></div>
+                <divider></divider>
+                Once you've located Hytale's <code>Assets.zip</code> or your Mod's Folder, everything besides the WorldStructure files
+                inside of the <code>/Server/HytaleGenerator/</code> folder can be opened and edited inside the Node Editor.
+                <br><br>
+                However, File Explorer can't open files inside a zip file so for Hytale's <code>Assets.zip</code>
+                files you'll want to Extract the
+                <code>/Server/HytaleGenerator/</code> files somewhere else you can easily access later like your
+                computer's <code>Documents</code> folder.
+            </block>
+        </row>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('Home/Density/Definition')" class="blue"><div>What is Density?</div><img src="../../density/definition/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('')" class="brown disabled"><div>What are Materials?</div><img src="../../materials/definition/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('')" class="green disabled"><div>What are Props?</div><img src="../../props/definition/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('')" class="yellow disabled"><div>Environments</div><img src="../../world/environments/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>

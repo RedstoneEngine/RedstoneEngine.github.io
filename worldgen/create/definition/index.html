@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>What is a World?</h1>
+        <block class="brown">
+            The first step to learn is to understand how Hytale structures its files and the different
+            world generators available to use! The most common one being WorldGenV2!
+        </block>
+        <block>
+            Below is a list of each World Generator and what they are currently used for.
+        </block>
+        <row>
+            <block class="green">
+                <header><h2>WorldGenV1</h2></header>
+                <a onclick="window.parent.goToPage('Home/Create/WorldGenV1')">WorldGenV1</a> is the first iteration of the World Generator and is what is used to
+                generate your Adventure Worlds today!
+                <br><br>
+                <i>This Generator is temporary and is planned to be removed at a later date.</i>
+                <br>
+                <img src="../worldgenv1/Icon.webp" loading="lazy"/>
+            </block>
+            <block class="orange">
+                <header><h2>WorldGenV2</h2></header>
+                <a onclick="window.parent.goToPage('Home/Create/WorldGenV2')">WorldGenV2</a> is the second and final iteration of Hytale's World Generator that
+                is used to generate Ancient Gateway Worlds and Goblin Breaches. 
+                <br>
+                <img src="../worldgenv2/Icon.webp" loading="lazy"/>
+            </block>
+            <block class="pink">
+                <header><h2>Pre-Generated</h2></header>
+                A <a onclick="window.parent.goToPage('')">Pre-Generated World</a> is the final World type and will generate the exact same every time like the
+                Forgotten Temple!
+                <br>
+                <img src="../pregenworld/Icon.webp" loading="lazy"/>
+            </block>
+        </row>
+        <block>
+            Below is a diagram detailing the info used for generating temporary and permanent Worlds during
+            Gameplay. The main file you'll need to update here is the 'Instance' file!
+        </block>
+        <diagram style="height: 860px;">
+            <header>Hytale's Worlds File Format</header>
+            <block class="yellow" style="top: 70px; left: 50px;">
+                <header><h2>Asset: <a onclick="window.parent.goToPage('')">Fragment Portal Key</a></h2></header>
+                Contains a reference to an Instance
+            </block>
+            <block class="yellow" style="top: 250px; left: 50px;">
+                <header><h2>Asset: Ancient Gateway</h2></header>
+                Upon activation, creates a temporary World based upon the Instance referenced on the Fragment Portal Key
+            </block>
+            <block class="brown" style="top: 380px; left: 625px;">
+                <header><h2>File: Instance</h2></header>
+                World Template that is utilized to create new Worlds. These files won't be modified during gameplay
+            </block>
+            <block class="brown" style="top: 380px; left: 1200px;">
+                <header><h2>File: Worlds</h2></header>
+                Created from Instances. These Worlds will be created, entered, and removed during gameplay
+            </block>
+            <block class="yellow" style="top: 500px; left: 50px;">
+                <header><h2>Asset: <a onclick="window.parent.goToPage('')">Hub Portal</a></h2></header>
+                Contains a reference to an Instance. Creates a new permanent World based upon the Instance with no time limit and teleports the Player into it
+            </block>
+            <block style="top: 640px; left: 625px;">
+                <header><h2>Commands</h2></header>
+                <code>/instance</code> - Pulls up a menu to create a new World from an Instance<br>
+                <code>/instance exit</code> - Exit current World to previous World<br>
+            </block>
+            <block style="top: 600px; left: 1200px;">
+                <header><h2>Commands</h2></header>
+                <code>/worlds list</code> - List all created Worlds in your save file<br>
+                <code>/worlds load</code> - Teleport to an already created World<br>
+                <code>/worlds remove/prune</code> - Delete inactive World(s)<br>
+                <code>/worlds setdefault</code> - Set the World players initially spawn into
+            </block>
+            <img style="top: 90px; left: 520px; height: 250px;" src="./AncientGateway.webp" loading="lazy"/>
+            <img style="top: 45px; left: 455px; height: 50px;" src="./Fragment.webp" loading="lazy"/>
+            <img style="top: 480px; left: 445px; height: 50px;" src="./Creative.webp" loading="lazy"/>
+            <svg width="1600" height="800">
+                <!-- Define the arrowhead marker -->
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                        markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#fff" />
+                    </marker>
+                </defs>
+
+                <!-- Portal Key to Portal -->
+                <line x1="260" y1="150" x2="260" y2="200" stroke="#fff" stroke-width="3" marker-end="url(#arrow)" />
+                <!-- Portal to Instance -->
+                <line x1="490" y1="320" x2="600" y2="390" stroke="#fff" stroke-width="3" marker-end="url(#arrow)" />
+                <!-- Hub Portal to Instance -->
+                <line x1="490" y1="530" x2="600" y2="460" stroke="#fff" stroke-width="3" marker-end="url(#arrow)" />
+                <!-- Instance to World -->
+                <line x1="1070" y1="420" x2="1170" y2="420" stroke="#fff" stroke-width="3" marker-end="url(#arrow)" />
+                <!-- Instance to Commands -->
+                <line x1="825" y1="505" x2="825" y2="595" stroke="#fff" stroke-width="3" stroke-dasharray="8 8" />
+                <!-- Worlds to Commands -->
+                <line x1="1415" y1="485" x2="1415" y2="555" stroke="#fff" stroke-width="3" stroke-dasharray="8 8" />
+            </svg>
+        </diagram>
+        <block>
+            That's the basic understanding of Worlds! As we'll be modifying the terrain a lot, we'll want to see these
+            changes reflected in the Terrain around us, so I'll lastly include a couple very useful commands here:
+            <br><br>
+
+            <code>/viewport --radius=5</code> - Regenerates an area of land around the Player after every WorldGen change<br>
+            <code>/worldgen reload --clear</code> - Regenerates all chunks. Use this sparingly as it takes a while to reload
+            <br><br>
+
+            Keep in mind these commands will erase any builds in your world, so use with caution!
+        </block>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('Home/Create/WorldGenV1')" class="green"><div>A WorldGenV1 World</div><img src="../worldgenv1/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/Create/WorldGenV2')" class="green"><div>A WorldGenV2 World</div><img src="../worldgenv2/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('')" class="green disabled"><div>Pre-Generated Worlds</div><img src="../pregenworld/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>
