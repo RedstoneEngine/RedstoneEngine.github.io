@@ -45,7 +45,7 @@ function clickSelection(e) {
         else {
             guideIframe.src = "";
             setTimeout(() => { 
-                guideIframe.src = directory.replace("Home", ".");
+                guideIframe.src = directory.replace("Home", ".").toLowerCase();
                 guideIframe.style.display = "";
                 guideIframe.contentWindow.scrollTo(0, 0); 
             }, 100);
@@ -87,7 +87,7 @@ function goBack() {
     //Has History
     if (directoryHistory.length > 0) {
         directory = directoryHistory.pop();
-        guideIframe.src = directory.replace("Home", ".");
+        guideIframe.src = directory.replace("Home", ".").toLowerCase();
         document.location.hash = directory.substring(5);
         var scroll = scrollHistory.pop();
 
@@ -123,7 +123,7 @@ function goToPage(newDirectory) {
     scrollHistory.push(guideIframe.contentWindow.scrollY);
 
     directory = newDirectory;
-    guideIframe.src = directory.replace("Home", ".");
+    guideIframe.src = directory.replace("Home", ".").toLowerCase();
     document.location.hash = directory.substring(5);
 }
 
@@ -156,7 +156,7 @@ function loadCurrent() {
     //File
     else {
         document.getElementById("Home").style.display = "none";
-        guideIframe.src = directory.replace("Home", ".");
+        guideIframe.src = directory.replace("Home", ".").toLowerCase();
         guideIframe.style.display = "";
         document.getElementById("backBttn").style.display = "";
         document.getElementById("Title").style.display = "none";
