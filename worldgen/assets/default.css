@@ -148,6 +148,65 @@ file:hover {
     transform: translate(0px, -5px);
 }
 
+block {
+    max-width: 750px;
+    padding: 10px;
+    margin-bottom: 40px;
+    line-height: 1.5em;
+    display: block;
+
+    --type-color: #513893;
+
+    background-color: #2b2e33;
+    border: var(--type-color) solid 3px;
+    border-radius: 10px;
+}
+
+header {
+    background-color: var(--type-color);
+    margin: -10px -10px 10px -10px;
+    padding: 5px;
+}
+
+h2 {
+    width: fit-content;
+    margin: 0px;
+    padding: 5px 10px;
+
+    font-size: 16px;
+    font-weight: normal;
+    border: rgba(255, 255, 255, .25) solid 1px;
+    background-color: rgba(0, 0, 0, .333);
+}
+
+header > svg {
+    height: 30px;
+}
+
+header > svg.bttn {
+    cursor: pointer;
+    fill: rgba(255, 255, 255, .5);
+    transition-duration: .2s;
+}
+
+header > svg.bttn:hover {
+    fill: rgba(255, 255, 255, 1);
+}
+
+block > divider {
+    display: block;
+    height: 1px;
+    margin: 15px -10px;
+    background-color: rgba(255, 255, 255, .25);
+}
+
+block > img, diagram > img {
+    width: 100%;
+    margin-top: 10px;
+
+    border-radius: 10px;
+}
+
 a {
     font-weight: bolsd;
     cursor: pointer;

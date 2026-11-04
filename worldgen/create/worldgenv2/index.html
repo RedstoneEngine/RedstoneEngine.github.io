@@ -141,7 +141,7 @@
             <header>WorldGenV2 Structure</header>
             <block class="brown" style="top: 70px; left: 50px;">
                 <header><h2>Instance</h2></header>
-                Controls the <a>Gameplay</a> like <a>Breach Events</a>
+                Controls the <a onclick="window.parent.goToPage('Home/World/Gameplay')">Gameplay</a> like <a>Breach Events</a>
             </block>
             <code class="standalone" style="top: 225px; left: 100px;"><header>instance.bson</header>{
     ...
@@ -196,11 +196,11 @@
                 Holds a majority of the info that makes a Biome, a Biome. Openable in the Node Editor
             </block>
             <block class="blue" style="top: 270px; left: 1200px;">
-                <header><h2>Terrain Shape (<a>Density</a>)</h2></header>
+                <header><h2>Terrain Shape (<a onclick="window.parent.goToPage('Home/Density/Definition')">Density</a>)</h2></header>
                 Shape of the World defined per Biome
             </block>
             <block class="brown" style="top: 390px; left: 1200px;">
-                <header><h2><a>Materials</a></h2></header>
+                <header><h2>The Blocks (<a onclick="window.parent.goToPage('Home/Materials/Definition')">Materials</a>)</h2></header>
                 The Grass, Dirt, Water, and Stone that generates
             </block>
             <block class="green" style="top: 510px; left: 1200px;">
@@ -208,8 +208,9 @@
                 Fine-tuned placement of Blocks
             </block>
             <block class="yellow" style="top: 630px; left: 1200px;">
-                <header><h2><a>Environment</a> Reference</h2></header>
-                The Tints, Weather Events, <a>NPCs</a>, & <a>Sounds</a> that make up a Biome
+                <header><h2><a onclick="window.parent.goToPage('Home/World/Environments')">Environment</a> Reference</h2></header>
+                The <a>Tints</a>, Weather Events, <a onclick="window.parent.goToPage('Home/World/NPCs')">NPCs</a>, &
+                <a onclick="window.parent.goToPage('Home/World/Sounds')">Sounds</a> that make up a Biome
             </block>
             <svg width="1300" height="700">
                 <line x1="480" y1="90" x2="540" y2="90" stroke="#fff" stroke-width="3" />
@@ -287,9 +288,9 @@
                     Back
                 </back>
                 <file onclick="window.parent.goToPage('Home/Density/Definition')" class="blue"><div>What is Density?</div><img src="../../density/definition/Icon.webp" loading="lazy"/></file>
-                <file onclick="window.parent.goToPage('')" class="brown disabled"><div>What are Materials?</div><img src="../../materials/definition/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/Materials/Definition')" class="brown"><div>What are Materials?</div><img src="../../materials/definition/Icon.webp" loading="lazy"/></file>
                 <file onclick="window.parent.goToPage('')" class="green disabled"><div>What are Props?</div><img src="../../props/definition/Icon.webp" loading="lazy"/></file>
-                <file onclick="window.parent.goToPage('')" class="yellow disabled"><div>Environments</div><img src="../../world/environments/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/Environments')" class="yellow"><div>Environments</div><img src="../../world/environments/Icon.webp" loading="lazy"/></file>
             </div>
         </diagram>
     </body>

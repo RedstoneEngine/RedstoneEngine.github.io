@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>What are Materials?</h1>
+        <block class="brown">
+            Materials is a fancy way of saying what block goes where! This is controlled via the 'MaterialProvider' pin on Biome nodes!
+            Each Biome can then define it's own Materials to place within the World.
+        </block>
+        <img style="height: 150px; margin-bottom: 40px;" src="./BiomeMaterialPin.webp">
+        <block>
+            Well, hold on... Doesn't the Density help control what block goes where? It defines what should be Air and what should be Blocks?
+            It still does, however, the Density you created is actually fed into this 'Solidity MaterialProvider' node. Anything above 0 will follow the 'Solid' pin
+            and anything equal to or below 0 will follow the 'Empty' pin.
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./SolidityProvider.webp">
+        <block>
+            Each of these goes into a Material Queue which works top to bottom in the Node Graph seeing which MaterialProvider rule fits the Block's Position first.
+            Once a rule passes, the Block will be set and will skip over any other MaterialProviders in the Queue.
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./QueueProvider.webp">
+        <block class="green">
+            Let's test this by creating pockets of Sand within our Stone! To do this, let's add a FieldFunction MaterialProvider before the Constant MaterialProvider to
+            attempt to place Sand before landing on Stone. You may notice, you can plug in a new Density into the 'FieldFunction' pin so let's add a 'CellNoise3D.'
+            <divider></divider>
+            'CellNoise3D' is a density that creates features that look like dots which is exactly what we're going for!
+            It's alright if you've never used <a>Cell Noise</a> before. For now, we'll set the 'CellType' to 'Distance' which will give us a range of values from [-1, 0].
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./FieldFunctionCellNoise.webp">
+        <img style="height: 250px; margin-bottom: 40px;" src="../../density/cellnoise/Icon.webp">
+        <block>
+            Now adding the delimiter, you may get a picture of what's happening here. If the CellNoise Density at a Block's Position is within this Delimiter's range,
+            it'll place a new Material, and if not, the queue continues and Stone is placed! So let's create a reasonable delimiter here,
+            -1 is at the center of the dots and 1 is the furthest distance from the dot, so let's try -1 to -0.75 to have Sand at the center of the dots!
+            <divider></divider>
+            From here, we can define Material Providers in Material Providers?? Oh boy, we have a lot of power with this tool, but for now let's
+            just set the blocks within this range to a 'Constant' Sand block. The id of Sand Blocks being <code>Soil_Sand</code>.
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./DelimiterForSand.webp">
+        <block>
+            After refreshing... We have Sand!
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./SandInViewport.webp">
+        <block>
+            Now let's get a bit creative and add a ring around the Sand full of White Sand and White Sandstone!
+            <divider></divider>
+            You may think we add another FieldFunction with the same Density, different Delimiter, however, we can add as many Delimiters to the first one as we so please!
+            So let's add another one continuing from -0.75 to -0.7. Now we can place a 'Weighted MaterialProvider' and put an equal Weight between 2 'Constant MaterialProviders.' 
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./MultipleDelimiters.webp">
+        <block>
+            Before we add the id's, it's a bit tedious going back and forth to check for Block Ids especially if they're long ones, so let's link the Node Editor to
+            the Assets.zip file! The Node Editor will read the Assets.zip and extract all of the Block info so we can then 'Browse...' for the correct Block!
+            <divider></divider>
+            To do this, select 'File' in the top right and then 'Load Assets.zip.' This will open up a file explorer where you can then traverse to Hytale's install
+            folder and select the Assets.zip file!
+        </block>
+        <img style="width: 500px; margin-bottom: 40px;" src="./LoadAssetsZip.webp">
+        <block>
+            Going back, let's hit 'Browse...' and search for the White Sand and White Sandstone. Now, if we hit save and go back, we'll see our updated materials!
+        </block>
+        <img style="width: 750px; margin-bottom: 40px;" src="./SandAndWhiteSandInViewport.webp">
+        <block class="green">
+            One last useful tip for those colorful extraordinaires! Hytale has an in-game Palette Menu where it'll give you Blocks that best match a Color,
+            give you a Gradient between 2 or more Blocks, and also save Block Palettes that you'd like to use for later!
+            <divider></divider>
+            To access, simply go into your Creative Inventory, select the Bulletted List icon on the right of the screen and at the bottom select,
+            'OPEN PALETTE EDITOR' and Ta-Da, colorful blocks at your disposal!
+        </block>
+        <img style="height: 400px; margin-bottom: 40px;" src="./OpenPaletteEditor.webp">
+        <img style="height: 400px; margin-bottom: 40px;" src="./Icon.webp">
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('')" class="brown disabled"><div>Materials & Masking</div><img src="../basics/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>

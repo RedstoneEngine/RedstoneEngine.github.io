@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>Gameplay</h1>
+        <block class="brown">
+            While not needed for Generating a World, the World's Gameplay can be a very important aspect of curating an experience for the Players!
+        </block>
+        <block>
+            Gameplay is defined by 2 Assets, the GameplayConfig and Instance. The Gameplay Config can be changed via Portal Fragments while the Instance/World
+            gameplay properties can be modified via Commands. Both have their own properties as well as some overlap. Anything defined in the Instance will take
+            priority!
+        </block>
+        
+        <diagram style="width: 1000px; height: 500px;">
+            <header>Gameplay Config Files</header>
+
+            <block class="brown" style="top: 75px; left: 25px;">
+                <header><h2>File: Instance</h2></header>
+                Contains a list of Gameplay Configurations as well as a reference to a GameplayConfig Asset.
+            </block>
+
+            <block class="yellow" style="top: 75px; right: 25px;">
+                <header><h2>Asset: GameplayConfig</h2></header>
+                Contains a list of Gameplay Configurations. 
+            </block>
+
+            <block style="top: 300px; left: 25px;">
+                <header><h2>Commands</h2></header>
+                <code>/world settings ...</code> - Change the Gameplay Settings in the World File
+            </block>
+
+            <block class="yellow" style="top: 275px; right: 25px;">
+                <header><h2>Asset: PortalType</h2></header>
+                Overrides the World with a different GameplayConfig Asset than defined in the Instance File.<br>
+                Default is the <code>Portal</code> GameplayConfig Asset.
+            </block>
+
+            <svg width="900" height="400">
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                        markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#fff" />
+                    </marker>
+                </defs>
+
+                <line x1="460" y1="90" x2="530" y2="90" stroke="#fff" stroke-width="3" marker-end="url(#arrow)" />
+                <line x1="240" y1="170" x2="240" y2="260" stroke="#fff" stroke-width="3" stroke-dasharray="8 8" />
+                <line x1="750" y1="235" x2="750" y2="160" stroke="#fff" stroke-width="3" marker-end="url(#arrow)" />
+            </svg>
+        </diagram>
+
+        <block>
+            The amount of Gameplay configurations you can change is too much to comprehesively go over here, so I encourage you to check the docs and the
+            GameplayConfig Asset in the Asset Editor!
+        </block>
+        <block class="pink" style="width: 250px;">
+            <header><h2>Documentation</h2></header>
+            <a href="https://docs.hytale.com/assets/instances/" target="_blank">Instances</a><br>
+            <a href="https://docs.hytale.com/assets/gameplayconfigs/" target="_blank">GameplayConfig</a>
+        </block>
+
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>Default</h2> GameplayConfig</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    Gathering
+                </td>
+                <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    World
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label empty">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    World Map
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    Death
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    Respawn
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('Home/World/Environments')" class="yellow"><div>Environments</div><img src="../environments/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('')" class="yellow disabled"><div>Tints</div><img src="../tints/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/NPCs')" class="yellow"><div>NPC Spawning</div><img src="../npcs/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/Sounds')" class="yellow"><div>Music / Sounds</div><img src="../sounds/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>

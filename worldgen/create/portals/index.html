@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+        <script src="../../rendering/baseRenderer.js" type="module"></script>
+    </head>
+    <body>
+        <h1>Fragment & Permanent Portals</h1>
+        <block class="brown">
+            Creating a new World is one thing, but melding it into the Gameplay of a Player's playthrough is another!
+        </block>
+        <block class="orange">
+            You can either
+            <ul>
+                <li>Set your new World as the Default World</li>
+                <li>Create a new 'Fragment of Orbis' to visit temporarily</li>
+                <li>Craft a new Portal to create another Permanent World</li>
+            </ul>
+        </block>
+        <block class="green">
+            Making your new World as the Default is the easiest!
+            <divider></divider>
+            First, you'll need to make sure the World is set to Save and last Permanently. Below is an example of that configuration.
+            You can also set these values on an already created World Save file or use the <code>/worlds settings ...</code> command in game.
+
+        </block>
+        <!--Create a side-by-side of making a permanent and temporary instance-->
+        <code class="standalone"><header>instance.bson</header>{
+    ...
+    "IsSavingPlayers": true,
+    "IsSavingChunks": true,
+    "SaveNewChunks": true,
+    "IsUnloadingChunks": true,
+    "DeleteOnUniverseStart": false,
+    "DeleteOnRemove": false,
+    ...
+}</code>
+
+        <block>
+            And then you can type these commands in order:<br><br>
+            <code>/instance</code> - Opens Instance Menu to create a New World. Select 1 and click 'Spawn.'<br>
+            <code>/worlds list</code> - To List all the Created Worlds<br>
+            (Copy the World Name either from the List or the Folder located in your Saves File)<br>
+            <code>/worlds setdefault [World Name]</code> - Sets this World as the Default World everyone spawns into!
+        </block>
+
+        <block class="green">
+            The second and most common method will be to create a Fragment Portal Key!
+            <divider></divider>
+            As explained in the <a onclick="window.parent.goToPage('Home/Create/Definition')">World's Section</a>, the Ancient Gateway
+            acts as a conduit for any Portal Fragment Keys either Hytale or Custom, so let's create a Custom one! The best way to start is 
+            to have a good base so let's create a new Item that copies from an existing Portal Key!
+        </block>
+        <img style="height: 250px; margin-bottom: 40px;" src="./DuplicatePortalKey.webp">
+        <block>
+            Feel free to edit anything here however you like, like the crafting and rendering of the item as the only detail that matters here is
+            the 'PortalKey' attribute listed under the 'Functionality.' What lies here is a reference to a 'PortalType' file
+            and an ability to override the PortalType's time limit and player limit.
+        </block>
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>PortalKey_MyBiome</h2> Item</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Portal Key
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&emsp;Portal Type</td>
+                <td><highlight>[PortalType Asset Name]</highlight></td>
+            </tr>
+            <tr class="empty">
+                <td>&emsp;Time Limit Seconds</td>
+                <td></td>
+            </tr>
+            <tr class="empty">
+                <td>&emsp;Allowed Entry Count</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+        <block>
+            Before we can set these values, we now need to create our own Portal Type!
+        </block>
+        <img style="height: 250px; margin-bottom: 40px;" src="./DuplicatePortalType.webp">
+        <block>
+            From here we can define and override many behaviors of the Instance that'll be spawned. Everything listed here should be relatively
+            self explanatory, but feel free to experiment otherwise! I'll just mention the most important one for this guide and that is to set
+            the 'Instance Id' to the Instance you wish to load upon a player entering the Portal! The path and name should appear the same as in the
+            <code>/instances</code> menu, skipping the name of the Asset Pack.
+        </block>
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>MyBiome</h2> PortalType</td>
+            </tr>
+            <tr>
+                <td>Instance Id</td>
+                <td>[Instance Name]</td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+        <block>
+            Finally, remember to reference our new Portal Type in our PortalKey Item! Also, it's recommended to set the 'DeleteOnRemove' to 'false' in the
+            instance file so the World gets deleted when the Server doesn't need it anymore!
+        </block>
+        <block class="green">
+            The second way is creating Permament World Portals! Similar to the Hob Portals in the Crossroads when you create a new Creative World!
+            <divider></divider>
+            Speaking of Hub Portals, let's copy the asset to see how it works!
+        </block>
+        <img style="height: 250px; margin-bottom: 40px;" src="./DuplicateHubPortal.webp">
+        <block>
+            Traversing to the 'Block/Interactions' we'll find the exact component we're looking for in 'CollisionEnter.' Upon a player colliding with the
+            Block, if a World exists called 'zone3_taiga1_world,' it'll teleport the player into the world. If not, the game will create a new World
+            from the 'Regions/Zone3_Taiga1' instance template and then teleport the player into it. These names can of course be changed to whatever we desire.
+        </block>
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>Permament_Portal_MyBiome</h2> Item</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Block Type
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Interactions
+                </td>
+                <td>1 Map Entries</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    <b>Collision Enter</b>
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Interactions
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;&emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    0
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;Type
+                </td>
+                <td>HubPortal</td>
+            </tr>
+            <tr>
+                <td>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;World Name
+                </td>
+                <td><highlight>zone3_taiga1_world</highlight></td>
+            </tr>
+            <tr>
+                <td>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;Instance Template
+                </td>
+                <td><highlight>Regions/Zone3_Taiga1</highlight></td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+        <block>
+            After this, all you need to do is setup a crafting configuration for it!
+            This world will last as long as the instance file has the same properties listed in the making your world the default world which
+            has been included again below!
+        </block>
+        <code class="standalone"><header>instance.bson</header>{
+    ...
+    "IsSavingPlayers": true,
+    "IsSavingChunks": true,
+    "SaveNewChunks": true,
+    "IsUnloadingChunks": true,
+    "DeleteOnUniverseStart": false,
+    "DeleteOnRemove": false,
+    ...
+}</code>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('Home/World/Gameplay')" class="yellow"><div>Gameplay</div><img src="../../world/gameplay/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>

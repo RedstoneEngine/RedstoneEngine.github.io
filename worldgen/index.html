@@ -11,14 +11,24 @@
     </head>
     <body>
         <navbar>
-            <button onclick="goHome()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg>
-                Home
-            </button>
-            <button id="backBttn" onclick="goBack()" style="display: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
-                Back
-            </button>
+            <div style="display: flex; justify-content: space-between; height: 100%;">
+                <div>
+                    <a href="/worldgen/">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/></svg>
+                            Home
+                        </button>
+                    </a>
+                    <button id="backBttn" onclick="goBack()" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                        Back
+                    </button>
+                </div>
+                <button onclick="document.getElementById('OverlayAuthor').classList.add('display');">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z"/></svg>
+                    Author
+                </button>
+            </div>
         </navbar>
 
         <page>
@@ -39,25 +49,26 @@
                 <file file="WorldGenV1" class="green"><div>WorldGenV1</div><img src="./create/worldgenv1/Icon.webp" loading="lazy"/></file>
                 <file file="WorldGenV2" class="green"><div>WorldGenV2</div><img src="./create/worldgenv2/Icon.webp" loading="lazy"/></file>
                 <file class="green disabled"><div>Pre-Generated Worlds</div><img src="./create/pregenworld/Icon.webp" loading="lazy"/></file>
-                <file class="orange disabled"><div>Fragment / Permanent Portals</div><img src="./create/portals/Icon.webp" loading="lazy"/></file>
+                <file file="Portals" class="orange"><div>Fragment & Permanent Portals</div><img src="./create/portals/Icon.webp" loading="lazy"/></file>
             </directory>
             <directory id="Density" style="display: none;">
                 <folder key="back"><img class="back"/>Go Back</folder>
                 <file file="Definition" class="brown"><div>What is Density?</div><img src="./density/definition/Icon.webp" loading="lazy"/></file>
-                <file class="green disabled"><div>Shaping Techniques</div><img src="" loading="lazy"/></file>
-                <file class="green disabled"><div>Rivers & Mountains</div><img src="" loading="lazy"/></file>
+                <file file="Shaping" class="green"><div>Shaping Techniques</div><img src="./density/shaping/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Rivers & Mountains</div><img src="./density/rivers/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Optimizations</div><img src="./density/optimizations/Icon.webp" loading="lazy"/></file>
+                <file class="orange disabled"><div>3D Terrain</div><img src="./density/3dterrain/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Caves</div><img src="./density/caves/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Floating Islands</div><img src="" loading="lazy"/></file>
-                <file class="orange disabled"><div>3D Terrain</div><img src="./density/3dterrain/Icon.webp" loading="lazy"/></file>
                 <file class="pink disabled"><div>Cell Noise</div><img src="./density/cellnoise/Icon.webp" loading="lazy"/></file>
+                <file class="pink disabled"><div>Cell Shaping</div><img src="" loading="lazy"/></file>
                 <file class="pink disabled"><div>Points of Interest</div><img src="./density/poi/Icon.webp" loading="lazy"/></file>
                 <file class="yellow disabled"><div>Misc Densities</div><img src="" loading="lazy"/></file>
                 <!--Other Densities and what they're used for-->
             </directory>
             <directory id="Materials" style="display: none;">
                 <folder key="back"><img class="back"/>Go Back</folder>
-                <file class="brown disabled"><div>What are Materials?</div><img src="./materials/definition/Icon.webp" loading="lazy"/></file>
+                <file file="Definition" class="brown"><div>What are Materials?</div><img src="./materials/definition/Icon.webp" loading="lazy"/></file>
                 <file class="green disabled"><div>Materials & Masking</div><img src="./materials/basics/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Optimizations</div><img src="./materials/optimizations/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Terrain Gradient</div><img src="./materials/gradient/Icon.webp" loading="lazy"/></file>
@@ -73,10 +84,11 @@
             </directory>
             <directory id="World" style="display: none;">
                 <folder key="back"><img class="back"/>Go Back</folder>
-                <file class="green disabled"><div>Environments</div><img src="./world/environments/Icon.webp" loading="lazy"/></file>
-                <file class="green disabled"><div>Gameplay</div><img src="./world/gameplay/Icon.webp" loading="lazy"/></file>
-                <file class="green disabled"><div>NPC Spawning</div><img src="./world/npcs/Icon.webp" loading="lazy"/></file>
-                <file class="green disabled"><div>Music / Sounds</div><img src="./world/sounds/Icon.webp" loading="lazy"/></file>
+                <file file="Environments" class="green"><div>Environments</div><img src="./world/environments/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Tints</div><img src="./world/tints/Icon.webp" loading="lazy"/></file>
+                <file file="Gameplay" class="green"><div>Gameplay</div><img src="./world/gameplay/Icon.webp" loading="lazy"/></file>
+                <file file="NPCs" class="green"><div>NPC Spawning</div><img src="./world/npcs/Icon.webp" loading="lazy"/></file>
+                <file file="Sounds" class="green"><div>Music / Sounds</div><img src="./world/sounds/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Spawnpoints</div><img src="./world/spawnpoints/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Multiple Biomes</div><img src="./world/biomes/Icon.webp" loading="lazy"/></file>
                 <file class="pink disabled"><div>World Events</div><img src="./world/events/Icon.webp" loading="lazy"/></file>
@@ -95,6 +107,7 @@
             <directory id="Math" style="display: none;">
                 <folder key="back"><img class="back"/>Go Back</folder>
                 <file class="green disabled"><div>Sinusoidal Dunes</div><img src="./math/dunes/Icon.webp" loading="lazy"/></file>
+                <file class="green disabled"><div>Repeating Steppes</div><img src="" loading="lazy"/></file>
                 <file class="green disabled"><div>Offset Positions to Terrain</div><img src="./math/vectoroffset/Icon.webp" loading="lazy"/></file>
                 <file class="orange disabled"><div>Spiraled Terrain</div><img src="./math/spiral/Icon.webp" loading="lazy"/></file>
             </directory>
@@ -126,6 +139,29 @@
 
             <iframe id="Guide" style="display: none;" src=""></iframe>
         </page>
-
+        <overlay id="OverlayAuthor">
+            <block class="orange">
+                <header style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>World Gen Guides Author</h2>
+                    <svg class="bttn" onclick="document.getElementById('OverlayAuthor').classList.remove('display');"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"/></svg>
+                </header>
+                <img style="width: 50px; float: left; margin-top: 0px; margin-right: 10px;"
+                    src="../assets/sprites/blogs/Icon_YouTubeChannel.webp">
+                Hello! My name is RedEng Developer and I have a
+                <a href="https://www.youtube.com/@RedEngDeveloper" target="_blank">YouTube Channel</a> and
+                <a href="https://x.com/RedstoneEngine0" target="_blank">Post on Twitter</a> occasionally!
+                <divider></divider>
+                I have loved playing with World Gen and hope that this guide will help start your own journey!
+                Feel free to @ me on Twitter or the
+                <a href="https://discord.com/invite/hytalemodding" target="_blank">HytaleModding Discord</a> with
+                your progress!
+                <divider></divider>
+                <block class="button" onclick="window.open('https://ko-fi.com/redengdev', '_blank');">
+                    <img style="width: 35px;" src="./assets/kofiIcon.webp">
+                    <a>Buy me a Coffee!</a>
+                </block>
+            </block>
+        </overlay>
     </body>
 </html>

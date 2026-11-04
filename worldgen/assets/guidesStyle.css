@@ -22,37 +22,6 @@ row > block {
     width: 450px;
 }
 
-block {
-    max-width: 750px;
-    padding: 10px;
-    margin-bottom: 40px;
-    line-height: 1.5em;
-    display: block;
-
-    --type-color: #513893;
-
-    background-color: #2b2e33;
-    border: var(--type-color) solid 3px;
-    border-radius: 10px;
-}
-
-header {
-    background-color: var(--type-color);
-    margin: -10px -10px 10px -10px;
-    padding: 5px;
-}
-
-h2 {
-    width: fit-content;
-    margin: 0px;
-    padding: 5px 10px;
-
-    font-size: 16px;
-    font-weight: normal;
-    border: rgba(255, 255, 255, .25) solid 1px;
-    background-color: rgba(0, 0, 0, .333);
-}
-
 code {
     padding: 3.5px;
     font-weight: bold;
@@ -70,24 +39,10 @@ code.standalone {
     border-color: var(--type-color);
 }
 
-block > img, diagram > img {
-    width: 100%;
-    margin-top: 10px;
-
-    border-radius: 10px;
-}
-
 block > div > img {
     margin-top: 10px;
 
     border-radius: 10px;
-}
-
-block > divider {
-    display: block;
-    height: 1px;
-    margin: 15px -10px;
-    background-color: rgba(255, 255, 255, .25);
 }
 
 table {
@@ -118,7 +73,7 @@ td:first-child {
     border: none;
     font-size: 12px;
     font-style: italic;
-    color: #646464;
+    color: #868686;
 }
 
 td > h2 {
@@ -135,11 +90,11 @@ td > h2 {
 
 .label > td:last-child {
     font-style: italic;
-    color: #646464;
+    color: #868686;
 }
 
-.label.empty > td {
-    color: #646464;
+.empty > td {
+    color: #868686;
 }
 
 diagram {

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+        <script src="../../rendering/baseRenderer.js" type="module"></script>
+    </head>
+    <body>
+        <h1>Shaping Techniques</h1>
+        <block class="brown">
+            Shaping a repeating noise pattern into an interesting landscape is own of the most challenging and most rewarding world gen
+            experiences!
+        </block>
+        <block class="orange">
+            Here, we'll look at a few techniques including:
+            <ul>
+                <li>Multiple Octaves</li>
+                <li>Mixing the Terrain</li>
+                <li>Warping!</li>
+            </ul>
+        </block>
+        <diagram style="height: 400px;">
+            <block style="top: 20px; left: 20px; width: auto;" class="orange">
+                <header><h2>Plateaued Terrain</h2></header>
+                <canvas width="256" height="256" display="3DBlocks" size="75" function3D="
+                    var noise = simplex2D(x * .3 + params.time, z * .3);
+                    if (noise < 0) {
+                        noise = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .48) {
+                        noise = remap(noise, 0, .48, -.3, -.2);
+                    }
+                    else if (noise < .5) {
+                        noise = remap(noise, .48, .5, -.2, .9);
+                    }
+                    else {
+                        noise = remap(noise, .5, 1, .9, 1);
+                    }
+                    return noise * 1 - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                    " uniforms="time"></canvas>
+            </block>
+            <block style="top: 20px; left: 320px; width: auto;">
+                <header><h2>+ Octaves</h2></header>
+                <canvas width="256" height="256" display="3DBlocks" size="75" function3D="
+                    var noise = simplex2D(x * .3 + params.time, z * .3);
+                    if (noise < 0) {
+                        noise = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .48) {
+                        noise = remap(noise, 0, .48, -.3, -.2);
+                    }
+                    else if (noise < .5) {
+                        noise = remap(noise, .48, .5, -.2, .9);
+                    }
+                    else {
+                        noise = remap(noise, .5, 1, .9, 1);
+                    }
+                    return noise * .75 + simplex2D((x * .3 + params.time) * 2, z * .6) * .25 - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                    " uniforms="time"></canvas>
+            </block>
+            <block style="top: 20px; left: 620px; width: auto;">
+                <header><h2>+ Mixing</h2></header>
+                <canvas style="top: 20px; left: 600px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                    let noise = simplex2D(x * .3 + params.time, z * .3);
+                    let mixNoise = simplex2D((x * .3 + params.time) * 2, (z * .3) * 2 + 1000);
+                    var noise1 = 0.0;
+                    if (noise < 0) {
+                        noise1 = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .48) {
+                        noise1 = remap(noise, 0, .48, -.3, -.2);
+                    }
+                    else if (noise < .5) {
+                        noise1 = remap(noise, .48, .5, -.2, .9);
+                    }
+                    else {
+                        noise1 = remap(noise, .5, 1, .9, 1);
+                    }
+                    var noise2 = 0.0;
+                    if (noise < .1) {
+                        noise2 = clamp(remap(noise, -.12, .1, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .38) {
+                        noise2 = remap(noise, .1, .38, -.3, -.2);
+                    }
+                    else if (noise < .6) {
+                        noise2 = remap(noise, .38, .6, -.2, .9);
+                    }
+                    else {
+                        noise2 = remap(noise, .6, 1, .9, 1);
+                    }
+                    
+                    return mix(noise1, noise2, clamp(remap(mixNoise, -.5, .5, 0, 1), 0, 1)) - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                    " uniforms="time"></canvas>
+            </block>
+            <block style="top: 20px; left: 920px; width: auto;">
+                <header><h2>+ Warping</h2></header>
+                <canvas style="top: 20px; left: 900px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                    let scale = 4.0;
+                    let step = 1.0;
+                    let warp = vec2f((simplex2D((x * .3 + params.time) * scale + step, z * .3 * scale) - simplex2D((x * .3 + params.time) * scale - step, z * .3 * scale)) * .5,
+                        (simplex2D((x * .3 + params.time) * scale, z * .3 * scale + step) - simplex2D((x * .3 + params.time) * scale, z * .3 * scale - step)) * .5);
+                    var noise = simplex2D(x * .3 + params.time + warp.x * 200, z * .3 + warp.y * 200);
+                    if (noise < 0) {
+                        noise = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .48) {
+                        noise = remap(noise, 0, .48, -.3, -.2);
+                    }
+                    else if (noise < .5) {
+                        noise = remap(noise, .48, .5, -.2, .9);
+                    }
+                    else {
+                        noise = remap(noise, .5, 1, .9, 1);
+                    }
+                    return noise * 1 - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                    " uniforms="time"></canvas>
+            </block>
+            <block style="top: 20px; left: 1220px; width: auto;" class="yellow">
+                <header><h2>All together</h2></header>
+                <canvas style="top: 20px; left: 1200px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                    let scale = 4.0;
+                    let step = 1.0;
+                    let warp = vec2f((simplex2D((x * .3 + params.time) * scale + step, z * .3 * scale) - simplex2D((x * .3 + params.time) * scale - step, z * .3 * scale)) * .5,
+                        (simplex2D((x * .3 + params.time) * scale, z * .3 * scale + step) - simplex2D((x * .3 + params.time) * scale, z * .3 * scale - step)) * .5);
+                    let noise = simplex2D(x * .3 + params.time + warp.x * 200, z * .3 + warp.y * 200);
+                    let mixNoise = simplex2D((x * .3 + params.time) * 2, (z * .3) * 2 + 1000);
+                    var noise1 = 0.0;
+                    if (noise < 0) {
+                        noise1 = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .48) {
+                        noise1 = remap(noise, 0, .48, -.3, -.2);
+                    }
+                    else if (noise < .5) {
+                        noise1 = remap(noise, .48, .5, -.2, .9);
+                    }
+                    else {
+                        noise1 = remap(noise, .5, 1, .9, 1);
+                    }
+                    var noise2 = 0.0;
+                    if (noise < .1) {
+                        noise2 = clamp(remap(noise, -.12, .1, -1, -.3), -1, 1);
+                    }
+                    else if (noise < .38) {
+                        noise2 = remap(noise, .1, .38, -.3, -.2);
+                    }
+                    else if (noise < .6) {
+                        noise2 = remap(noise, .38, .6, -.2, .9);
+                    }
+                    else {
+                        noise2 = remap(noise, .6, 1, .9, 1);
+                    }
+                    return mix(noise1, noise2, clamp(remap(mixNoise, -.5, .5, 0, 1), 0, 1)) * .75 + simplex2D((x * .3 + params.time) * 2, z * .6) * .25 - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                    " uniforms="time"></canvas>
+            </block>
+        </diagram>
+        <block class="green">
+            Before we begin, let's create a new curvemapper that will better fit the following examples with 2 sharp cliffs close together. We'll make it look better over time.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./MappedPlateaus.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3);
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise * 1 - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Wait! We've run into a weird problem of creating holy terrain! This goes back to the warning before of adding a 2D value at or outside the ranges of -1 and 1
+            on to our curvemapper. At these points, the 2d noise's value of -1 or below summed with the curvemapper's maximum value of 1 at y=-100, results in the number
+            0 or less which creates a hole all the way down to bedrock!
+            <divider></divider>
+            We have 2 ways to fix this. First is to expand our baseheight curvemappers values to allow a wider range. Second is to modify the 2d noise to be within this range.
+            You can do either option, however, the second option is generally perferred so I'm going to modify the curve to reach -0.99 instead!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./FixedMappedPlateaus.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3);
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -.999, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise * 1 - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block class="pink">
+            As a side note, we didn't run into this problem before due to how simplex noise works. While the values it outputs is between -1 to 1, the values are so
+            "smoothened" out that it'll never reach -1 or 1 and has a distribution of values like the bell curve below. If you want truly random values between and reaching
+            -1 to 1, try 'White Noise.' It has no smoothening affect!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 40px; height: 256px;" src="./BellCurveDist.webp" loading="lazy">
+            <canvas style="top: 20px; left: 405px;" width="256" height="256" display="2D" function2D="simplex2D(x * .5 + params.time, z * .5);" min="-1" max="1" uniforms="time"></canvas>
+            <img style="top: 10px; left: 690px; height: 256px;" src="./WhiteNoise.webp" loading="lazy">
+        </diagram>
+        <block class="green">
+            Starting off with our first shaping technique, we'll try the age old trick of just applying more noise on top!
+            <divider></divider>
+            The setup is quite simple adding another noise at a smaller scale to the curvemapped noise we've been working on.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./FirstSummation.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3);
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -.999, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise + simplex2D((x * .3 + params.time) * 2, z * .6) - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Uh oh, we've reached outside the bounds again! This time we'll apply normalizers to remap the noise to be compliant with our bounds.
+            Normalizers are meant to remap the 'in' values to be within a new range of values typically within the final -1 to 1 range, so if we scale down the plateaus to 0.75
+            and the smaller scaled "detail noise" to 0.25 so it's not as strong of an affect as the plateaus, we shouldn't exceed our range!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./NormalizedSummation.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3);
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -.999, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise * .75 + simplex2D((x * .3 + params.time) * 2, z * .6) * .25 - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block class="pink">
+            You may have noticed, we could've also done this by multiplying a constant to each noise values or adding another curvemapper to each to remap the values!
+            While true and up to your designer heart, I think using a normalizer creates the smallest node footprint and is really simple to modify if we ever add more
+            noise values!
+        </block>
+        <block>
+            And with that... Our first technique is down and already looking 10x better, adding a lot of detail to those relatively flat planes we created previously.
+            If terrain or block palettes ever look too flat, add some noise!
+            <divider></divider>
+            However... We're not done yet, because I want to add this scaled down noise to before the curvemapper instead to see if it can break up those circular cliffs.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./DifferentSummation.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3) * .75 + simplex2D((x * .3 + params.time) * 2, z * .6) * .25;
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -.999, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Looking nice! However, there's an even simpler way of doing this by utilizing octaves which will make the node graph super compact!
+            <divider></divider>
+            Octaves work the same way of adding detail noise to an already existing noise and the strength and scale of each consecutive octave is controlled by
+            these 'Lacunarity' and 'Persistence' values. Lacunarity controls how many times smaller each octave is so a value of 2 will add a noise that is 2x smaller
+            than the previous. Persistence is how strong the next octave is, so a value of 0.5 will make each octave half as strong as the last. The resulting
+            noise will still never exceed the -1 to 1 bounds however, so in the example of 2 octaves with a 0.5 persistence: the first noise will be at 2/3rds strength
+            with the second being at 1/3rd stength totaling 1 while still being half of the first. Feel free to try out the values here!
+        </block>
+        <diagram style="height: 310px; width: 1000px;">
+            <canvas id="octaves" style="top: 20px; left: 20px;" width="200" height="200" display="2D" function2D="
+                var intensity = (1 / (1+params.per+params.per*params.per));
+                var noise = simplex2D(x * .5 + params.time, z * .5) * intensity;
+                intensity *= params.per;
+                var scale = params.lac;
+                noise += simplex2D((x * .5 + params.time) * scale, z * .5 * scale) * intensity;
+                intensity *= params.per;
+                scale *= params.lac;
+                noise += simplex2D((x * .5 + params.time) * scale, z * .5 * scale) * intensity;
+                return noise;
+                " min="-1" max="1" uniforms="time, lac, per" lac="2" per="0.5"></canvas>
+            <canvas id="octaves" style="top: 20px; left: 270px;" width="200" height="200" display="2D" function2D="
+                simplex2D(x * .5 + params.time, z * .5) *  (1 / (1+params.per+params.per*params.per));" min="-1" max="1" uniforms="time, per" lac="2" per="0.5"></canvas>
+            <canvas id="octaves" style="top: 20px; left: 520px;" width="200" height="200" display="2D" function2D="
+                simplex2D((x * .5 + params.time) * params.lac, (z * .5) * params.lac + 19219) * (params.per / (1+params.per+params.per*params.per));" min="-1" max="1" uniforms="time, lac, per" lac="2" per="0.5"></canvas>
+            <canvas id="octaves" style="top: 20px; left: 770px;" width="200" height="200" display="2D" function2D="
+                simplex2D((x * .5 + params.time) * params.lac * params.lac, (z * .5) * params.lac * params.lac + 88291) * (params.per*params.per / (1+params.per+params.per*params.per));" min="-1" max="1" uniforms="time, lac, per" lac="2" per="0.5"></canvas>
+            <block style="bottom: -20px; left: 187px; width: auto;" class="orange">
+                <slider>
+                    Lacunarity:
+                    <code>2.0</code>
+                    <input class="range" type="range" oninput="updateSlider(this);" canvas="octaves" uniform="lac" min="1.0" max="5.0" value="2.0" step=".1">
+                </slider>
+                <slider>
+                    Persistence:
+                    <code>0.5</code>
+                    <input class="range" type="range" oninput="updateSlider(this);" canvas="octaves" uniform="per" min="0.0" max="1.0" value="0.5" step=".1">
+                </slider>
+            </block>
+            <div style="top: 100px; left: 235px; position: absolute; font-weight: bold; font-size: 35px;">=</div>
+            <div style="top: 100px; left: 485px; position: absolute; font-weight: bold; font-size: 35px;">+</div>
+            <div style="top: 100px; left: 735px; position: absolute; font-weight: bold; font-size: 35px;">+</div>
+        </diagram>
+        <block>
+            Here's the resulting nodes using octaves instead of adding 2 simplex nodes.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./OctavesSummation.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3) * 4/7 + simplex2D((x * .3 + params.time) * 2, z * .6) * 2/7 + simplex2D((x * .3 + params.time) * 4, z * 1.2) * 1/7;
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -.999, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise - clamp(remap(y, -100, 100, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block class="green">
+            Our second shaping technique involves mixing noises together!
+            <divider></divider>
+            The mix node is a super useful node for varying up the terrain! It works with 3 densities,
+            the first 2 inputs are different terrain shaping densities while the 3rd input controls
+            which shaping density should generate or a blend between the 2 so there's no sudden drop offs.
+            <divider></divider>
+            Let's look at a simple example of a mix between a simplex noise and the constant of 0 along the z axis.
+            You can see we remap the 3rd input or "gauge" of z values using the normalizer to where at z=-50,
+            we input 0 into the mix resulting in only the first density at -50 and beyond while it blends towards the second
+            density at z=50, or when the gauge hits 1.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./SimpleMix.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                let noise = mix(simplex2D((x * .3 + params.time) * 2, z * .6), 0, clamp(remap(z, -50, 50, 1, 0), 0, 1));
+                return noise - clamp(remap(y, -50, 50, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            In practice, it can look like the following where it blends between 2 different simplex noises
+            using another simplex as the gauge. A lot of random noise mushed together but it creates very simple
+            complex terrain. Terrain in fact very similar to how Minecraft adds detail onto it's own terrain!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./MinecraftMix.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                let scale = 1.5;
+                let noise = mix(simplex2D((x * .3 + params.time) * scale, z * .3 * scale),
+                    simplex2D((x * .3 + params.time) * scale, z * .3 * scale + 21382),
+                    clamp(remap(simplex2D((x * .3 + params.time) * scale * 1.5, z * .3 * scale * 1.5 + 78993), -.15, .15, 0, 1), 0, 1));
+                return noise - clamp(remap(y, -35, 35, -1, 1), -1, 1);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Now going back to our plateaued design, instead of mixing between different noise values, let's mix between
+            different curvemappers! We'll leave our first sharp cliffs curvemap, but let's add and test how more
+            gradual cliffs would look.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; height: 280px;" src="./BothCurves.webp" loading="lazy">
+            <img style="top: 0px; left: 215px; height: 280px;" src="./SmoothMappedPlateaus.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                var noise = simplex2D(x * .3 + params.time, z * .3);
+                let mixNoise = simplex2D((x * .3 + params.time) * 2, (z * .3) * 2 + 1000);
+                if (noise < .1) {
+                    noise = clamp(remap(noise, -.12, .1, -1, -.3), -1, 1);
+                }
+                else if (noise < .38) {
+                    noise = remap(noise, .1, .38, -.3, -.2);
+                }
+                else if (noise < .6) {
+                    noise = remap(noise, .38, .6, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .6, 1, .9, 1);
+                }
+                return noise - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Not bad, but now let's mix these 2 designs together to create sorta more eroded cliff edges! We'll want
+            this erosion to be relatively random, so the gauge will be another simplex.
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./MixedCurveMappers.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                let noise = simplex2D(x * .3 + params.time, z * .3);
+                let mixNoise = simplex2D((x * .3 + params.time) * 2, (z * .3) * 2 + 1000);
+                var noise1 = 0.0;
+                if (noise < 0) {
+                    noise1 = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                }
+                else if (noise < .48) {
+                    noise1 = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise1 = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise1 = remap(noise, .5, 1, .9, 1);
+                }
+                var noise2 = 0.0;
+                if (noise < .1) {
+                    noise2 = clamp(remap(noise, -.12, .1, -1, -.3), -1, 1);
+                }
+                else if (noise < .38) {
+                    noise2 = remap(noise, .1, .38, -.3, -.2);
+                }
+                else if (noise < .6) {
+                    noise2 = remap(noise, .38, .6, -.2, .9);
+                }
+                else {
+                    noise2 = remap(noise, .6, 1, .9, 1);
+                }
+                
+                return mix(noise1, noise2, clamp(remap(mixNoise, -.5, .5, 0, 1), 0, 1)) - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Now our cliffs are looking a lot better! We can also now easily modify how eroded these cliffs are by
+            moving the 'in' values of our normalizer. Also feel free to modify both curves to blend between different
+            shapes! Perhaps 2 completely different cliff curves will create some interesting results...?
+        </block>
+        <block class="green">
+            Let's try out one more technique! Warping!
+            <divider></divider>
+            Warping works as if smudging 1 density with another creating these swirly patterns! But be careful!
+            While looking good, it does increase the performance cost quite fast especially at large scales
+            so use sparingly! I'd recommend to try and only use it occasional for materials as it comes across
+            a lot easier in that pass than using larger warps on terrain!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 10px; left: 100px;" src="./Unwarped.webp" loading="lazy">
+            <img style="top: 10px; left: 385px;" src="../definition/TempArrow.webp" loading="lazy">
+            <img style="top: 10px; left: 650px;" src="./Warped.webp" loading="lazy">
+        </diagram>
+        <block>
+            Alright, so let's attach one of those FastGradientWarps on to our plateaus!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./FastGradientWarp.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="50" function3D="
+                if (params.enabled == 0) {
+                    return 0;
+                }
+                let scale = 4.0;
+                let step = 1.0;
+                let warp = vec2f((simplex3D((x * .3 + params.time) * scale + step, y * .3 * scale, z * .3 * scale) - simplex3D((x * .3 + params.time) * scale - step, y * .3 * scale, z * .3 * scale)) * .5,
+                    (simplex3D((x * .3 + params.time) * scale, y * .3 * scale, z * .3 * scale + step) - simplex3D((x * .3 + params.time) * scale, y * .3 * scale, z * .3 * scale - step)) * .5);
+                var noise = simplex2D(x * .3 + params.time + warp.x * 200, z * .3 + warp.y * 200);
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise * 1 - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                " uniforms="time, enabled" enabled="1"></canvas>
+        </diagram>
+        <block>
+            Whoops! Looks like we accidentally created some 3d terrain features! We're not even at that guide yet!
+            When we get there, many more (much more performant) ways of creating 3d terrain will be covered.
+            <divider></divider>
+            To fix our current issue, let's add a yoverride to our nodes which will force all of the following nodes
+            to be calculated within our 2D scope by only ever considering their values at y=0 along the entire y-axis. 
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./2DFastGradientWarp.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                let scale = 4.0;
+                let step = 1.0;
+                let warp = vec2f((simplex2D((x * .3 + params.time) * scale + step, z * .3 * scale) - simplex2D((x * .3 + params.time) * scale - step, z * .3 * scale)) * .5,
+                    (simplex2D((x * .3 + params.time) * scale, z * .3 * scale + step) - simplex2D((x * .3 + params.time) * scale, z * .3 * scale - step)) * .5);
+                var noise = simplex2D(x * .3 + params.time + warp.x * 200, z * .3 + warp.y * 200);
+                if (noise < 0) {
+                    noise = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                }
+                else if (noise < .48) {
+                    noise = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise = remap(noise, .5, 1, .9, 1);
+                }
+                return noise * 1 - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            Perfect! And again this node makes it fairly easy to modify how it looks with the scale of its internal
+            noise pattern and the intensity of the affects!
+        </block>
+        <block class="yellow">
+            Now let's add all of these effects together to see what we got!
+        </block>
+        <diagram style="height: 300px; width: 1000px;">
+            <img style="top: 0px; left: 20px; width: 625px; height: 280px; object-fit: contain;" src="./FinalResult.webp" loading="lazy">
+            <canvas style="top: 20px; left: 670px;" width="256" height="256" display="3DBlocks" size="75" function3D="
+                let scale = 4.0;
+                let step = 1.0;
+                let warp = vec2f((simplex2D((x * .3 + params.time) * scale + step, z * .3 * scale) - simplex2D((x * .3 + params.time) * scale - step, z * .3 * scale)) * .5,
+                    (simplex2D((x * .3 + params.time) * scale, z * .3 * scale + step) - simplex2D((x * .3 + params.time) * scale, z * .3 * scale - step)) * .5);
+                let noise = simplex2D(x * .3 + params.time + warp.x * 200, z * .3 + warp.y * 200);
+                let mixNoise = simplex2D((x * .3 + params.time) * 2, (z * .3) * 2 + 1000);
+                var noise1 = 0.0;
+                if (noise < 0) {
+                    noise1 = clamp(remap(noise, -.02, 0, -1, -.3), -1, 1);
+                }
+                else if (noise < .48) {
+                    noise1 = remap(noise, 0, .48, -.3, -.2);
+                }
+                else if (noise < .5) {
+                    noise1 = remap(noise, .48, .5, -.2, .9);
+                }
+                else {
+                    noise1 = remap(noise, .5, 1, .9, 1);
+                }
+                var noise2 = 0.0;
+                if (noise < .1) {
+                    noise2 = clamp(remap(noise, -.12, .1, -1, -.3), -1, 1);
+                }
+                else if (noise < .38) {
+                    noise2 = remap(noise, .1, .38, -.3, -.2);
+                }
+                else if (noise < .6) {
+                    noise2 = remap(noise, .38, .6, -.2, .9);
+                }
+                else {
+                    noise2 = remap(noise, .6, 1, .9, 1);
+                }
+                return mix(noise1, noise2, clamp(remap(mixNoise, -.5, .5, 0, 1), 0, 1)) * .75 + simplex2D((x * .3 + params.time) * 2, z * .6) * .25 - clamp(remap(y, -100, 100, -1.001, 1.001), -1.001, 1.001);
+                " uniforms="time"></canvas>
+        </diagram>
+        <block>
+            We're already creating interesting and varied terrain and we've barely even started!
+            Next we'll look at 1 final technique for shaping terrain and creating rivers!
+        </block>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('')" class="blue disabled"><div>Rivers & Mountains</div><img src="../../density/rivers/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/Materials/Definition')" class="brown"><div>What are Materials?</div><img src="../../materials/definition/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>

@@ -66,23 +66,6 @@ document.querySelectorAll("file").forEach((file) => {
     file.addEventListener("click", clickSelection);
 });
 
-function goHome() {
-    //Disable Current
-    hidePreviousDirectory();
-
-    directoryHistory = [];
-    scrollHistory = [];
-
-    //Go Home
-    directory = "Home/";
-    document.getElementById("Home").style.display = "";
-    document.getElementById("Title").style.display = "";
-    document.getElementById("Title").innerText = "Hytale WorldGenV2 Guides";
-    document.location.hash = "";
-
-    document.getElementById("backBttn").style.display = "none";
-}
-
 function goBack() {
     //Has History
     if (directoryHistory.length > 0) {

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>Music / Sounds</h1>
+        <block class="brown">
+            My favorite part of World Building is the Music & Sounds. It really sets the scene and gives me plenty of inspiration!
+        </block>
+        <iframe width="600" height="338" style="margin-bottom: 40px;" src="https://www.youtube.com/embed/1M9chThoETg" title="Hytale OST - A World Below" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <block>
+            While creating custom Music and Sounds is not my expertise and goes a bit off topic, I'd like to point to how to relatively easily
+            add existing Sounds and Sound Effects within Hytale's assets to your own regions!
+        </block>
+        <block class="yellow">
+            All of the sounds we'll be looking at today is contained under the 'Audio/AmbienceFX' folder. The main ones to look at are the 'Ambience,' 'Music,' and 'Reverb Zones.'
+            <ul>
+                <li>Ambience Assets creates ambient sounds that happen throughout a biome like birds chirping, rain falling, or a rumbling volcano.</li>
+                <li>Music Assets contain a reference to a Music Playlist that contains a list of different Music Tracks the game can play.</li>
+                <li>Finally, Reverb Zones modify the audio heard from in game actions or voice chat to be echo-y or muffled.</li>
+            </ul>
+            You can check which Ambience and Music Track as well as Reverb Zone is currently active by pressing 'F7' twice!
+        </block>
+        <img style="margin-bottom: 40px;" src="./AudioDebugScreen.webp">
+        <block class="green">
+            Let's first look at the 'Ambience' and 'Music' Assets!
+            <divider></divider>
+            Both work the same in their 'Conditions' where they're active depending upon Environmental Tags! Let's take a look at the 'Mus_Zone_1_Cave' Asset.
+            In this example, for any Environments that have both the 'Caves' and 'Zone1' tags, this music playlist will play!
+        </block>
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>Mus_Zone1_Cave</h2> AmbienceFX</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Conditions
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label empty">
+                <td>
+                    &emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    Environment Ids
+                </td>
+                <td>0 List Entries</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Environment Tag Pattern
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;Op</td>
+                <td>And</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Patterns
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    0
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;&emsp;&emsp;Op</td>
+                <td>Equals</td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;&emsp;&emsp;Tag</td>
+                <td><highlight>Caves</highlight></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    1
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;&emsp;&emsp;Op</td>
+                <td>Equals</td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;&emsp;&emsp;Tag</td>
+                <td><highlight>Zone1</highlight></td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+        <block>
+            So instead of needing to duplicate the Asset to add Music, if we add the correct Tags to our Environment Asset, we should get the correct corresponding
+            Ambience and Music Tracks playing!
+            <divider></divider>
+            If you want more control of course feel free to duplicate these Assets and create your own 'Environment Tag Patterns' or
+            assign a direct Environment reference through the 'Environment Ids' list.
+        </block>
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>Custom_Environment</h2> Environment</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Tags
+                </td>
+                <td>1 Map Entries</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    <b><highlight>Zone1</highlight></b>
+                </td>
+                <td>1 List Entries</td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;0</td>
+                <td><highlight>Caves</highlight></td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+        <block>
+            The order of tags does not seem to matter.
+        </block>
+
+        <block class="green">
+            Lastly there's the 'Reverb Zones' which are already setup to work separate from the Environment system, checking
+            which one to apply depending on if the game thinks you're in a cave, on the top of a mountain, or surrounded by trees!
+            Go ahead and check both the Assets or the in-game debug screen and it should change in a reasonable way.
+        </block>
+
+        <table style="margin-bottom: 40px;">
+            <tr class="header">
+                <td colspan="100%"><h2>Rev_Zone_Ice_Cave</h2> <highlight>AmbienceFX</highlight></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Conditions
+                </td>
+                <td></td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M441.3 299.8C451.5 312.4 450.8 330.9 439.1 342.6L311.1 470.6C301.9 479.8 288.2 482.5 276.2 477.5C264.2 472.5 256.5 460.9 256.5 448L256.5 192C256.5 179.1 264.3 167.4 276.3 162.4C288.3 157.4 302 160.2 311.2 169.3L439.2 297.3L441.4 299.7z"/></svg>
+                    Shelter
+                </td>
+                <td>1 List Entries</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    Surface Physical Materials
+                </td>
+                <td>1 List Entries</td>
+            </tr>
+            <tr class="label">
+                <td>
+                    &emsp;&emsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z"/></svg>
+                    0
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&emsp;&emsp;&emsp;Physical Material Id</td>
+                <td>Ice</td>
+            </tr>
+            <tr>
+                <td colspan="100%">...</td>
+            </tr>
+        </table>
+
+        <block>
+            However, I would like to note that depending on artistic preference since it's the same 'AmbienceFX' Asset as the
+            music and sounds, you can always duplicate one of these sound effects and set it to be constant throughout your
+            custom Environment by assigning an 'Environment Id' and setting the 'Priority' in the 'Audio' tab to a really high
+            number like 10.
+        </block>
+
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('Home/World/Environments')" class="yellow"><div>Environments</div><img src="../environments/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('')" class="yellow disabled"><div>Tints</div><img src="../tints/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/Gameplay')" class="yellow"><div>Gameplay</div><img src="../gameplay/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/NPCs')" class="yellow"><div>NPC Spawning</div><img src="../npcs/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>
