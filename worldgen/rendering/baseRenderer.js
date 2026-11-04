@@ -56,7 +56,8 @@ async function setupRenderers()
 
         //Compute/Render
         canvases.forEach((canvasObj) => {
-            canvasObj.pipelineRender(encoder, canvasObj);
+            if (isInViewport(canvasObj.canvas))
+                canvasObj.pipelineRender(encoder, canvasObj);
         });
 
         //Finish Compute/Render
@@ -65,6 +66,14 @@ async function setupRenderers()
 
     }
     setInterval(renderFrame, UPDATE_INTERVAL);
+}
+
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.bottom >= 0 &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+    );
 }
 
 setupRenderers();
