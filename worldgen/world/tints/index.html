@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>Tints</h1>
+        <block class="pink">
+            Guide written by <a href="https://x.com/andianerjones" target="_blank">@andianerjones</a>
+        </block>
+        <block class="brown">
+            Tinting is a feature in Hytale WorldGen V2 that allows developers to modify the colors of terrain, vegetation, and certain blocks.
+            <br><br>
+            This makes it possible to customize the visual atmosphere of a biome without necessarily creating new textures or entirely new blocks.
+            <br><br>
+            Tinting allows developers to move beyond Hytale's default color palette and create both realistic environments and imaginative fantasy or alien landscapes.
+        </block>
+        <block class="orange">
+            Application and Examples
+        </block>
+        <diagram style="height: 500px;">
+            <block style="top: 20px; left: 20px; width: 330px;">
+                <header><h2>Savanna Biome</h2></header>
+                A naturally green and fertile grassland can be transformed into a dry savanna by applying yellowish, brownish, and desaturated grass colors.
+                <img src="./Savanna.webp">
+            </block>
+            <block style="top: 20px; left: 402.5px; width: 330px;">
+                <header><h2>Fantasy or Alien Biome</h2></header>
+                Unusual colors such as blue, turquoise, or purple can be used to create alien planets, magical landscapes, and other fantasy environments.
+                <img src="./Fantasy.webp">
+            </block>
+            <block style="top: 20px; right: 402.5px; width: 330px;">
+                <header><h2>Dark Forest Biome</h2></header>
+                Darker and less saturated shades of green can create a mysterious, gloomy, or particularly dense forest atmosphere.
+                <img src="./DarkForest.webp">
+            </block>
+            <block style="top: 20px; right: 20px; width: 330px;">
+                <header><h2>Tropical Jungle Biome</h2></header>
+                Strong, saturated green tones can make vegetation appear more vibrant, colorful, and lush.
+                <img src="./TropicalJungle.webp">
+            </block>
+        </diagram>
+        <block class="pink">
+            These images are visual references for possible color palettes, not actual Hytale screenshots.
+        </block>
+        <block class="orange">
+            Which Blocks Can Be Tinted?
+        </block>
+        <block>
+            Tinting can be applied to various supported terrain and vegetation blocks.<br>
+            Examples include:
+            <ul>
+                <li>Grass blocks</li>
+                <li>Plants</li>
+                <li>And even more!</li>
+            </ul>
+            The actual tinting capabilities depend on the individual block and its configuration.
+        </block>
+        <block class="orange">
+            Limitations
+        </block>
+        <block>
+            Not every block in Hytale supports tinting in the same way.
+            <br><br>
+            Some blocks use predefined colors or textures that cannot easily be modified through a Tint Provider.
+            <br><br>
+            Possible workaround: Creating custom blocks and adjusting their configurations can provide additional control over how specific blocks respond to tinting.
+            <br><br>
+            This allows developers to overcome some of the limitations of the default blocks and expand their available color options.
+        </block>
+        <block class="orange">
+            Advantages of Tinting
+        </block>
+        <block>
+            Tinting offers significant visual flexibility without requiring a separate texture for every color variation.
+            <br><br>
+            It is especially useful when creating large biomes, as similar terrain and vegetation blocks can be transformed into completely different environments simply by changing their color palettes.
+            <br><br>
+            For example, the same grass blocks could be used to create a lush green forest, a dry yellow savanna, a dark swamp, or a blue alien landscape.
+            <br><br>
+            Summary: Tinting is an important tool for visually customizing biomes in Hytale WorldGen V2. It allows developers to adjust the colors of existing terrain and vegetation blocks to match different climates, atmospheres, and artistic styles.
+        </block>
+        <block class="yellow">
+            Tint Provider Overview
+        </block>
+        <block>
+            Hytale WorldGen V2 currently offers three different Tint Provider nodes:
+            <ul>
+                <li>Constant TintProvider</li>
+                <li>DensityDelimited TintProvider</li>
+                <li>Mix TintProvider</li>
+            </ul>
+            Each provider offers different possibilities for controlling how colors are applied to the environment.
+        </block>
+        <img style="height: 250px; margin-bottom: 40px;" src="./TintProviders.webp">
+        <block class="orange">
+            <header><h2>Constant TintProvider</h2></header>
+            The <b>Constant TintProvider</b> allows developers to define a single, fixed color using a hexadecimal (HEX) color code.
+            <divider></divider>
+            This color is applied uniformly to all tint-compatible blocks within the affected terrain or biome, overriding their default tint colors.
+            <br><br>
+            <b>Available Settings</b>
+            <ul>
+                <li>
+                    <b>ExportAs:</b> Currently non-functional, as the <b>Import TintProvider</b> node has not yet been implemented. This option is intended to allow Tint Providers to be referenced and reused.
+                </li>
+                <li>
+                    <b>Skip:</b> Allows developers to temporarily bypass the configured tint color and display the default green coloring instead. This is useful for comparing customized tinting with the default appearance.
+                </li>
+                <li>
+                    <b>Color:</b> Defines the tint color using a hexadecimal (HEX) color code, such as
+                    <div style="color: #FF0000; display: inline;">#FF0000</div> for red or
+                    <div style="color: #3A7330; display: inline;">#3A7330</div> for green.
+                </li>
+            </ul>
+        </block>
+        <img style="height: 150px; margin-bottom: 40px;" src="./ConstantTintProvider.webp">
+        <block>
+            <b>External Color Picker</b>
+            <divider></divider>
+            A useful website for selecting colors and obtaining hexadecimal color codes is:
+            <br><br>
+            <a href="https://htmlcolorcodes.com/?utm_source=chatgpt.com" target="_blank">HTML Color Codes - Color Picker</a>
+            <br><br>
+            This tool allows developers to visually select colors and copy their hexadecimal values directly into the Color field of the Constant TintProvider.
+        </block>
+        <block class="pink">
+            <b>Suggested Future Improvement: Integrated Color Picker</b>
+            <divider></divider>
+            Currently, colors must be entered manually using hexadecimal color codes.
+            <br><br>
+            A useful future improvement would be to integrate a visual color picker directly into the WorldGen V2 Node Editor.
+            <br><br>
+            This would allow developers to select and adjust colors without switching between Hytale and external websites or applications.
+            <br><br>
+            Such an improvement would simplify the workflow, speed up biome development, and make experimenting with different color palettes significantly more convenient.
+        </block>
+        <block class="orange">
+            <header><h2>DensityDelimited TintProvider</h2></header>
+            The <b>DensityDelimited TintProvider</b> allows you to use different types of Density functions to control how colors are distributed across the terrain.
+            <br><br>
+            The selected Density function determines the patterns and distribution of colors, allowing you to create a wide variety of visual effects.
+        </block>
+        <img style="height: 150px; margin-bottom: 40px;" src="./DensityDelimitedTintProvider.webp">
+        <block>
+            <header><h2>Delimiters / Delimiter DDTP</h2></header>
+            <b>Tint</b>
+            <divider></divider>
+            The <b>Tint</b> setting allows you to further customize each defined range by connecting additional <b>TintProvider functions</b> or assigning a fixed color using a <b>Constant TintProvider</b>.
+            <br><br>
+            This makes it possible to create more complex color variations within individual ranges or simply apply a single color to a specific section.
+            <divider></divider>
+            <b>Range</b>
+            <divider></divider>
+            The <b>Range</b> setting determines how different colors are assigned to Density values between <b>-1 and +1</b>, where -1 represents the minimum and +1 represents the maximum.
+            <br><br>
+            In this example, I used <b>four different colors</b>, each assigned to a range with intervals of 0.5.
+            <br><br>
+            The colors progress from dark to light, creating a natural-looking variation across the terrain.
+            <br><br>
+            When using <b>Simplex Noise 2D</b>, this produces smooth, organic-looking patterns with transitions between darker and lighter areas.
+            <br><br>
+            However, the final color distribution depends on the <b>Density function</b> being used. Different Density functions can produce completely different patterns, even when the same colors and range settings are applied.
+        </block>
+        <img style="height: 250px; margin-bottom: 40px;" src="./DensityDelimited.webp">
+        <block class="green">
+            Example: Simplex Noise 2D vs. Cell Noise 2D
+        </block>
+        <block>
+            In this example, we compare <b>Simplex Noise 2D</b> and <b>Cell Noise 2D</b>.
+            <br><br>
+            Both use exactly the same tint settings, but the results look completely different because of the Density function being used.
+            <br><br>
+            This demonstrates how the <b>Density function controls the arrangement and distribution of colors</b> across the terrain, while the Tint and Range settings determine which colors are applied.
+        </block>
+        <diagram style="height: 500px; width: 1150px;">
+            <header>SimplexNoise2D Density</header>
+            <img style="height: 420px; top: 40px; left: 20px;" src="./SimplexNodeGraph.webp">
+            <img style="height: 320px; top: 90px; right: 20px;" src="./SimplexTint.webp">
+        </diagram>
+        <diagram style="height: 500px; width: 1150px;">
+            <header>CellNoise2D Density</header>
+            <img style="height: 420px; top: 40px; left: 20px;" src="./CellNoiseNodeGraph.webp">
+            <img style="height: 320px; top: 90px; right: 20px;" src="./CellNoiseTint.webp">
+        </diagram>
+        <diagram style="height: 500px; width: 1150px;">
+            <header>Using 2 colors with the same SimplexNoise2D Density as in the Terrain</header>
+            <img style="height: 300px; top: 100px; left: 20px;" src="./ColorToTerrainNodeGraph.webp">
+            <img style="height: 320px; top: 90px; right: 20px;" src="./ColorToTerrainTint.webp">
+        </diagram>
+        <block class="orange">
+            <header><h2>Mix TintProvider</h2></header>
+            WIP
+        </block>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('Home/World/Environments')" class="yellow"><div>Environments</div><img src="../environments/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/Gameplay')" class="yellow"><div>Gameplay</div><img src="../gameplay/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/NPCs')" class="yellow"><div>NPC Spawning</div><img src="../npcs/Icon.webp" loading="lazy"/></file>
+                <file onclick="window.parent.goToPage('Home/World/Sounds')" class="yellow"><div>Music / Sounds</div><img src="../sounds/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>

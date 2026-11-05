@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../assets/default.css">
+        <link rel="stylesheet" href="../../assets/guidesStyle.css">
+    </head>
+    <body>
+        <h1>Building Prefabs</h1>
+        <block class="pink">
+            Guide written by <a href="https://x.com/andianerjones" target="_blank">@andianerjones</a>
+        </block>
+        <block class="yellow">
+            How to Create and Save Prefabs
+        </block>
+        <block>
+            Before a Prefab can be used in WorldGen, we first need to <b>build and save the object</b> we want to generate.
+            <br><br>
+            This can be anything from a simple rock or tree to a more complex building or structure.
+        </block>
+        <block class="orange">
+            Step 1: Build Your Prefab
+        </block>
+        <block>
+            First, manually build the object you want to save as a Prefab.
+            <br><br>
+            I personally recommend building Prefabs <b>separately from the surrounding terrain, preferably floating in the air</b>.
+            <br><br>
+            This makes it easier to select the entire structure without accidentally including unnecessary terrain blocks or other objects.
+            <br><br>
+            It also helps identify any unwanted blocks that might otherwise be saved as part of the Prefab.
+        </block>
+        <block class="orange">
+            Step 2: Select Your Prefab
+        </block>
+        <block>
+            Once your object is finished, use the <b>Selection Tool</b> to mark the entire structure.
+        </block>
+        <img style="height: 250px; margin-bottom: 40px;" src="./CreativeTools.webp">
+        <img style="height: 250px; margin-bottom: 40px;" src="./Icon.webp">
+        <block>
+            Make sure that:
+            <ul>
+                <li>Every block belonging to the Prefab is included in the selection.</li>
+                <li>No unnecessary blocks from the surrounding environment are selected.</li>
+                <li>There are no accidental floating blocks or leftover construction materials.</li>
+                <li>The entire object is contained within the selection boundaries.</li>
+            </ul>
+            The goal is to create a clean, independent Prefab that contains only the blocks and entities you actually want to generate later.
+        </block>
+        <block class="orange">
+            Step 3: Save Your Prefab
+        </block>
+        <block>
+            After selecting the complete structure, use the following command:
+            <br>
+            <code>/prefab save</code>
+            <br><br>
+            This opens a window where you can configure how your Prefab should be saved.
+        </block>
+        <img style="height: 350px; margin-bottom: 40px;" src="./SavePrefabMenu.webp">
+        <block>
+            Here you can:
+            <ul>
+                <li><b>Select the Mod:</b> Choose the Mod in which you want to store your Prefab.</li>
+                <li><b>Set the Prefab Name:</b> Assign a unique name to identify the Prefab later.</li>
+            </ul>
+            Once saved, the Prefab can be referenced and used within WorldGen through its file path.
+        </block>
+        <block class="orange">
+            Step 4: Naming Your Prefabs
+        </block>
+        <block>
+            I strongly recommend using unique and descriptive names for every Prefab.
+            <br><br>
+            A consistent naming convention makes it significantly easier to organize, identify, and reuse Prefabs, especially when working with hundreds of different objects.
+            <br><br>
+            Personally, I prefer naming Prefabs based on their object type, category, size, and variation.
+            <br><br>
+            Examples:
+            <br>
+            For trees:
+            <ul>
+                <li><code>Tree_Birch_Small_1</code></li>
+                <li><code>Tree_Birch_Small_2</code></li>
+                <li><code>Tree_Birch_Small_3</code></li>
+            </ul>
+            For buildings:
+            <ul>
+                <li><code>Building_City_Redwood_House_1</code></li>
+                <li><code>Building_City_Redwood_House_2</code></li>
+            </ul>
+            This naming structure allows you to quickly recognize what each Prefab represents without having to open the file.
+            <br><br>
+            It also makes it easier to organize Prefabs into different folders later.
+        </block>
+        <block class="pink">
+            <b>In summary:</b> Creating a Prefab involves building an object, selecting it completely with the Select Tool, and saving it using <code>/prefab save</code>. Clean selections and consistent naming conventions are particularly important for keeping larger WorldGen projects organized and manageable.
+        </block>
+        <block class="orange">
+            Important Note: Save Unfinished Prefabs
+        </block>
+        <block>
+            When building Prefabs in the same world where you are actively working with <b>WorldGen</b>, it is extremely important to regularly save your progress, including unfinished Prefabs.
+            <br><br>
+            Certain WorldGen commands, such as <code>/preview radius 10</code>, can regenerate large areas of the terrain and potentially <b>delete entire structures or buildings</b> that you have manually created.
+            <br><br>
+            This means that even a nearly completed Prefab could be lost if it has not been saved beforehand.
+        </block>
+        <block>
+            To avoid losing your work, I recommend:
+            <ul>
+                <li>
+                    <b>Save unfinished Prefabs:</b> Always save your Prefabs before closing the game, even if they are not yet completed.
+                </li>
+                <li>
+                    <b>Build in a separate world:</b> If possible, create your Prefabs outside your active WorldGen environment to reduce the risk of accidentally deleting them.
+                </li>
+                <li>
+                    <b>Save before using WorldGen commands:</b> Be particularly careful when using commands that regenerate or update terrain.
+                </li>
+            </ul>
+            Building Prefabs directly inside your WorldGen world can still be useful, especially when you want to adapt structures to specific terrain shapes or environmental conditions.
+            <br><br>
+            However, if you choose this approach, <b>always save your Prefabs before closing the game or executing WorldGen commands that could modify the surrounding terrain</b>.
+        </block>
+        <block class="pink">
+            <b>My personal tip:</b> Save your Prefabs regularly, even during construction. It only takes a moment to save your progress, but it can prevent you from losing hours of work.
+        </block>
+        <block class="yellow">
+            How are Prefabs stored?
+        </block>
+        <block>
+            Prefabs are saved as individual files within a folder structure.
+            <br><br>
+            Each Prefab can be loaded into WorldGen by referencing its <b>file path</b>.
+            <br><br>
+            This allows us to organize different Prefabs into categories, such as trees, rocks, buildings, or decorations, and reuse them across multiple WorldGen configurations.
+        </block>
+        <block class="pink">
+            <b>In summary:</b> Prefabs are reusable collections of blocks and entities that allow us to populate our terrain with vegetation, structures, and environmental details. They are an essential part of transforming a basic terrain shape into a detailed and immersive world.
+        </block>
+        <block class="yellow">
+            What are Prefabs?
+        </block>
+        <block>
+            <b>Prefabs</b> are predefined and saved collections of blocks and/or entities that represent specific objects or structures. They can be reused and placed into the world as complete objects / Prefabs
+            <br><br>
+            A Prefab can consist of simple decorations or more complex structures, such as:
+            <ul>
+                <li><b>Vegetation:</b> Trees, bushes, flowers, and other plants.</li>
+                <li><b>Natural Objects:</b> Rocks, boulders, and fallen trees.</li>
+                <li><b>Structures:</b> Buildings, ruins, bridges, and other constructions.</li>
+                <li><b>Decorations:</b> Small environmental details that make the world feel more natural and alive.</li>
+            </ul>
+        </block>
+        <block class="orange">
+            How are Prefabs used in WorldGen?
+        </block>
+        <block>
+            Prefabs play an important role in <b>WorldGen</b>, as they allow us to populate the terrain with objects and structures.
+            <br><br>
+            While the <b>Terrain</b> system primarily defines the shape and basic structure of the landscape, Prefabs are used to bring that landscape to life by adding vegetation, buildings, natural objects, and other environmental details.
+            <br><br>
+            Through the <b>Node Editor</b>, we can control how and where Prefabs are generated.
+        </block>
+        <block>
+            This includes various settings and functions for:
+            <ul>
+                <li><b>Placement:</b> Defining where Prefabs can spawn.</li>
+                <li><b>Positioning:</b> Controlling their location within the terrain.</li>
+                <li><b>Rotation:</b> Adjusting their orientation to create more natural variations.</li>
+                <li><b>Distribution:</b> Controlling how frequently and under which conditions Prefabs appear.</li>
+                <li><b>Localization:</b> Using different functions and conditions to determine suitable spawning locations.</li>
+            </ul>
+            By combining these options, we can create more diverse and natural-looking environments instead of manually placing every individual object.
+        </block>
+        <block class="yellow">
+            How do Prefabs interact with Chunks?
+        </block>
+        <block>
+            An important aspect of <b>WorldGen</b> is the performance and loading efficiency of the generated world. Prefabs play a significant role in this, especially when dealing with large structures or a high number of objects.
+        </block>
+        <block class="orange">
+            Prefabs and Chunk Loading
+        </block>
+        <block>
+            In WorldGen, the world is divided into <b>Chunks</b>, which are individual sections of the map that are generated and loaded separately.
+            <br><br>
+            When a Prefab is placed within a single Chunk, its blocks can be generated as part of that Chunk.
+            <br><br>
+            However, if a Prefab extends beyond the boundaries of its original Chunk, it may affect multiple Chunks.
+            <br><br>
+            For example:
+            <ul>
+                <li><b>Small Prefabs:</b> A rock or small tree that fits entirely within one Chunk only affects that particular Chunk.</li>
+                <li><b>Medium Prefabs:</b> A larger tree or structure that extends across two Chunks requires blocks to be generated in both Chunks.</li>
+                <li><b>Large Prefabs:</b> A building or massive structure that spans several Chunks can affect multiple sections of the world.</li>
+            </ul>
+        </block>
+        <block class="orange">
+            Performance Considerations
+        </block>
+        <block>
+            The more Chunks a Prefab affects, the more complex its generation and placement can become.
+            <br><br>
+            Large Prefabs that extend across multiple Chunks may require additional processing to ensure that the entire structure is generated correctly.
+            <br><br>
+            This becomes particularly important when using <b>many large Prefabs within the same area</b>, as their combined generation workload can increase loading times and potentially cause performance issues.
+            <br><br>
+            However, the performance impact does not depend solely on the number of Chunks a Prefab occupies. Other factors, such as the total number of blocks, entities, generation frequency, and the WorldGen system's handling of cross-Chunk structures, also influence performance.
+        </block>
+        <block class="orange">
+            Best Practices
+        </block>
+        <block>
+            To keep WorldGen performance efficient:
+            <ul>
+                <li>Prefer smaller Prefabs where possible, especially for frequently generated decorations.</li>
+                <li>Avoid excessive use of large Prefabs that span multiple Chunks.</li>
+                <li>Consider the generation frequency of complex structures.</li>
+                <li>Test loading and generation performance when working with large numbers of Prefabs.</li>
+            </ul>
+        </block>
+        <block class="pink">
+            <b>In summary:</b> Prefabs that extend across multiple Chunks can increase the complexity and processing requirements of world generation. While large Prefabs are useful for creating detailed environments, their size, complexity, and frequency should be considered to maintain good WorldGen performance.
+        </block>
+        <diagram class="nextup">
+            <header>Next Up</header>
+            <div>
+                <back onclick="window.parent.goBack();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320zM188.7 308.7L292.7 204.7C297.3 200.1 304.2 198.8 310.1 201.2C316 203.6 320 209.5 320 216L320 272L416 272C433.7 272 448 286.3 448 304L448 336C448 353.7 433.7 368 416 368L320 368L320 424C320 430.5 316.1 436.3 310.1 438.8C304.1 441.3 297.2 439.9 292.7 435.3L188.7 331.3C182.5 325.1 182.5 314.9 188.7 308.7z"/></svg>
+                    Back
+                </back>
+                <file onclick="window.parent.goToPage('')" class="green disabled"><div>Prefab Tips</div><img src="../prefabtips/Icon.webp" loading="lazy"/></file>
+            </div>
+        </diagram>
+    </body>
+</html>
